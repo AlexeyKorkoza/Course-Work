@@ -1,1 +1,13 @@
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\CourseWork.exe.config
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\CourseWork.exe
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\CourseWork.pdb
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.dll
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.xml
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.csprojResolveAssemblyReference.cache
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.InputOfAdmin.resources
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Properties.Resources.resources
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.Cache
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.exe
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.pdb
