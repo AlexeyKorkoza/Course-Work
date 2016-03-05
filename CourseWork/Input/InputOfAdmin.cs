@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
-using CourseWork.Input;
 
-namespace CourseWork
+namespace CourseWork.Input
 {
     public partial class InputOfAdmin : Form
     {
-        public static string Filename = ConfigurationManager.AppSettings["AdminPath"];
         public InputOfAdmin()
         {
             InitializeComponent();
@@ -20,17 +18,23 @@ namespace CourseWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var check = new CheckInput();
-            if (!check.Check(Filename, Login.Text, Password.Text))
+            try
             {
-                MessageBox.Show(@"Проверьте введенные данные");
-                return;
+                var check = new CheckInput();
+                if (!check.Check(ConfigurationManager.AppSettings["AdminPath"], Login.Text, Password.Text))
+                {
+                    MessageBox.Show(@"Некорректные данные для входа");
+                    return;
+                }
+                else
+                {
+                    var main = new Main();
+                    main.Show();
+                }
             }
-            else
+            catch (Exception exception)
             {
-                var main = new Main();
-                main.Show();
-                Close();
+                MessageBox.Show(exception.Message);
             }
         }
     }

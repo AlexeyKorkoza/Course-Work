@@ -1,23 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace CourseWork.Input
 {
     public class CheckInput
     {
-        public List<Inputs> ReadInputses(string filename)
-        {
-            var formatter = new XmlSerializer(typeof(Inputs[]));
-            var fs = new FileStream(filename, FileMode.OpenOrCreate);
-            var list = (List<Inputs>)formatter.Deserialize(fs);
-            return list;
-        }
+        //public List<Admin> ReadInputses(string filename)
+        //{
+           
+        //    return list;
+        //}
 
         public bool Check(string filename,string login,string password)
         {
-            var list = ReadInputses(filename);
-            var flag = !(list[0].Password != password || list[1].Login != login);     
+            var flag = true;
+            try
+            {
+                var formatter = new BinaryFormatter();
+                var fs = new FileStream(filename, FileMode.OpenOrCreate);
+                var list = (Admin) formatter.Deserialize(fs);
+                flag = !(list.Password != password || list.Login != login);
+                fs.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
             return flag;
         }
     }

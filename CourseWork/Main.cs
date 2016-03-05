@@ -16,5 +16,11 @@ namespace CourseWork
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var setting = new Settings();
+            setting.Show();
+        }
     }
 }
