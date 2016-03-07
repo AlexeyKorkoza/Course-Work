@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -8,12 +7,6 @@ namespace CourseWork.Input
 {
     public class CheckInput
     {
-        //public List<Admin> ReadInputses(string filename)
-        //{
-           
-        //    return list;
-        //}
-
         public bool Check(string filename,string login,string password)
         {
             var flag = true;

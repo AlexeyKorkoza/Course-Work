@@ -13,3 +13,10 @@ C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\D
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Input.InputOfAdmin.resources
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Main.resources
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Settings.resources
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.AboutBox1.resources
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Abstractions.dll
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Client.Lightweight.dll
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Abstractions.pdb
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Abstractions.xml
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Client.Lightweight.pdb
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Client.Lightweight.xml

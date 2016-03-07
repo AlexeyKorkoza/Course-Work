@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string NameOfSubscription { get; set; }
-        public string CostOfSubscription { get; set; }
+        public int CostOfSubscription { get; set; }
     }
 }

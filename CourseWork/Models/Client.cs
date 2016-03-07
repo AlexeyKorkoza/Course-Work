@@ -1,4 +1,6 @@
-﻿namespace CourseWork.Models
+﻿using System.Collections.Generic;
+
+namespace CourseWork.Models
 {
     public class Client
     {
@@ -8,7 +10,5 @@
         public string MiddleName { get; set; }
         public string Date { get; set; }
         public string AgeCategory { get; set; }
-        public Direction Direction { get; set; }
-        public Discount Discount { get; set;}
-    }
+        }
 }
