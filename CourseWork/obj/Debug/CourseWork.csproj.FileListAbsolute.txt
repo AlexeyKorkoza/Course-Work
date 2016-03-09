@@ -1,10 +1,6 @@
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\CourseWork.exe.config
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\CourseWork.exe
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\CourseWork.pdb
-C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.dll
-C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.xml
-C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.csprojResolveAssemblyReference.cache
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Properties.Resources.resources
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.Cache
@@ -13,10 +9,10 @@ C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\D
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Input.InputOfAdmin.resources
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Main.resources
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Settings.resources
-C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.AboutBox1.resources
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Abstractions.dll
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Client.Lightweight.dll
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Abstractions.pdb
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Abstractions.xml
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Client.Lightweight.pdb
 C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\bin\Debug\Raven.Client.Lightweight.xml
+C:\Users\lesha\Documents\Visual Studio 2013\Projects\CourseWork\CourseWork\obj\Debug\CourseWork.Client.AddClient.resources

@@ -7,9 +7,9 @@
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Lastname" Type="nchar" MaxLength="100" />
     <Property Name="Name" Type="nchar" MaxLength="100" />
-    <Property Name="Middlename" Type="nchar" MaxLength="100" />
-    <Property Name="Date" Type="nchar" MaxLength="20" />
-    <Property Name="AgeCategory" Type="nchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nchar" MaxLength="100" />
+    <Property Name="Date" Type="nchar" MaxLength="60" />
+    <Property Name="AgeCategory" Type="nchar" MaxLength="60" />
   </EntityType>
   <EntityType Name="Direction">
     <Key>
@@ -17,7 +17,7 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="NameOfService" Type="nchar" MaxLength="100" />
-    <Property Name="Description" Type="nchar" MaxLength="1000" />
+    <Property Name="Description" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Discount">
     <Key>

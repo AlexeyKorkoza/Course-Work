@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище centermdfModelContainer" CdmEntityContainer="CenterContext1">
+  <EntityContainerMapping StorageEntityContainer="Хранилище centermdfModelContainer" CdmEntityContainer="CenterContext">
     <EntitySetMapping Name="Client">
       <EntityTypeMapping TypeName="center.mdfModel.Client">
         <MappingFragment StoreEntitySet="Client">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Lastname" ColumnName="Lastname" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Middlename" ColumnName="Middlename" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="AgeCategory" ColumnName="AgeCategory" />
         </MappingFragment>

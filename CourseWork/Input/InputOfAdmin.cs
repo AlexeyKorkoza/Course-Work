@@ -30,6 +30,7 @@ namespace CourseWork.Input
                 {
                     var main = new Main();
                     main.Show();
+                    this.Hide();
                 }
             }
             catch (Exception exception)

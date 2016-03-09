@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CourseWork.Models
+﻿namespace CourseWork.Models
 {
     public class Discount
     {
