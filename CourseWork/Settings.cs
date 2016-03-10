@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CourseWork.Input;
 
@@ -18,7 +19,7 @@ namespace CourseWork
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            Close();
+           Hide();
         }
 
         private void Ok_Click(object sender, EventArgs e)
@@ -32,21 +33,26 @@ namespace CourseWork
                     control.BackColor = Color.Yellow;
                     return;
                 }
+                const string pattern = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\w+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$";
+                var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+                var match = regex.Match(newpassword.Text);
+                if (!match.Success)
+                {
+                    MessageBox.Show(@"Пароль должен содержать строчные и прописные латинские буквы, цифры, спецсимволы. Минимум 8 символов");
+                    return;
+                }
                 if (!check.Check(ConfigurationManager.AppSettings["AdminPath"], "admin", oldpassword.Text))
                 {
                     MessageBox.Show(@"Проверьте введенные данные");
                     return;
                 }
-                else
-                {
-                    var sw = new StreamWriter(ConfigurationManager.AppSettings["AdminPath"], false);
-                    sw.Close();
-                    var formatter = new BinaryFormatter();
-                    var fs = new FileStream(ConfigurationManager.AppSettings["AdminPath"], FileMode.Open);
-                    var admin = new Admin("admin", newpassword.Text);
-                    formatter.Serialize(fs, admin);
-                    fs.Close();
-                }
+                var sw = new StreamWriter(ConfigurationManager.AppSettings["AdminPath"], false);
+                sw.Close();
+                var formatter = new BinaryFormatter();
+                var fs = new FileStream(ConfigurationManager.AppSettings["AdminPath"], FileMode.Open);
+                var admin = new Admin("admin", newpassword.Text);
+                formatter.Serialize(fs, admin);
+                fs.Close();
             }
             catch (Exception exception)
             {

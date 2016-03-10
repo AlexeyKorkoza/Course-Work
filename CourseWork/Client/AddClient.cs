@@ -4,20 +4,27 @@ using System.Drawing;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CourseWork.Models;
 using Raven.Client.Document;
 
 namespace CourseWork.Client
 {
     public partial class AddClient : Form
     {
+        private List<ComboBox> _listcombobox;
+        private List<TextBox>  _textBoxs;
+        private List<RichTextBox> _richTextBoxs; 
+           
         public AddClient()
         {
             InitializeComponent();
             Date.BackColor = Color.White;
-            var list = new List<ComboBox> {AgeCategory, Payment, Decor};
-            for (int i = 0; i < list.Count; i++)
+            _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
+            _listcombobox = new List<ComboBox> { AgeCategory, Payment, Decor, DirectionName, NameService, Duration, CostService, Visit, Code,Size};
+            _richTextBoxs = new List<RichTextBox>{DescriptionDiscount,DirectionDescription};
+            foreach (var t in _listcombobox)
             {
-                list[i].DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                t.DropDownStyle = ComboBoxStyle.DropDownList;
             }
         }
 
@@ -49,8 +56,13 @@ namespace CourseWork.Client
                 control.BackColor = Color.Yellow;
                 return;
             }
-            var list = new List<TextBox> {Lastname, NameOfClient,Middlename};
-            foreach (var t in list)
+            foreach (var t in _listcombobox)
+            {
+                if (t.Text.Length != 0) continue;
+                MessageBox.Show(@"Все поля должн быть заполнены!");
+                break;
+            }
+            foreach (var t in _textBoxs)
             {
                 const string pattern = "[A-Za-zА-Яа-я]";
                 var regex = new Regex(pattern, RegexOptions.IgnoreCase);
@@ -59,11 +71,48 @@ namespace CourseWork.Client
                 MessageBox.Show(@"Некорректное заполнение поля!");
                 break;
             }
+            foreach (var t in _richTextBoxs)
+            {
+                if(t.TextLength !=0) continue;
+                MessageBox.Show(@"Описание не должно быть пустым!");
+                break;
+            }
             var documentStore = new DocumentStore
             {
                 Url = "http://localhost:8080/",
                 DefaultDatabase = "Client"
             };
+            documentStore.Initialize();
+            using (var session = documentStore.OpenSession())
+            {
+                session.Store(new Models.Client
+                {
+                    Lastname = Lastname.Text,
+                    Name = NameOfClient.Text,
+                    MiddleName = Middlename.Text,
+                    Date = Date.Text,
+                    AgeCategory = AgeCategory.Text
+                });
+                session.Store(new Direction
+                {
+                    NameOfService = NameService.Text,
+                    Description = DirectionDescription.Text
+                });
+                session.Store(new Service
+                {
+                    NameService = NameService.Text,
+                    Duration = Duration.Text,
+                    Cost = Convert.ToInt32(CostService.Text),
+                    Visit = Visit.Text
+                });
+                session.Store(new Discount
+                {
+                    Code = Convert.ToInt32(Code.Text),
+                    DescriptionDiscount = DescriptionDiscount.Text,
+                    Size = Convert.ToInt32(Size.Text)
+                 });
+                session.SaveChanges();
+            }
 
         }
 
@@ -77,11 +126,6 @@ namespace CourseWork.Client
             Lastname.BackColor = Color.White;
         }
 
-        //private void Name_TextChanged(object sender, EventArgs e)
-        //{
-        //    Name.BackColor = Color.White;
-        //}
-
         private void Middlename_TextChanged(object sender, EventArgs e)
         {
             Middlename.BackColor = Color.White;
@@ -90,6 +134,11 @@ namespace CourseWork.Client
         private void Date_TextChanged(object sender, EventArgs e)
         {
             Date.BackColor = Color.White;
+        }
+
+       private void NameOfClient_TextChanged(object sender, EventArgs e)
+        {
+           NameOfClient.BackColor = Color.White;
         }
     }
 }
