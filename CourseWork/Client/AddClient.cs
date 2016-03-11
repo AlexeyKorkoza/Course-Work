@@ -11,13 +11,15 @@ namespace CourseWork.Client
 {
     public partial class AddClient : Form
     {
-        private List<ComboBox> _listcombobox;
-        private List<TextBox>  _textBoxs;
-        private List<RichTextBox> _richTextBoxs; 
+        private readonly List<ComboBox> _listcombobox;
+        private readonly List<TextBox>  _textBoxs;
+        private readonly List<RichTextBox> _richTextBoxs; 
            
         public AddClient()
         {
             InitializeComponent();
+            Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            Date.Text = Date.Text.Replace('.', '/');
             Date.BackColor = Color.White;
             _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
             //DirectionName, NameService, Duration, CostService,Code,Size
