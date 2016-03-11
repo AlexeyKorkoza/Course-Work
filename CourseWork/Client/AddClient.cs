@@ -20,7 +20,8 @@ namespace CourseWork.Client
             InitializeComponent();
             Date.BackColor = Color.White;
             _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
-            _listcombobox = new List<ComboBox> { AgeCategory, Payment, Decor, DirectionName, NameService, Duration, CostService, Visit, Code,Size};
+            //DirectionName, NameService, Duration, CostService,Code,Size
+            _listcombobox = new List<ComboBox> { AgeCategory, Payment, Decor,  Visit};
             _richTextBoxs = new List<RichTextBox>{DescriptionDiscount,DirectionDescription};
             foreach (var t in _listcombobox)
             {
@@ -49,71 +50,78 @@ namespace CourseWork.Client
 
         private void Add_Click(object sender, EventArgs e)
         {
-            foreach (Control control in Client.Controls)
+            try
             {
-                if ((!(control is TextBox)) || (control.Text.Trim() != "")) continue;
-                MessageBox.Show(@"Поле должно быть заполнено!");
-                control.BackColor = Color.Yellow;
-                return;
-            }
-            foreach (var t in _listcombobox)
-            {
-                if (t.Text.Length != 0) continue;
-                MessageBox.Show(@"Все поля должн быть заполнены!");
-                break;
-            }
-            foreach (var t in _textBoxs)
-            {
-                const string pattern = "[A-Za-zА-Яа-я]";
-                var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-                var match = regex.Match(t.Text);
-                if (match.Success) continue;
-                MessageBox.Show(@"Некорректное заполнение поля!");
-                break;
-            }
-            foreach (var t in _richTextBoxs)
-            {
-                if(t.TextLength !=0) continue;
-                MessageBox.Show(@"Описание не должно быть пустым!");
-                break;
-            }
-            var documentStore = new DocumentStore
-            {
-                Url = "http://localhost:8080/",
-                DefaultDatabase = "Client"
-            };
-            documentStore.Initialize();
-            using (var session = documentStore.OpenSession())
-            {
-                session.Store(new Models.Client
+                foreach (Control control in Client.Controls)
                 {
-                    Lastname = Lastname.Text,
-                    Name = NameOfClient.Text,
-                    MiddleName = Middlename.Text,
-                    Date = Date.Text,
-                    AgeCategory = AgeCategory.Text
-                });
-                session.Store(new Direction
+                    if ((!(control is TextBox)) || (control.Text.Trim() != "")) continue;
+                    MessageBox.Show(@"Поле должно быть заполнено!");
+                    control.BackColor = Color.Yellow;
+                    return;
+                }
+                foreach (var t in _listcombobox)
                 {
-                    NameOfService = NameService.Text,
-                    Description = DirectionDescription.Text
-                });
-                session.Store(new Service
+                    if (t.Text.Length != 0) continue;
+                    MessageBox.Show(@"Все поля должн быть заполнены!");
+                    break;
+                }
+                foreach (var t in _textBoxs)
                 {
-                    NameService = NameService.Text,
-                    Duration = Duration.Text,
-                    Cost = Convert.ToInt32(CostService.Text),
-                    Visit = Visit.Text
-                });
-                session.Store(new Discount
+                    const string pattern = "[A-Za-zА-Яа-я]";
+                    var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+                    var match = regex.Match(t.Text);
+                    if (match.Success) continue;
+                    MessageBox.Show(@"Некорректное заполнение поля!");
+                    break;
+                }
+                foreach (var t in _richTextBoxs)
                 {
-                    Code = Convert.ToInt32(Code.Text),
-                    DescriptionDiscount = DescriptionDiscount.Text,
-                    Size = Convert.ToInt32(Size.Text)
-                 });
-                session.SaveChanges();
+                    if (t.TextLength != 0) continue;
+                    MessageBox.Show(@"Описание не должно быть пустым!");
+                    break;
+                }
+                var documentStore = new DocumentStore
+                {
+                    Url = "http://localhost:8080/",
+                    DefaultDatabase = "Client"
+                };
+                documentStore.Initialize();
+                using (var session = documentStore.OpenSession())
+                {
+                    session.Store(new Models.Client
+                    {
+                        Lastname = Lastname.Text,
+                        Name = NameOfClient.Text,
+                        MiddleName = Middlename.Text,
+                        Date = Date.Text,
+                        AgeCategory = AgeCategory.Text
+                    });
+                    session.Store(new Models.Direction
+                    {
+                        NameOfDirection = NameService.Text,
+                        Description = DirectionDescription.Text
+                    });
+                    session.Store(new Service
+                    {
+                        NameService = NameService.Text,
+                        Duration = Convert.ToInt32(Duration.Text),
+                        Cost = Convert.ToInt32(CostService.Text),
+                        Visit = Visit.Text
+                    });
+                    session.Store(new Discount
+                    {
+                        Code = Convert.ToInt32(Code.Text),
+                        DescriptionDiscount = DescriptionDiscount.Text,
+                        Size = Convert.ToInt32(Size.Text)
+                    });
+                    session.SaveChanges();
+                }
+                MessageBox.Show(@"Данные добавлены");
             }
-
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Close_Click(object sender, EventArgs e)

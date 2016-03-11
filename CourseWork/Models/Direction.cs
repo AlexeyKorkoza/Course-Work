@@ -2,7 +2,7 @@
 {
     public class Direction
     {
-        public string NameOfService { get; set; }
+        public string NameOfDirection { get; set; }
         public string Description { get; set; }
         }
 }

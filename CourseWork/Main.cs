@@ -1,10 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using CourseWork.Client;
+using CourseWork.Direction;
 using CourseWork.Input;
-using CourseWork.Models;
-using Raven.Client.Document;
 
 namespace CourseWork
 {
@@ -12,49 +10,7 @@ namespace CourseWork
     {
         public Main()
         {
-            try
-            {
-                InitializeComponent();
-                
-                //var documentStore = new DocumentStore
-                //{
-                //    Url = "http://localhost:8080/",
-                //    DefaultDatabase = "Center"
-                //};
-                //documentStore.Initialize();
-                //using (var session = documentStore.OpenSession())
-                //{
-                //    session.Store(new Client
-                //    {
-                //        Lastname = "Ivanov",
-                //        Name = "Alexey",
-                //        MiddleName = "Nikolaevich",
-                //        Date = "06.10.1995",
-                //        AgeCategory = "Adult"
-                //    });
-                //    session.Store(new Direction
-                //    {
-                //        NameOfService = "Bassejn",
-                //        Description = "GOooddfefhiefihef"
-                //    });
-                //    session.Store(new Service
-                //    {
-                //        Duration = "OOKKKK", 
-                //        Cost = 20000
-                //    });
-                //    session.Store(new Discount
-                //    {
-                //        Code = 1234556, 
-                //        Size = 2,
-                //        Visit = "One"
-                //    });
-                //    session.SaveChanges();
-                //}
-            }
-            catch (IOException ex)
-            {
-               MessageBox.Show(ex.Message);
-            }
+          InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,6 +30,12 @@ namespace CourseWork
             Hide();
             var input = new InputOfAdmin();
             input.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var adddirection = new AddDirection();
+            adddirection.Show();
         }
     }
 }
