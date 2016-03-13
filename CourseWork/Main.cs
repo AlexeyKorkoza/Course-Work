@@ -21,34 +21,7 @@ namespace CourseWork
                 Center.Visible = false;
                 Center.MouseDoubleClick += notifyIcon1_Click;
                 Resize += Main_Resize;
-                var documentStore = new DocumentStore
-                {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Client"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var clients = session.Query<Models.Client>().Where(x => x.Date == CurrentDate.Text).ToList();
-                    for (var i = 0; i < clients.Count; i++)
-                    {
-                        dataGridView1.Rows.Add();
-                        dataGridView1.Rows[i].Cells[0].Value = clients[i].Id;
-                        dataGridView1.Rows[i].Cells[1].Value = clients[i].Lastname;
-                        dataGridView1.Rows[i].Cells[2].Value = clients[i].Name;
-                        dataGridView1.Rows[i].Cells[3].Value = clients[i].MiddleName;
-                        dataGridView1.Rows[i].Cells[4].Value = clients[i].AgeCategory;
-                        dataGridView1.Rows[i].Cells[5].Value = clients[i].Date;
-                        dataGridView1.Rows[i].Cells[6].Value = clients[i].Directions[0].NameOfDirection;
-                        dataGridView1.Rows[i].Cells[7].Value = clients[i].Services[0].NameService;
-                        dataGridView1.Rows[i].Cells[8].Value = clients[i].Services[0].Duration;
-                        dataGridView1.Rows[i].Cells[9].Value = clients[i].Services[0].Cost;
-                        dataGridView1.Rows[i].Cells[10].Value = clients[i].Services[0].Visit;
-                        dataGridView1.Rows[i].Cells[11].Value = clients[i].Discounts[0].Code;
-                        dataGridView1.Rows[i].Cells[12].Value = clients[i].Discounts[0].Size;
-                    }
-                    session.SaveChanges();
-                }
+                RefreshDg(CurrentDate.Text);
             }
             catch (Exception exception)
             {
@@ -116,7 +89,20 @@ namespace CourseWork
 
         private void button5_Click(object sender, EventArgs e)
         {
-                dataGridView1.Rows.Clear();
+             dataGridView1.Rows.Clear();
+             RefreshDg(CurrentDate.Text);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            RefreshDg(CurrentDate.Text);
+        }
+
+        private void RefreshDg(string currentdate)
+        {
+            try
+            {
                 var documentStore = new DocumentStore
                 {
                     Url = "http://localhost:8080/",
@@ -125,7 +111,7 @@ namespace CourseWork
                 documentStore.Initialize();
                 using (var session = documentStore.OpenSession())
                 {
-                    var clients = session.Query<Models.Client>().Where(x => x.Date == CurrentDate.Text).ToList();
+                    var clients = session.Query<Models.Client>().Where(x => x.Date == currentdate).ToList();
                     for (var i = 0; i < clients.Count; i++)
                     {
                         dataGridView1.Rows.Add();
@@ -144,6 +130,11 @@ namespace CourseWork
                         dataGridView1.Rows[i].Cells[12].Value = clients[i].Discounts[0].Size;
                     }
                     session.SaveChanges();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
     }

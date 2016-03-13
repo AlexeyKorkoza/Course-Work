@@ -32,6 +32,7 @@
             this.Close = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.Direction = new System.Windows.Forms.GroupBox();
+            this.DirectionDescription = new System.Windows.Forms.RichTextBox();
             this.DirectionName = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.Услуга = new System.Windows.Forms.Label();
@@ -45,29 +46,28 @@
             this.Lastname = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Client = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.Payment = new System.Windows.Forms.ComboBox();
+            this.Decor = new System.Windows.Forms.ComboBox();
             this.NameOfClient = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Decor = new System.Windows.Forms.ComboBox();
-            this.Payment = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Visit = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.NameService = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Duration = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.CostService = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.DirectionDescription = new System.Windows.Forms.RichTextBox();
             this.Discount = new System.Windows.Forms.GroupBox();
-            this.Code = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Size = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.DescriptionDiscount = new System.Windows.Forms.RichTextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.Visit = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.Size = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Code = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.Direction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Client.SuspendLayout();
@@ -116,6 +116,14 @@
             this.Direction.TabStop = false;
             this.Direction.Text = "Информация о направлении";
             // 
+            // DirectionDescription
+            // 
+            this.DirectionDescription.Location = new System.Drawing.Point(28, 75);
+            this.DirectionDescription.Name = "DirectionDescription";
+            this.DirectionDescription.Size = new System.Drawing.Size(280, 61);
+            this.DirectionDescription.TabIndex = 21;
+            this.DirectionDescription.Text = "";
+            // 
             // DirectionName
             // 
             this.DirectionName.FormattingEnabled = true;
@@ -123,6 +131,7 @@
             this.DirectionName.Name = "DirectionName";
             this.DirectionName.Size = new System.Drawing.Size(280, 21);
             this.DirectionName.TabIndex = 20;
+            this.DirectionName.SelectedIndexChanged += new System.EventHandler(this.DirectionName_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -251,14 +260,27 @@
             this.Client.TabStop = false;
             this.Client.Text = "Информация о клиенте";
             // 
-            // label2
+            // Payment
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 75);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Имя";
+            this.Payment.FormattingEnabled = true;
+            this.Payment.Items.AddRange(new object[] {
+            "Наличный",
+            "Безналичный"});
+            this.Payment.Location = new System.Drawing.Point(11, 269);
+            this.Payment.Name = "Payment";
+            this.Payment.Size = new System.Drawing.Size(280, 21);
+            this.Payment.TabIndex = 21;
+            // 
+            // Decor
+            // 
+            this.Decor.FormattingEnabled = true;
+            this.Decor.Items.AddRange(new object[] {
+            "По телефону",
+            "По прибытию"});
+            this.Decor.Location = new System.Drawing.Point(11, 316);
+            this.Decor.Name = "Decor";
+            this.Decor.Size = new System.Drawing.Size(280, 21);
+            this.Decor.TabIndex = 20;
             // 
             // NameOfClient
             // 
@@ -267,6 +289,15 @@
             this.NameOfClient.Size = new System.Drawing.Size(280, 20);
             this.NameOfClient.TabIndex = 19;
             this.NameOfClient.TextChanged += new System.EventHandler(this.NameOfClient_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Имя";
             // 
             // label7
             // 
@@ -286,28 +317,6 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Способ оплаты";
             // 
-            // Decor
-            // 
-            this.Decor.FormattingEnabled = true;
-            this.Decor.Items.AddRange(new object[] {
-            "По телефону",
-            "По прибытию"});
-            this.Decor.Location = new System.Drawing.Point(11, 316);
-            this.Decor.Name = "Decor";
-            this.Decor.Size = new System.Drawing.Size(280, 21);
-            this.Decor.TabIndex = 20;
-            // 
-            // Payment
-            // 
-            this.Payment.FormattingEnabled = true;
-            this.Payment.Items.AddRange(new object[] {
-            "Наличный",
-            "Безналичный"});
-            this.Payment.Location = new System.Drawing.Point(11, 269);
-            this.Payment.Name = "Payment";
-            this.Payment.Size = new System.Drawing.Size(280, 21);
-            this.Payment.TabIndex = 21;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Visit);
@@ -324,6 +333,26 @@
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация о услуге";
+            // 
+            // Visit
+            // 
+            this.Visit.FormattingEnabled = true;
+            this.Visit.Items.AddRange(new object[] {
+            "Одноразовое",
+            "Многоразовое"});
+            this.Visit.Location = new System.Drawing.Point(28, 179);
+            this.Visit.Name = "Visit";
+            this.Visit.Size = new System.Drawing.Size(280, 21);
+            this.Visit.TabIndex = 28;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(25, 156);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(126, 13);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Количество посещений";
             // 
             // NameService
             // 
@@ -376,14 +405,6 @@
             this.label12.TabIndex = 21;
             this.label12.Text = "Цена";
             // 
-            // DirectionDescription
-            // 
-            this.DirectionDescription.Location = new System.Drawing.Point(28, 75);
-            this.DirectionDescription.Name = "DirectionDescription";
-            this.DirectionDescription.Size = new System.Drawing.Size(280, 61);
-            this.DirectionDescription.TabIndex = 21;
-            this.DirectionDescription.Text = "";
-            // 
             // Discount
             // 
             this.Discount.Controls.Add(this.DescriptionDiscount);
@@ -399,22 +420,22 @@
             this.Discount.TabStop = false;
             this.Discount.Text = "Информация о скидке";
             // 
-            // Code
+            // DescriptionDiscount
             // 
-            this.Code.FormattingEnabled = true;
-            this.Code.Location = new System.Drawing.Point(11, 32);
-            this.Code.Name = "Code";
-            this.Code.Size = new System.Drawing.Size(280, 21);
-            this.Code.TabIndex = 28;
+            this.DescriptionDiscount.Location = new System.Drawing.Point(322, 32);
+            this.DescriptionDiscount.Name = "DescriptionDiscount";
+            this.DescriptionDiscount.Size = new System.Drawing.Size(280, 70);
+            this.DescriptionDiscount.TabIndex = 32;
+            this.DescriptionDiscount.Text = "";
             // 
-            // label8
+            // label14
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(26, 13);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "Код";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(319, 16);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 13);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Описание";
             // 
             // Size
             // 
@@ -433,42 +454,22 @@
             this.label13.TabIndex = 29;
             this.label13.Text = "Размер";
             // 
-            // DescriptionDiscount
+            // Code
             // 
-            this.DescriptionDiscount.Location = new System.Drawing.Point(322, 32);
-            this.DescriptionDiscount.Name = "DescriptionDiscount";
-            this.DescriptionDiscount.Size = new System.Drawing.Size(280, 70);
-            this.DescriptionDiscount.TabIndex = 32;
-            this.DescriptionDiscount.Text = "";
-           // 
-            // label14
+            this.Code.FormattingEnabled = true;
+            this.Code.Location = new System.Drawing.Point(11, 32);
+            this.Code.Name = "Code";
+            this.Code.Size = new System.Drawing.Size(280, 21);
+            this.Code.TabIndex = 28;
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(319, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Описание";
+            // label8
             // 
-            // Visit
-            // 
-            this.Visit.FormattingEnabled = true;
-            this.Visit.Items.AddRange(new object[] {
-            "Одноразовое",
-            "Многоразовое"});
-            this.Visit.Location = new System.Drawing.Point(28, 179);
-            this.Visit.Name = "Visit";
-            this.Visit.Size = new System.Drawing.Size(280, 21);
-            this.Visit.TabIndex = 28;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(25, 156);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(126, 13);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Количество посещений";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(26, 13);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "Код";
             // 
             // AddClient
             // 

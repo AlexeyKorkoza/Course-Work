@@ -10,7 +10,7 @@ namespace CourseWork.Direction
 {
     public partial class AddDirection : Form
     {
-        private List<TextBox> _textboxlist;
+        private readonly List<TextBox> _textboxlist;
         public AddDirection()
         {
             InitializeComponent();
@@ -57,17 +57,21 @@ namespace CourseWork.Direction
                 documentStore.Initialize();
                 using (var session = documentStore.OpenSession())
                 {
-                    session.Store(new Models.Direction
+                    var direction = new Models.Direction()
                     {
                         NameOfDirection = DirectionName.Text,
-                        Description = Description.Text
-                    });
-                    session.Store(new Service
-                    {
-                        NameService = NameService.Text,
-                        Duration = Convert.ToInt32(Duration.Text),
-                        Cost = Convert.ToInt32(Cost.Text)
-                    });
+                        Description = Description.Text,
+                        Services = new[]
+                        {
+                            new Service()
+                            {
+                                NameService = NameService.Text,
+                                Duration = Convert.ToInt32(Duration.Text),
+                                Cost = Convert.ToInt32(Cost.Text),
+                            }
+                        },
+                    };
+                    session.Store(direction);
                     session.SaveChanges();
                 }
                 MessageBox.Show(@"Данные добавлены");

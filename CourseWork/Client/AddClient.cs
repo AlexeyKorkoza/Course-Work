@@ -23,8 +23,8 @@ namespace CourseWork.Client
             Date.Text = Date.Text.Replace('.', '/');
             Date.BackColor = Color.White;
             _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
-            // NameService, Duration, CostService,Code,Size
-            _listcombobox = new List<ComboBox> { AgeCategory, DirectionName, Payment, Decor, Visit };
+            //  Code,Size
+            _listcombobox = new List<ComboBox> { AgeCategory, DirectionName, NameService, Payment, Decor, Duration, CostService, Visit };
             _richTextBoxs = new List<RichTextBox>{DescriptionDiscount,DirectionDescription};
             foreach (var t in _listcombobox)
             {
@@ -45,7 +45,6 @@ namespace CourseWork.Client
                 }
                 session.SaveChanges();
             }
-
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -125,7 +124,7 @@ namespace CourseWork.Client
                         },
                         Services = new[]
                         {
-                            new Models.Service()
+                            new Service()
                             {
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),
@@ -178,5 +177,27 @@ namespace CourseWork.Client
         {
            NameOfClient.BackColor = Color.White;
         }
+
+       private void DirectionName_SelectedIndexChanged(object sender, EventArgs e)
+       {
+           var directionName = DirectionName.Text;
+           var documentStore = new DocumentStore
+           {
+               Url = "http://localhost:8080/",
+               DefaultDatabase = "Center"
+           };
+           documentStore.Initialize();
+           using (var session = documentStore.OpenSession())
+           {
+               var direction = session.Query<Models.Direction>().Where(x => x.NameOfDirection == directionName).ToList();
+               foreach (var t in direction)
+               {
+                   NameService.Items.Add(t.Services[0].NameService);
+                   CostService.Items.Add(t.Services[0].Cost);
+                   Duration.Items.Add(t.Services[0].Duration);
+               }
+               session.SaveChanges();
+           }
+       }
     }
 }
