@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CourseWork.Models;
@@ -22,13 +23,29 @@ namespace CourseWork.Client
             Date.Text = Date.Text.Replace('.', '/');
             Date.BackColor = Color.White;
             _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
-            //DirectionName, NameService, Duration, CostService,Code,Size
-            _listcombobox = new List<ComboBox> { AgeCategory, Payment, Decor,  Visit};
+            // NameService, Duration, CostService,Code,Size
+            _listcombobox = new List<ComboBox> { AgeCategory, DirectionName, Payment, Decor, Visit };
             _richTextBoxs = new List<RichTextBox>{DescriptionDiscount,DirectionDescription};
             foreach (var t in _listcombobox)
             {
                 t.DropDownStyle = ComboBoxStyle.DropDownList;
             }
+            var documentStore = new DocumentStore
+                {
+                    Url = "http://localhost:8080/",
+                    DefaultDatabase = "Center"
+                };
+                documentStore.Initialize();
+            using (var session = documentStore.OpenSession())
+            {
+                var direction = session.Query<Models.Direction>().ToList();
+                foreach (var t in direction)
+                {
+                    DirectionName.Items.Add(t.NameOfDirection);
+                }
+                session.SaveChanges();
+            }
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -64,7 +81,7 @@ namespace CourseWork.Client
                 foreach (var t in _listcombobox)
                 {
                     if (t.Text.Length != 0) continue;
-                    MessageBox.Show(@"Все поля должн быть заполнены!");
+                    MessageBox.Show(@"Все поля должны быть заполнены!");
                     break;
                 }
                 foreach (var t in _textBoxs)
@@ -90,32 +107,43 @@ namespace CourseWork.Client
                 documentStore.Initialize();
                 using (var session = documentStore.OpenSession())
                 {
-                    session.Store(new Models.Client
+
+                    var client = new Models.Client()
                     {
                         Lastname = Lastname.Text,
                         Name = NameOfClient.Text,
                         MiddleName = Middlename.Text,
                         Date = Date.Text,
-                        AgeCategory = AgeCategory.Text
-                    });
-                    session.Store(new Models.Direction
-                    {
-                        NameOfDirection = NameService.Text,
-                        Description = DirectionDescription.Text
-                    });
-                    session.Store(new Service
-                    {
-                        NameService = NameService.Text,
-                        Duration = Convert.ToInt32(Duration.Text),
-                        Cost = Convert.ToInt32(CostService.Text),
-                        Visit = Visit.Text
-                    });
-                    session.Store(new Discount
-                    {
-                        Code = Convert.ToInt32(Code.Text),
-                        DescriptionDiscount = DescriptionDiscount.Text,
-                        Size = Convert.ToInt32(Size.Text)
-                    });
+                        AgeCategory = AgeCategory.Text,
+                        Directions = new[]
+                        {
+                            new Models.Direction()
+                            {
+                                NameOfDirection = NameService.Text,
+                                Description = DirectionDescription.Text
+                            }
+                        },
+                        Services = new[]
+                        {
+                            new Models.Service()
+                            {
+                                NameService = NameService.Text,
+                                Duration = Convert.ToInt32(Duration.Text),
+                                Cost = Convert.ToInt32(CostService.Text),
+                                Visit = Visit.Text
+                            }
+                        },
+                        Discounts = new[]
+                        {
+                            new Discount()
+                            {
+                                Code = Convert.ToInt32(Code.Text),
+                                DescriptionDiscount = DescriptionDiscount.Text,
+                                Size = Convert.ToInt32(Size.Text)
+                            }
+                        }
+                    };
+                    session.Store(client);
                     session.SaveChanges();
                 }
                 MessageBox.Show(@"Данные добавлены");

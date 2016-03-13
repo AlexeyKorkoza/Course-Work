@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using CourseWork.Client;
 using CourseWork.Direction;
 using CourseWork.Input;
-using CourseWork.Models;
 using Raven.Client.Document;
 
 namespace CourseWork
@@ -13,50 +13,46 @@ namespace CourseWork
     {
         public Main()
         {
-          InitializeComponent();
-          CurrentDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
-          CurrentDate.Text = CurrentDate.Text.Replace('.', '/');
-          Center.Visible = false;
-          Center.MouseDoubleClick += notifyIcon1_Click;
-          Resize += Main_Resize;
-          var documentStore = new DocumentStore
-          {
-              Url = "http://localhost:8080/",
-              DefaultDatabase = "Client"
-          };
-            documentStore.Initialize();
-            using (var session = documentStore.OpenSession())
+            try
             {
-                var clients = session.Query<Models.Client>().ToList();
-                for (var i = 0; i < clients.Count; i++)
+                InitializeComponent();
+                CurrentDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+                CurrentDate.Text = CurrentDate.Text.Replace('.', '/');
+                Center.Visible = false;
+                Center.MouseDoubleClick += notifyIcon1_Click;
+                Resize += Main_Resize;
+                var documentStore = new DocumentStore
                 {
-                    dataGridView1.Rows.Add();
-                    dataGridView1.Rows[i].Cells[0].Value = clients[i].Lastname;
-                    dataGridView1.Rows[i].Cells[1].Value = clients[i].Name;
-                    dataGridView1.Rows[i].Cells[2].Value = clients[i].MiddleName;
-                    dataGridView1.Rows[i].Cells[3].Value = clients[i].AgeCategory;
-                    dataGridView1.Rows[i].Cells[4].Value = clients[i].Date;
-                }
-                var directions = session.Query<Models.Direction>().ToList();
-                for (var i = 0; i < directions.Count; i++)
+                    Url = "http://localhost:8080/",
+                    DefaultDatabase = "Client"
+                };
+                documentStore.Initialize();
+                using (var session = documentStore.OpenSession())
                 {
-                    dataGridView1.Rows[i].Cells[5].Value = directions[i].NameOfDirection;
+                    var clients = session.Query<Models.Client>().Where(x => x.Date == CurrentDate.Text).ToList();
+                    for (var i = 0; i < clients.Count; i++)
+                    {
+                        dataGridView1.Rows.Add();
+                        dataGridView1.Rows[i].Cells[0].Value = clients[i].Id;
+                        dataGridView1.Rows[i].Cells[1].Value = clients[i].Lastname;
+                        dataGridView1.Rows[i].Cells[2].Value = clients[i].Name;
+                        dataGridView1.Rows[i].Cells[3].Value = clients[i].MiddleName;
+                        dataGridView1.Rows[i].Cells[4].Value = clients[i].AgeCategory;
+                        dataGridView1.Rows[i].Cells[5].Value = clients[i].Date;
+                        dataGridView1.Rows[i].Cells[6].Value = clients[i].Directions[0].NameOfDirection;
+                        dataGridView1.Rows[i].Cells[7].Value = clients[i].Services[0].NameService;
+                        dataGridView1.Rows[i].Cells[8].Value = clients[i].Services[0].Duration;
+                        dataGridView1.Rows[i].Cells[9].Value = clients[i].Services[0].Cost;
+                        dataGridView1.Rows[i].Cells[10].Value = clients[i].Services[0].Visit;
+                        dataGridView1.Rows[i].Cells[11].Value = clients[i].Discounts[0].Code;
+                        dataGridView1.Rows[i].Cells[12].Value = clients[i].Discounts[0].Size;
+                    }
+                    session.SaveChanges();
                 }
-                var services = session.Query<Service>().ToList();
-                for (var i = 0; i < services.Count; i++)
-                {
-                    dataGridView1.Rows[i].Cells[6].Value = services[i].NameService;
-                    dataGridView1.Rows[i].Cells[7].Value = services[i].Duration;
-                    dataGridView1.Rows[i].Cells[8].Value = services[i].Cost;
-                    dataGridView1.Rows[i].Cells[9].Value = services[i].Visit;
-                }
-                var discount = session.Query<Discount>().ToList();
-                for (var i = 0; i < discount.Count; i++)
-                {
-                    dataGridView1.Rows[i].Cells[10].Value = discount[i].Code;
-                    dataGridView1.Rows[i].Cells[11].Value = discount[i].Size;
-                }
-                session.SaveChanges();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 
@@ -97,6 +93,58 @@ namespace CourseWork
            Center.Visible = false;
            ShowInTaskbar = true;
            WindowState = FormWindowState.Normal;
+        }
+
+         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (!monthCalendar1.Visible)
+            {
+                monthCalendar1.Show();
+                monthCalendar1.Visible = true;
+            }
+            else
+            {
+                monthCalendar1.Visible = false;
+            }
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            var massive = monthCalendar1.SelectionStart.ToString(CultureInfo.InvariantCulture).Split(' ');
+            CurrentDate.Text = massive[0];
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+                dataGridView1.Rows.Clear();
+                var documentStore = new DocumentStore
+                {
+                    Url = "http://localhost:8080/",
+                    DefaultDatabase = "Client"
+                };
+                documentStore.Initialize();
+                using (var session = documentStore.OpenSession())
+                {
+                    var clients = session.Query<Models.Client>().Where(x => x.Date == CurrentDate.Text).ToList();
+                    for (var i = 0; i < clients.Count; i++)
+                    {
+                        dataGridView1.Rows.Add();
+                        dataGridView1.Rows[i].Cells[0].Value = clients[i].Id;
+                        dataGridView1.Rows[i].Cells[1].Value = clients[i].Lastname;
+                        dataGridView1.Rows[i].Cells[2].Value = clients[i].Name;
+                        dataGridView1.Rows[i].Cells[3].Value = clients[i].MiddleName;
+                        dataGridView1.Rows[i].Cells[4].Value = clients[i].AgeCategory;
+                        dataGridView1.Rows[i].Cells[5].Value = clients[i].Date;
+                        dataGridView1.Rows[i].Cells[6].Value = clients[i].Directions[0].NameOfDirection;
+                        dataGridView1.Rows[i].Cells[7].Value = clients[i].Services[0].NameService;
+                        dataGridView1.Rows[i].Cells[8].Value = clients[i].Services[0].Duration;
+                        dataGridView1.Rows[i].Cells[9].Value = clients[i].Services[0].Cost;
+                        dataGridView1.Rows[i].Cells[10].Value = clients[i].Services[0].Visit;
+                        dataGridView1.Rows[i].Cells[11].Value = clients[i].Discounts[0].Code;
+                        dataGridView1.Rows[i].Cells[12].Value = clients[i].Discounts[0].Size;
+                    }
+                    session.SaveChanges();
+            }
         }
     }
 }
