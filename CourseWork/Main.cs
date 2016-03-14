@@ -115,19 +115,18 @@ namespace CourseWork
                     for (var i = 0; i < clients.Count; i++)
                     {
                         dataGridView1.Rows.Add();
-                        dataGridView1.Rows[i].Cells[0].Value = clients[i].Id;
-                        dataGridView1.Rows[i].Cells[1].Value = clients[i].Lastname;
-                        dataGridView1.Rows[i].Cells[2].Value = clients[i].Name;
-                        dataGridView1.Rows[i].Cells[3].Value = clients[i].MiddleName;
-                        dataGridView1.Rows[i].Cells[4].Value = clients[i].AgeCategory;
-                        dataGridView1.Rows[i].Cells[5].Value = clients[i].Date;
-                        dataGridView1.Rows[i].Cells[6].Value = clients[i].Directions[0].NameOfDirection;
-                        dataGridView1.Rows[i].Cells[7].Value = clients[i].Services[0].NameService;
-                        dataGridView1.Rows[i].Cells[8].Value = clients[i].Services[0].Duration;
-                        dataGridView1.Rows[i].Cells[9].Value = clients[i].Services[0].Cost;
-                        dataGridView1.Rows[i].Cells[10].Value = clients[i].Services[0].Visit;
-                        dataGridView1.Rows[i].Cells[11].Value = clients[i].Discounts[0].Code;
-                        dataGridView1.Rows[i].Cells[12].Value = clients[i].Discounts[0].Size;
+                        dataGridView1.Rows[i].Cells[0].Value = clients[i].Lastname;
+                        dataGridView1.Rows[i].Cells[1].Value = clients[i].Name;
+                        dataGridView1.Rows[i].Cells[2].Value = clients[i].MiddleName;
+                        dataGridView1.Rows[i].Cells[3].Value = clients[i].AgeCategory;
+                        dataGridView1.Rows[i].Cells[4].Value = clients[i].Date;
+                        dataGridView1.Rows[i].Cells[5].Value = clients[i].Directions[0].NameOfDirection;
+                        dataGridView1.Rows[i].Cells[6].Value = clients[i].Services[0].NameService;
+                        dataGridView1.Rows[i].Cells[7].Value = clients[i].Services[0].Duration;
+                        dataGridView1.Rows[i].Cells[8].Value = clients[i].Services[0].Cost;
+                        dataGridView1.Rows[i].Cells[9].Value = clients[i].Services[0].Visit;
+                        dataGridView1.Rows[i].Cells[10].Value = clients[i].Discounts[0].Code;
+                        dataGridView1.Rows[i].Cells[11].Value = clients[i].Discounts[0].Size;
                     }
                     session.SaveChanges();
                 }

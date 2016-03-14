@@ -108,6 +108,11 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,14 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,13 +175,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\calendar-icon_160210418.jpg" />
+    <None Include="Images\calendar-icon_160210418.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\calendar.png" />
+    <None Include="Images\calendar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\73e1bc97-2118-4e96-9366-a609b5c6f271.gif" />
+    <None Include="Images\73e1bc97-2118-4e96-9366-a609b5c6f271.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Service\" />
