@@ -63,7 +63,7 @@ namespace CourseWork.Direction
                         Description = Description.Text,
                         Services = new[]
                         {
-                            new Service()
+                            new Models.Service()
                             {
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),

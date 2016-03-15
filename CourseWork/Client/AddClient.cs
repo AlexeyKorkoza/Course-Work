@@ -18,32 +18,56 @@ namespace CourseWork.Client
            
         public AddClient()
         {
-            InitializeComponent();
-            Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
-            Date.Text = Date.Text.Replace('.', '/');
-            Date.BackColor = Color.White;
-            _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
-            //  Code,Size
-            _listcombobox = new List<ComboBox> { AgeCategory, DirectionName, NameService, Payment, Decor, Duration, CostService, Visit };
-            _richTextBoxs = new List<RichTextBox>{DescriptionDiscount,DirectionDescription};
-            foreach (var t in _listcombobox)
+            try
             {
-                t.DropDownStyle = ComboBoxStyle.DropDownList;
-            }
-            var documentStore = new DocumentStore
+                InitializeComponent();
+                Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
+                Date.Text = Date.Text.Replace('.', '/');
+                Date.BackColor = Color.White;
+                _textBoxs = new List<TextBox> {Lastname, NameOfClient, Middlename};
+                //  Code,Size
+                _listcombobox = new List<ComboBox>
+                {
+                    AgeCategory,
+                    DirectionName,
+                    NameService,
+                    Payment,
+                    Decor,
+                    Duration,
+                    CostService,
+                    Visit
+                };
+                _richTextBoxs = new List<RichTextBox> {DescriptionDiscount, DirectionDescription};
+                foreach (var t in _listcombobox)
+                {
+                    t.DropDownStyle = ComboBoxStyle.DropDownList;
+                }
+                var documentStore = new DocumentStore
                 {
                     Url = "http://localhost:8080/",
                     DefaultDatabase = "Center"
                 };
                 documentStore.Initialize();
-            using (var session = documentStore.OpenSession())
-            {
-                var direction = session.Query<Models.Direction>().ToList();
-                foreach (var t in direction)
+                using (var session = documentStore.OpenSession())
                 {
-                    DirectionName.Items.Add(t.NameOfDirection);
+                    var direction = session.Query<Models.Direction>().ToList();
+                    if (direction.Count > 0)
+                    {
+                        foreach (var t in direction)
+                        {
+                            DirectionName.Items.Add(t.NameOfDirection);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Добавление клиента невозможно");
+                    }
+                    session.SaveChanges();
                 }
-                session.SaveChanges();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
             }
         }
 
@@ -124,7 +148,7 @@ namespace CourseWork.Client
                         },
                         Services = new[]
                         {
-                            new Service()
+                            new Models.Service()
                             {
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),

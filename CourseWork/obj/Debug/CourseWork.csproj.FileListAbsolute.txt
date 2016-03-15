@@ -54,3 +54,4 @@ C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Main.resource
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Properties.Resources.resources
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Settings.resources
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.Cache
+C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Client.EditClient.resources

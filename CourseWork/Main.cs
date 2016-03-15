@@ -89,13 +89,13 @@ namespace CourseWork
 
         private void button5_Click(object sender, EventArgs e)
         {
-             dataGridView1.Rows.Clear();
+             datagridViewClients.Rows.Clear();
              RefreshDg(CurrentDate.Text);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
+            datagridViewClients.Rows.Clear();
             RefreshDg(CurrentDate.Text);
         }
 
@@ -114,19 +114,20 @@ namespace CourseWork
                     var clients = session.Query<Models.Client>().Where(x => x.Date == currentdate).ToList();
                     for (var i = 0; i < clients.Count; i++)
                     {
-                        dataGridView1.Rows.Add();
-                        dataGridView1.Rows[i].Cells[0].Value = clients[i].Lastname;
-                        dataGridView1.Rows[i].Cells[1].Value = clients[i].Name;
-                        dataGridView1.Rows[i].Cells[2].Value = clients[i].MiddleName;
-                        dataGridView1.Rows[i].Cells[3].Value = clients[i].AgeCategory;
-                        dataGridView1.Rows[i].Cells[4].Value = clients[i].Date;
-                        dataGridView1.Rows[i].Cells[5].Value = clients[i].Directions[0].NameOfDirection;
-                        dataGridView1.Rows[i].Cells[6].Value = clients[i].Services[0].NameService;
-                        dataGridView1.Rows[i].Cells[7].Value = clients[i].Services[0].Duration;
-                        dataGridView1.Rows[i].Cells[8].Value = clients[i].Services[0].Cost;
-                        dataGridView1.Rows[i].Cells[9].Value = clients[i].Services[0].Visit;
-                        dataGridView1.Rows[i].Cells[10].Value = clients[i].Discounts[0].Code;
-                        dataGridView1.Rows[i].Cells[11].Value = clients[i].Discounts[0].Size;
+                        datagridViewClients.Rows.Add();
+                        datagridViewClients.Rows[i].Cells[0].Value = clients[i].Id;
+                        datagridViewClients.Rows[i].Cells[1].Value = clients[i].Lastname;
+                        datagridViewClients.Rows[i].Cells[2].Value = clients[i].Name;
+                        datagridViewClients.Rows[i].Cells[3].Value = clients[i].MiddleName;
+                        datagridViewClients.Rows[i].Cells[4].Value = clients[i].AgeCategory;
+                        datagridViewClients.Rows[i].Cells[5].Value = clients[i].Date;
+                        datagridViewClients.Rows[i].Cells[6].Value = clients[i].Directions[0].NameOfDirection;
+                        datagridViewClients.Rows[i].Cells[7].Value = clients[i].Services[0].NameService;
+                        datagridViewClients.Rows[i].Cells[8].Value = clients[i].Services[0].Duration;
+                        datagridViewClients.Rows[i].Cells[9].Value = clients[i].Services[0].Cost;
+                        datagridViewClients.Rows[i].Cells[10].Value = clients[i].Services[0].Visit;
+                        datagridViewClients.Rows[i].Cells[11].Value = clients[i].Discounts[0].Code;
+                        datagridViewClients.Rows[i].Cells[12].Value = clients[i].Discounts[0].Size;
                     }
                     session.SaveChanges();
                 }
@@ -135,6 +136,57 @@ namespace CourseWork
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = MessageBox.Show(@"Вы уверены", @"Да",MessageBoxButtons.OKCancel);
+                switch (result)
+                {
+                    case DialogResult.OK:
+                    {
+                        if (datagridViewClients.CurrentRow != null)
+                        {
+                            var index = datagridViewClients.CurrentRow.Index;
+                            var id = datagridViewClients.Rows[index].Cells[0].Value;
+                            var documentStore = new DocumentStore
+                            {
+                                Url = "http://localhost:8080/",
+                                DefaultDatabase = "Client"
+                            };
+                            documentStore.Initialize();
+                            using (var session = documentStore.OpenSession())
+                            {
+                                documentStore.DatabaseCommands.Delete("clients/" + id, null);
+                                session.SaveChanges();
+                            }
+                        }
+                        MessageBox.Show(@"Данные успешно удалены!");
+                        break;
+                    }
+                    case DialogResult.Cancel:
+                    {
+                       break;
+                    }
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            catch
+            {
+                MessageBox.Show(@"Выберите строку для удаления");
+            }
+        }
+
+        private void datagridViewClients_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (datagridViewClients.CurrentRow == null) return;
+            var index = datagridViewClients.CurrentRow.Index;
+            var id = (int)datagridViewClients.Rows[index].Cells[0].Value;
+            var editClient = new EditClient(id,index);
+            editClient.Show();
         }
     }
 }

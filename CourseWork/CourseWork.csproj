@@ -82,6 +82,18 @@
     <Compile Include="Client\AddClient.Designer.cs">
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Client\EditClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\EditClient.Designer.cs">
+      <DependentUpon>EditClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client\SearchClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client\SearchClient.Designer.cs">
+      <DependentUpon>SearchClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Direction\AddDirection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +125,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\AddService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\AddService.Designer.cs">
+      <DependentUpon>AddService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +139,9 @@
     </Compile>
     <EmbeddedResource Include="Client\AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\EditClient.resx">
+      <DependentUpon>EditClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Direction\AddDirection.resx">
       <DependentUpon>AddDirection.cs</DependentUpon>
@@ -183,9 +204,7 @@
   <ItemGroup>
     <None Include="Images\73e1bc97-2118-4e96-9366-a609b5c6f271.gif" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
