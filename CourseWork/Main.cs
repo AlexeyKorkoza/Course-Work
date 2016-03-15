@@ -184,7 +184,7 @@ namespace CourseWork
         {
             if (datagridViewClients.CurrentRow == null) return;
             var index = datagridViewClients.CurrentRow.Index;
-            var id = (int)datagridViewClients.Rows[index].Cells[0].Value;
+            var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
             var editClient = new EditClient(id,index);
             editClient.Show();
         }

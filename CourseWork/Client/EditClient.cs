@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using Raven.Abstractions.Data;
 using Raven.Client.Document;
+using Raven.Json.Linq;
 
 namespace CourseWork.Client
 {
     public partial class EditClient : Form
     {
-        public int Id { get; private set; }
+        public string Id { get; private set; }
         public int Index { get; private set; }
-        public EditClient(int id, int index)
+        public EditClient(string id, int index)
         {
             InitializeComponent();
             Index = index;
@@ -28,7 +31,7 @@ namespace CourseWork.Client
                 documentStore.Initialize();
                 using (var session = documentStore.OpenSession())
                 {
-                    var clients = session.Load<Models.Client>("clients/" + Id);
+                    var clients = session.Load<Models.Client>(Id);
                     datagridViewClients.Rows.Add();
                     datagridViewClients.Rows[0].Cells[0].Value = clients.Id;
                     datagridViewClients.Rows[0].Cells[1].Value = clients.Lastname;
@@ -63,6 +66,23 @@ namespace CourseWork.Client
 
         private void Update_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var documentStore = new DocumentStore
+                {
+                    Url = "http://localhost:8080/",
+                    DefaultDatabase = "Client"
+                };
+                documentStore.Initialize();
+                using (var session = documentStore.OpenSession())
+                {
+                    session.SaveChanges();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
