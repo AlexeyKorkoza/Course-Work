@@ -63,12 +63,12 @@ namespace CourseWork
 
         private void notifyIcon1_Click(object sender, EventArgs e)
         {
-           Center.Visible = false;
-           ShowInTaskbar = true;
-           WindowState = FormWindowState.Normal;
+            Center.Visible = false;
+            ShowInTaskbar = true;
+            WindowState = FormWindowState.Normal;
         }
 
-         private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (!monthCalendar1.Visible)
             {
@@ -89,8 +89,8 @@ namespace CourseWork
 
         private void button5_Click(object sender, EventArgs e)
         {
-             datagridViewClients.Rows.Clear();
-             RefreshDg(CurrentDate.Text);
+            datagridViewClients.Rows.Clear();
+            RefreshDg(CurrentDate.Text);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -115,7 +115,8 @@ namespace CourseWork
                     for (var i = 0; i < clients.Count; i++)
                     {
                         datagridViewClients.Rows.Add();
-                        datagridViewClients.Rows[i].Cells[0].Value = clients[i].Id;
+                        var massive = clients[i].Id.Split('/');
+                        datagridViewClients.Rows[i].Cells[0].Value = massive[1];
                         datagridViewClients.Rows[i].Cells[1].Value = clients[i].Lastname;
                         datagridViewClients.Rows[i].Cells[2].Value = clients[i].Name;
                         datagridViewClients.Rows[i].Cells[3].Value = clients[i].MiddleName;
@@ -142,34 +143,34 @@ namespace CourseWork
         {
             try
             {
-                var result = MessageBox.Show(@"Вы уверены", @"Да",MessageBoxButtons.OKCancel);
+                var result = MessageBox.Show(@"Вы уверены", @"Да", MessageBoxButtons.OKCancel);
                 switch (result)
                 {
                     case DialogResult.OK:
-                    {
-                        if (datagridViewClients.CurrentRow != null)
                         {
-                            var index = datagridViewClients.CurrentRow.Index;
-                            var id = datagridViewClients.Rows[index].Cells[0].Value;
-                            var documentStore = new DocumentStore
+                            if (datagridViewClients.CurrentRow != null)
                             {
-                                Url = "http://localhost:8080/",
-                                DefaultDatabase = "Client"
-                            };
-                            documentStore.Initialize();
-                            using (var session = documentStore.OpenSession())
-                            {
-                                documentStore.DatabaseCommands.Delete("clients/" + id, null);
-                                session.SaveChanges();
+                                var index = datagridViewClients.CurrentRow.Index;
+                                var id = datagridViewClients.Rows[index].Cells[0].Value;
+                                var documentStore = new DocumentStore
+                                {
+                                    Url = "http://localhost:8080/",
+                                    DefaultDatabase = "Client"
+                                };
+                                documentStore.Initialize();
+                                using (var session = documentStore.OpenSession())
+                                {
+                                    documentStore.DatabaseCommands.Delete("clients/" + id, null);
+                                    session.SaveChanges();
+                                }
                             }
+                            MessageBox.Show(@"Данные успешно удалены!");
+                            break;
                         }
-                        MessageBox.Show(@"Данные успешно удалены!");
-                        break;
-                    }
                     case DialogResult.Cancel:
-                    {
-                       break;
-                    }
+                        {
+                            break;
+                        }
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -184,8 +185,8 @@ namespace CourseWork
         {
             if (datagridViewClients.CurrentRow == null) return;
             var index = datagridViewClients.CurrentRow.Index;
-            var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
-            var editClient = new EditClient(id,index);
+            var id = "clients/"+(string)datagridViewClients.Rows[index].Cells[0].Value;
+            var editClient = new EditClient(id);
             editClient.Show();
         }
     }
