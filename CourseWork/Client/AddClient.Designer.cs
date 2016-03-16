@@ -97,7 +97,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(9, 183);
+            this.monthCalendar1.Location = new System.Drawing.Point(102, 186);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 17;
             this.monthCalendar1.Visible = false;

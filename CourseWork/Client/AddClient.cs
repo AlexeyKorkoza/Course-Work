@@ -138,11 +138,13 @@ namespace CourseWork.Client
                         MiddleName = Middlename.Text,
                         Date = Date.Text,
                         AgeCategory = AgeCategory.Text,
+                        Decor = Decor.Text,
+                        Payment = Payment.Text,
                         Directions = new[]
                         {
                             new Models.Direction()
                             {
-                                NameOfDirection = NameService.Text,
+                                NameOfDirection = DirectionName.Text,
                                 Description = DirectionDescription.Text
                             }
                         },

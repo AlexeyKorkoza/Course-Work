@@ -112,23 +112,32 @@ namespace CourseWork
                 using (var session = documentStore.OpenSession())
                 {
                     var clients = session.Query<Models.Client>().Where(x => x.Date == currentdate).ToList();
-                    for (var i = 0; i < clients.Count; i++)
+                    if (clients.Count != 0)
                     {
-                        datagridViewClients.Rows.Add();
-                        var massive = clients[i].Id.Split('/');
-                        datagridViewClients.Rows[i].Cells[0].Value = massive[1];
-                        datagridViewClients.Rows[i].Cells[1].Value = clients[i].Lastname;
-                        datagridViewClients.Rows[i].Cells[2].Value = clients[i].Name;
-                        datagridViewClients.Rows[i].Cells[3].Value = clients[i].MiddleName;
-                        datagridViewClients.Rows[i].Cells[4].Value = clients[i].AgeCategory;
-                        datagridViewClients.Rows[i].Cells[5].Value = clients[i].Date;
-                        datagridViewClients.Rows[i].Cells[6].Value = clients[i].Directions[0].NameOfDirection;
-                        datagridViewClients.Rows[i].Cells[7].Value = clients[i].Services[0].NameService;
-                        datagridViewClients.Rows[i].Cells[8].Value = clients[i].Services[0].Duration;
-                        datagridViewClients.Rows[i].Cells[9].Value = clients[i].Services[0].Cost;
-                        datagridViewClients.Rows[i].Cells[10].Value = clients[i].Services[0].Visit;
-                        datagridViewClients.Rows[i].Cells[11].Value = clients[i].Discounts[0].Code;
-                        datagridViewClients.Rows[i].Cells[12].Value = clients[i].Discounts[0].Size;
+                        for (var i = 0; i < clients.Count; i++)
+                        {
+                            datagridViewClients.Rows.Add();
+                            var massive = clients[i].Id.Split('/');
+                            datagridViewClients.Rows[i].Cells[0].Value = massive[1];
+                            datagridViewClients.Rows[i].Cells[1].Value = clients[i].Lastname;
+                            datagridViewClients.Rows[i].Cells[2].Value = clients[i].Name;
+                            datagridViewClients.Rows[i].Cells[3].Value = clients[i].MiddleName;
+                            datagridViewClients.Rows[i].Cells[5].Value = clients[i].AgeCategory;
+                            datagridViewClients.Rows[i].Cells[4].Value = clients[i].Date;
+                            datagridViewClients.Rows[i].Cells[6].Value = clients[i].Payment;
+                            datagridViewClients.Rows[i].Cells[7].Value = clients[i].Decor;
+                            datagridViewClients.Rows[i].Cells[8].Value = clients[i].Directions[0].NameOfDirection;
+                            datagridViewClients.Rows[i].Cells[9].Value = clients[i].Services[0].NameService;
+                            datagridViewClients.Rows[i].Cells[10].Value = clients[i].Services[0].Duration;
+                            datagridViewClients.Rows[i].Cells[11].Value = clients[i].Services[0].Cost;
+                            datagridViewClients.Rows[i].Cells[12].Value = clients[i].Services[0].Visit;
+                            datagridViewClients.Rows[i].Cells[13].Value = clients[i].Discounts[0].Code;
+                            datagridViewClients.Rows[i].Cells[14].Value = clients[i].Discounts[0].Size;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"Сегодня клиентов нету!");
                     }
                     session.SaveChanges();
                 }
@@ -186,6 +195,7 @@ namespace CourseWork
             if (datagridViewClients.CurrentRow == null) return;
             var index = datagridViewClients.CurrentRow.Index;
             var id = "clients/"+(string)datagridViewClients.Rows[index].Cells[0].Value;
+           // var directionName = (string)datagridViewClients.Rows[index].Cells[6].Value;
             var editClient = new EditClient(id);
             editClient.Show();
         }

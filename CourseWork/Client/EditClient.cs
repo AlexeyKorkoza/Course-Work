@@ -6,62 +6,12 @@ namespace CourseWork.Client
 {
     public partial class EditClient : Form
     {
-        public string Id { get; private set; }
+        private string Id { get; set; }
         public EditClient(string id)
         {
             InitializeComponent();
             Id = id;
             View();
-        }
-
-        public void View()
-        {
-            try
-            {
-                var documentStore = new DocumentStore
-                {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Client"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var clients = session.Load<Models.Client>(Id);
-                    datagridViewClients.Rows.Add();
-                    if (clients != null)
-                    {
-                        var massive = clients.Id.Split('/');
-                        datagridViewClients.Rows[0].Cells[0].Value = massive[1]; 
-                        datagridViewClients.Rows[0].Cells[1].Value = clients.Lastname;
-                        datagridViewClients.Rows[0].Cells[2].Value = clients.Name;
-                        datagridViewClients.Rows[0].Cells[3].Value = clients.MiddleName;
-                        datagridViewClients.Rows[0].Cells[5].Value = clients.AgeCategory;
-                        datagridViewClients.Rows[0].Cells[4].Value = clients.Date;
-                        foreach (var course in clients.Directions)
-                        {
-                            datagridViewClients.Rows[0].Cells[6].Value = course.NameOfDirection;
-                        }
-                        foreach (var course in clients.Services)
-                        {
-                            datagridViewClients.Rows[0].Cells[7].Value = course.NameService;
-                            datagridViewClients.Rows[0].Cells[8].Value = course.Duration;
-                            datagridViewClients.Rows[0].Cells[9].Value = course.Cost;
-                            datagridViewClients.Rows[0].Cells[10].Value = course.Visit;
-                        }
-                        foreach (var course in clients.Discounts)
-                        {
-                            datagridViewClients.Rows[0].Cells[11].Value = course.Code;
-                            datagridViewClients.Rows[0].Cells[12].Value = course.Size;
-                        }
-                    }
-                    session.SaveChanges();
-                }
-                MessageBox.Show(@"Данные успешно добавлены!");
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
         }
 
         private void Update_Click(object sender, EventArgs e)
@@ -77,25 +27,26 @@ namespace CourseWork.Client
                 using (var session = documentStore.OpenSession())
                 {
                     var clients = session.Load<Models.Client>(Id);
-                    if (clients != null)
-                    {
-                        clients.Lastname = (string)datagridViewClients.Rows[0].Cells[1].Value;
-                        clients.Name = (string)datagridViewClients.Rows[0].Cells[2].Value;
-                        clients.MiddleName = (string)datagridViewClients.Rows[0].Cells[3].Value;
-                        clients.Date = (string)datagridViewClients.Rows[0].Cells[4].Value;
-                        clients.AgeCategory = (string)datagridViewClients.Rows[0].Cells[5].Value;
-                        clients.Directions[0].NameOfDirection = (string)datagridViewClients.Rows[0].Cells[6].Value;
-                        clients.Services[0].NameService = (string)datagridViewClients.Rows[0].Cells[7].Value;
-                        clients.Services[0].Duration = (int)datagridViewClients.Rows[0].Cells[8].Value;
-                        clients.Services[0].Cost = (int)datagridViewClients.Rows[0].Cells[9].Value;
-                        clients.Services[0].Visit = (string)datagridViewClients.Rows[0].Cells[10].Value;
-                        clients.Discounts[0].Code = (int)datagridViewClients.Rows[0].Cells[11].Value;
-                        clients.Discounts[0].Size = (int)datagridViewClients.Rows[0].Cells[12].Value;
-                        session.Store(clients);
-                    }
+                    clients.Lastname = Lastname.Text;
+                    clients.Name = NameOfClient.Text;
+                    clients.MiddleName = Middlename.Text;
+                    clients.Date = Date.Text;
+                    clients.AgeCategory = AgeCategory.Text;
+                    clients.Payment = Payment.Text;
+                    clients.Decor = Decor.Text;
+                    clients.Directions[0].NameOfDirection = DirectionName.Text;
+                    clients.Directions[0].Description = DirectionDescription.Text;
+                    clients.Services[0].NameService = NameService.Text;
+                    clients.Services[0].Duration= Convert.ToInt32(Duration.Text);
+                    clients.Services[0].Cost = Convert.ToInt32(CostService.Text);
+                    clients.Services[0].Visit = Visit.Text;
+                    clients.Discounts[0].Code = Convert.ToInt32(Code.Text);
+                    clients.Discounts[0].DescriptionDiscount = DescriptionDiscount.Text;
+                    clients.Discounts[0].Size = Convert.ToInt32(Size.Text);
+                    session.Store(clients);
                     session.SaveChanges();
-
                 }
+                MessageBox.Show(@"Данные успешно обновлены!");
             }
             catch (Exception exception)
             {
@@ -107,5 +58,45 @@ namespace CourseWork.Client
         {
             Hide();
         }
+
+        public void View()
+        {
+            try
+            {
+                var documentStore = new DocumentStore
+                {
+                    Url = "http://localhost:8080/",
+                    DefaultDatabase = "Client"
+                };
+                documentStore.Initialize();
+                using (var session = documentStore.OpenSession())
+                {
+                    var clients = session.Load<Models.Client>(Id);
+                    Lastname.Text = clients.Lastname;   
+                    NameOfClient.Text = clients.Name;   
+                    Middlename.Text = clients.MiddleName;   
+                    Date.Text = clients.Date;   
+                    AgeCategory.Text = clients.AgeCategory;   
+                    Payment.Text = clients.Payment;   
+                    Decor.Text = clients.Decor;   
+                    DirectionName.Text = clients.Directions[0].NameOfDirection;   
+                    DirectionDescription.Text = clients.Directions[0].Description;   
+                    NameService.Text = clients.Services[0].NameService;
+                    Duration.Text = clients.Services[0].Duration.ToString();
+                    CostService.Text = clients.Services[0].Cost.ToString();
+                    Visit.Text = clients.Services[0].Visit;
+                    Code.Text = clients.Discounts[0].Code.ToString();
+                    DescriptionDiscount.Text = clients.Discounts[0].DescriptionDiscount;
+                    Size.Text = clients.Discounts[0].Size.ToString();
+                    session.SaveChanges();
+                }
+             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+                 
     }
 }
