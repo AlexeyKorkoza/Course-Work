@@ -15,7 +15,6 @@ namespace CourseWork.Client
         private readonly List<ComboBox> _listcombobox;
         private readonly List<TextBox>  _textBoxs;
         private readonly List<RichTextBox> _richTextBoxs; 
-           
         public AddClient()
         {
             try
@@ -55,7 +54,10 @@ namespace CourseWork.Client
                     {
                         foreach (var t in direction)
                         {
-                            DirectionName.Items.Add(t.NameOfDirection);
+                            if (!DirectionName.Items.Contains(t.NameOfDirection))
+                            {
+                                DirectionName.Items.Add(t.NameOfDirection);
+                            }
                         }
                     }
                     else

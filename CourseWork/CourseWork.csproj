@@ -143,6 +143,9 @@
     <EmbeddedResource Include="Client\EditClient.resx">
       <DependentUpon>EditClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Client\SearchClient.resx">
+      <DependentUpon>SearchClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Direction\AddDirection.resx">
       <DependentUpon>AddDirection.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,12 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\calendar-icon_160210418.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\calendar.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\73e1bc97-2118-4e96-9366-a609b5c6f271.gif" />

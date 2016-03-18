@@ -55,3 +55,4 @@ C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Properties.Re
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Settings.resources
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.Cache
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Client.EditClient.resources
+C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Client.SearchClient.resources

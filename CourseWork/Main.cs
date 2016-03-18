@@ -195,9 +195,14 @@ namespace CourseWork
             if (datagridViewClients.CurrentRow == null) return;
             var index = datagridViewClients.CurrentRow.Index;
             var id = "clients/"+(string)datagridViewClients.Rows[index].Cells[0].Value;
-           // var directionName = (string)datagridViewClients.Rows[index].Cells[6].Value;
             var editClient = new EditClient(id);
             editClient.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var search = new SearchClient();
+            search.Show();
         }
     }
 }
