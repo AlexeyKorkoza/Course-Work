@@ -56,3 +56,5 @@ C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Settings.reso
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.Cache
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Client.EditClient.resources
 C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Client.SearchClient.resources
+C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Service.AddService.resources
+C:\Users\lesha\Desktop\Course-Work\CourseWork\obj\Debug\CourseWork.Direction.ViewDirection.resources

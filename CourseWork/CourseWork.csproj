@@ -94,11 +94,19 @@
     <Compile Include="Client\SearchClient.Designer.cs">
       <DependentUpon>SearchClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\IStorage.cs" />
+    <Compile Include="Data\Storage.cs" />
     <Compile Include="Direction\AddDirection.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Direction\AddDirection.Designer.cs">
       <DependentUpon>AddDirection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Direction\ViewDirection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Direction\ViewDirection.Designer.cs">
+      <DependentUpon>ViewDirection.cs</DependentUpon>
     </Compile>
     <Compile Include="Input\CheckInput.cs" />
     <Compile Include="Input\Admin.cs" />
@@ -114,10 +122,10 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\Direction.cs" />
-    <Compile Include="Models\Discount.cs" />
-    <Compile Include="Models\Service.cs" />
+    <Compile Include="Data\Models\Client.cs" />
+    <Compile Include="Data\Models\Direction.cs" />
+    <Compile Include="Data\Models\Discount.cs" />
+    <Compile Include="Data\Models\Service.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -149,6 +157,9 @@
     <EmbeddedResource Include="Direction\AddDirection.resx">
       <DependentUpon>AddDirection.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Direction\ViewDirection.resx">
+      <DependentUpon>ViewDirection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Input\InputOfAdmin.resx">
       <DependentUpon>InputOfAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +171,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\AddService.resx">
+      <DependentUpon>AddService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

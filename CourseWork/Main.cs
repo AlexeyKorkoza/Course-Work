@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using CourseWork.Client;
 using CourseWork.Direction;
 using CourseWork.Input;
+using CourseWork.Service;
 using Raven.Client.Document;
 
 namespace CourseWork
@@ -203,6 +204,18 @@ namespace CourseWork
         {
             var search = new SearchClient();
             search.Show();
+        }
+
+        private void AddService_Click(object sender, EventArgs e)
+        {
+            var service = new AddService();
+            service.Show();
+        }
+
+        private void ViewDirections_Click(object sender, EventArgs e)
+        {
+            var view = new ViewDirection();
+            view.Show();
         }
     }
 }

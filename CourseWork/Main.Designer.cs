@@ -58,8 +58,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.button7 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.AddService = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ViewDirections = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -296,6 +298,26 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(478, 244);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(96, 33);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Поиск";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // AddService
+            // 
+            this.AddService.Location = new System.Drawing.Point(580, 244);
+            this.AddService.Name = "AddService";
+            this.AddService.Size = new System.Drawing.Size(112, 33);
+            this.AddService.TabIndex = 13;
+            this.AddService.Text = "Добавить услугу";
+            this.AddService.UseVisualStyleBackColor = true;
+            this.AddService.Click += new System.EventHandler(this.AddService_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CourseWork.Properties.Resources._73e1bc97_2118_4e96_9366_a609b5c6f271;
@@ -307,21 +329,23 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // button8
+            // ViewDirections
             // 
-            this.button8.Location = new System.Drawing.Point(478, 244);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(96, 33);
-            this.button8.TabIndex = 12;
-            this.button8.Text = "Поиск";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.ViewDirections.Location = new System.Drawing.Point(715, 244);
+            this.ViewDirections.Name = "ViewDirections";
+            this.ViewDirections.Size = new System.Drawing.Size(134, 34);
+            this.ViewDirections.TabIndex = 14;
+            this.ViewDirections.Text = "Просмотр направлений";
+            this.ViewDirections.UseVisualStyleBackColor = true;
+            this.ViewDirections.Click += new System.EventHandler(this.ViewDirections_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 290);
+            this.Controls.Add(this.ViewDirections);
+            this.Controls.Add(this.AddService);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -378,5 +402,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button AddService;
+        private System.Windows.Forms.Button ViewDirections;
     }
 }
