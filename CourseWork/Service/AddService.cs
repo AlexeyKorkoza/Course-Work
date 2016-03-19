@@ -13,27 +13,34 @@ namespace CourseWork.Service
         private readonly List<TextBox> _textBoxs;
         public AddService()
         {
-            InitializeComponent();
-            _textBoxs = new List<TextBox> {NameService,Duration,CostService};
-            var documentStore = new DocumentStore
+            try
             {
-                Url = "http://localhost:8080/",
-                DefaultDatabase = "Center"
-            };
-            documentStore.Initialize();
-            using (var session = documentStore.OpenSession())
-            {
-                _direction = session.Query<Models.Direction>().ToList();
-                foreach (var t in _direction)
+                InitializeComponent();
+                _textBoxs = new List<TextBox> {NameService, Duration, CostService};
+                var documentStore = new DocumentStore
                 {
+                    Url = "http://localhost:8080/",
+                    DefaultDatabase = "Center"
+                };
+                documentStore.Initialize();
+                using (var session = documentStore.OpenSession())
+                {
+                    _direction = session.Query<Models.Direction>().ToList();
+                    foreach (var t in _direction)
+                    {
                         if (!DirectionName.Items.Contains(t.NameOfDirection))
                         {
                             DirectionName.Items.Add(t.NameOfDirection);
                         }
                     }
-                session.SaveChanges();
+                    session.SaveChanges();
+                }
+                DirectionName.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            DirectionName.DropDownStyle = ComboBoxStyle.DropDownList;
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
