@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using CourseWork.Models;
 using Raven.Client.Document;
 
 namespace CourseWork.Direction
@@ -14,7 +13,7 @@ namespace CourseWork.Direction
         public AddDirection()
         {
             InitializeComponent();
-            _textboxlist  = new List<TextBox>{NameService,Duration,Cost};
+            _textboxlist = new List<TextBox> { NameService, Duration, Cost };
         }
 
         private void Add_Click(object sender, EventArgs e)
@@ -57,13 +56,13 @@ namespace CourseWork.Direction
                 documentStore.Initialize();
                 using (var session = documentStore.OpenSession())
                 {
-                    var direction = new Models.Direction()
+                    var direction = new Data.Models.Direction()
                     {
                         NameOfDirection = DirectionName.Text,
                         Description = Description.Text,
                         Services = new[]
                         {
-                            new Models.Service()
+                            new Data.Models.Service()
                             {
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),
@@ -86,6 +85,5 @@ namespace CourseWork.Direction
         {
             Hide();
         }
-
     }
 }

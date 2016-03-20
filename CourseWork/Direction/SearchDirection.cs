@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
-using Raven.Client.Document;
+using CourseWork.Data;
 
 namespace CourseWork.Direction
 {
     public partial class SearchDirection : Form
     {
+        IStorage storage = new Storage();
         public SearchDirection()
         {
             InitializeComponent();
@@ -30,48 +30,26 @@ namespace CourseWork.Direction
                 MessageBox.Show(@"Заполните строку для поиска!");
                 return;
             }
-            if (Functions.Text == (string) Functions.Items[0])
+            if (Functions.Text == (string)Functions.Items[0])
             {
-                var documentStore = new DocumentStore
+                var direction = storage.GetDirectionsDirectionName(SearchStr.Text);
+                for (var i = 0; i < direction.Count; i++)
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var direction =
-                        session.Query<Models.Direction>().Where(x => x.NameOfDirection == SearchStr.Text).ToList();
-                    for (var i = 0; i < direction.Count; i++)
-                    {
-                        if (direction[i].NameOfDirection != SearchStr.Text) continue;
-                        datagridViewDirections.Rows.Add();
-                        datagridViewDirections.Rows[i].Cells[0].Value = direction[i].NameOfDirection;
-                        datagridViewDirections.Rows[i].Cells[1].Value = direction[i].Description;
-                    }
-                    session.SaveChanges();
+                    if (direction[i].NameOfDirection != SearchStr.Text) continue;
+                    datagridViewDirections.Rows.Add();
+                    datagridViewDirections.Rows[i].Cells[0].Value = direction[i].NameOfDirection;
+                    datagridViewDirections.Rows[i].Cells[1].Value = direction[i].Description;
                 }
             }
             else
             {
-                var documentStore = new DocumentStore
+                var direction = storage.GetDirectionsDirectionName(SearchStr.Text);
+                for (var i = 0; i < direction.Count; i++)
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var direction =
-                        session.Query<Models.Direction>().Where(x => x.Description == SearchStr.Text).ToList();
-                    for (var i = 0; i < direction.Count; i++)
-                    {
-                        if (direction[i].NameOfDirection != SearchStr.Text) continue;
-                        datagridViewDirections.Rows.Add();
-                        datagridViewDirections.Rows[i].Cells[0].Value = direction[i].NameOfDirection;
-                        datagridViewDirections.Rows[i].Cells[1].Value = direction[i].Description;
-                    }
-                    session.SaveChanges();
+                    if (direction[i].NameOfDirection != SearchStr.Text) continue;
+                    datagridViewDirections.Rows.Add();
+                    datagridViewDirections.Rows[i].Cells[0].Value = direction[i].NameOfDirection;
+                    datagridViewDirections.Rows[i].Cells[1].Value = direction[i].Description;
                 }
             }
         }
@@ -81,25 +59,16 @@ namespace CourseWork.Direction
             try
             {
                 var index = datagridViewDirections.CurrentRow.Index;
-                var directionText = datagridViewDirections.Rows[index].Cells[0].Value;
-                var documentStore = new DocumentStore
+                var directionText = (string)datagridViewDirections.Rows[index].Cells[0].Value;
+                var direction = storage.GetDirectionsDirectionName(directionText);
+
+                foreach (var t in direction)
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var direction = 
-                        session.Query<Models.Direction>().Where(x => x.NameOfDirection == (string) directionText).ToList();
-                    foreach (var t in direction)
-                    {
-                        var massive = t.Id.Split('/');
-                        documentStore.DatabaseCommands.Delete("directions/" + massive[1], null);
-                    }
-                    MessageBox.Show(@"Выбранное направление успешно удалено");
-                    session.SaveChanges();
+                    var massive = t.Id.Split('/');
+                    storage.DeleteDirection(Convert.ToInt32(massive[1]));
                 }
+                MessageBox.Show(@"Выбранное направление успешно удалено");
+
             }
             catch (Exception exception)
             {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Forms;
 using CourseWork.Client;
+using CourseWork.Data;
 using CourseWork.Direction;
 using CourseWork.Input;
 using CourseWork.Service;
@@ -12,6 +12,7 @@ namespace CourseWork
 {
     public partial class Main : Form
     {
+        IStorage storage = new Storage();
         public Main()
         {
             try
@@ -104,16 +105,8 @@ namespace CourseWork
         {
             try
             {
-                var documentStore = new DocumentStore
-                {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Client"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var clients = session.Query<Models.Client>().Where(x => x.Date == currentdate).ToList();
-                    if (clients.Count != 0)
+               var clients = storage.GetClientByDate(currentdate);
+               if (clients.Count != 0)
                     {
                         for (var i = 0; i < clients.Count; i++)
                         {
@@ -140,9 +133,7 @@ namespace CourseWork
                     {
                         MessageBox.Show(@"Сегодня клиентов нету!");
                     }
-                    session.SaveChanges();
                 }
-            }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
@@ -161,18 +152,8 @@ namespace CourseWork
                             if (datagridViewClients.CurrentRow != null)
                             {
                                 var index = datagridViewClients.CurrentRow.Index;
-                                var id = datagridViewClients.Rows[index].Cells[0].Value;
-                                var documentStore = new DocumentStore
-                                {
-                                    Url = "http://localhost:8080/",
-                                    DefaultDatabase = "Client"
-                                };
-                                documentStore.Initialize();
-                                using (var session = documentStore.OpenSession())
-                                {
-                                    documentStore.DatabaseCommands.Delete("clients/" + id, null);
-                                    session.SaveChanges();
-                                }
+                                var id = (int) datagridViewClients.Rows[index].Cells[0].Value;
+                                storage.DeleteClient(id);
                             }
                             MessageBox.Show(@"Данные успешно удалены!");
                             break;

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Raven.Client.Document;
+using CourseWork.Data;
 
 namespace CourseWork.Client
 {
     public partial class SearchClient : Form
     {
+        IStorage storage = new Storage();
         public SearchClient()
         {
             InitializeComponent();
@@ -24,15 +24,7 @@ namespace CourseWork.Client
         {
             try
             {
-                var documentStore = new DocumentStore
-                {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Client"
-                };
-                documentStore.Initialize();
-                var session = documentStore.OpenSession();
-                var clients = session.Query<Models.Client>().ToList();
-                session.SaveChanges();
+                var clients = storage.GetAllClients();
                 if (Functions.Text == (string)Functions.Items[0])
                 {
                     const string pattern = "[0-9]{1,}";
@@ -44,7 +36,7 @@ namespace CourseWork.Client
                         return;
                     }
                     var k = 0;
-                    foreach (Models.Client t in clients)
+                    foreach (var t in clients)
                     {
                         var massive = t.Id.Split('/');
                         if (massive[1] == SearchStr.Text)
@@ -72,7 +64,7 @@ namespace CourseWork.Client
                 if (Functions.Text == (string)Functions.Items[1])
                 {
                     var k = 0;
-                    foreach (Models.Client t in clients)
+                    foreach (var t in clients)
                     {
                         var massive = t.Id.Split('/');
                         if (t.Lastname == SearchStr.Text)
@@ -100,7 +92,7 @@ namespace CourseWork.Client
                 if (Functions.Text == (string)Functions.Items[2])
                 {
                     var k = 0;
-                    foreach (Models.Client t in clients)
+                    foreach (var t in clients)
                     {
                         var massive = t.Id.Split('/');
                         if (t.Name == SearchStr.Text)
@@ -136,7 +128,7 @@ namespace CourseWork.Client
                         return;
                     }
                     var k = 0;
-                    foreach (Models.Client t in clients)
+                    foreach (var t in clients)
                     {
                         var massive = t.Id.Split('/');
                         if (t.Date == SearchStr.Text)
@@ -164,7 +156,7 @@ namespace CourseWork.Client
                 if (Functions.Text == (string)Functions.Items[4])
                 {
                     var k = 0;
-                    foreach (Models.Client t in clients)
+                    foreach (var t in clients)
                     {
                         var massive = t.Id.Split('/');
                         if (t.Directions[0].NameOfDirection == SearchStr.Text)
@@ -192,7 +184,7 @@ namespace CourseWork.Client
                 if (Functions.Text == (string)Functions.Items[5])
                 {
                     var k = 0;
-                    foreach (Models.Client t in clients)
+                    foreach (var t in clients)
                     {
                         var massive = t.Id.Split('/');
                         if (t.Services[0].NameService == SearchStr.Text)
@@ -269,18 +261,8 @@ namespace CourseWork.Client
                             if (datagridViewClients.CurrentRow != null)
                             {
                                 var index = datagridViewClients.CurrentRow.Index;
-                                var id = datagridViewClients.Rows[index].Cells[0].Value;
-                                var documentStore = new DocumentStore
-                                {
-                                    Url = "http://localhost:8080/",
-                                    DefaultDatabase = "Client"
-                                };
-                                documentStore.Initialize();
-                                using (var session = documentStore.OpenSession())
-                                {
-                                    documentStore.DatabaseCommands.Delete("clients/" + id, null);
-                                    session.SaveChanges();
-                                }
+                                var id = (int)datagridViewClients.Rows[index].Cells[0].Value;
+                                storage.DeleteClient(id);
                             }
                             MessageBox.Show(@"Данные успешно удалены!");
                             break;

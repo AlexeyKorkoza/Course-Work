@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using Raven.Client.Document;
+using CourseWork.Data;
 
 namespace CourseWork.Direction
 {
     public partial class DeleteDirection : Form
     {
-        private List<Models.Direction> _direction;
+        private List<Data.Models.Direction> _direction;
+        IStorage storage = new Storage();
         public DeleteDirection()
         {
             InitializeComponent();
@@ -30,24 +30,13 @@ namespace CourseWork.Direction
                     MessageBox.Show(@"Выберите направление для удаления");
                     return;
                 }
-                var documentStore = new DocumentStore
+                var direction = storage.GetDirections();
+                for (var i = 0; i < direction.Count; i++)
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var direction =
-                        session.Query<Models.Direction>().Where(x => x.NameOfDirection == DirectionName.Text).ToList();
-                    for (var i = 0; i < direction.Count; i++)
-                    {
-                        var massive = direction[i].Id.Split('/');
-                        documentStore.DatabaseCommands.Delete("directions/" + massive[1], null);
-                    }
-                    MessageBox.Show(@"Выбранное направление успешно удалено");
-                    session.SaveChanges();
+                    var massive = direction[i].Id.Split('/');
+                    storage.DeleteDirection(Convert.ToInt32(massive[1]));
                 }
+                MessageBox.Show(@"Выбранное направление успешно удалено");
             }
             catch (Exception exception)
             {
@@ -64,23 +53,13 @@ namespace CourseWork.Direction
         {
             try
             {
-                var documentStore = new DocumentStore
+                _direction = storage.GetDirections();
+                foreach (var t in _direction)
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    _direction = session.Query<Models.Direction>().ToList();
-                    foreach (var t in _direction)
+                    if (!DirectionName.Items.Contains(t.NameOfDirection))
                     {
-                        if (!DirectionName.Items.Contains(t.NameOfDirection))
-                        {
-                            DirectionName.Items.Add(t.NameOfDirection);
-                        }
+                        DirectionName.Items.Add(t.NameOfDirection);
                     }
-                    session.SaveChanges();
                 }
                 if (_direction.Count == 0)
                 {

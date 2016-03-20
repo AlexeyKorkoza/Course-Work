@@ -1,4 +1,4 @@
-﻿namespace CourseWork.Models
+﻿namespace CourseWork.Data.Models
 {
     public class Direction
     {

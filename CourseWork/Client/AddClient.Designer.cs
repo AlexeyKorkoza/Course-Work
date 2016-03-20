@@ -235,7 +235,7 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // Client
+            // ClientByDate
             // 
             this.Client.Controls.Add(this.monthCalendar1);
             this.Client.Controls.Add(this.Payment);

@@ -259,7 +259,7 @@
             this.Decor.Size = new System.Drawing.Size(280, 21);
             this.Decor.TabIndex = 20;
             // 
-            // Client
+            // ClientByDate
             // 
             this.Client.Controls.Add(this.Payment);
             this.Client.Controls.Add(this.Decor);

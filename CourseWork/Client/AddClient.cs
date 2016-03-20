@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using CourseWork.Models;
+using CourseWork.Data;
+using CourseWork.Data.Models;
 using Raven.Client.Document;
 
 namespace CourseWork.Client
@@ -15,6 +15,7 @@ namespace CourseWork.Client
         private readonly List<ComboBox> _listcombobox;
         private readonly List<TextBox>  _textBoxs;
         private readonly List<RichTextBox> _richTextBoxs; 
+        IStorage storage = new Storage();
         public AddClient()
         {
             try
@@ -41,15 +42,7 @@ namespace CourseWork.Client
                 {
                     t.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
-                var documentStore = new DocumentStore
-                {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var direction = session.Query<Models.Direction>().ToList();
+                 var direction = storage.GetDirections();
                     if (direction.Count > 0)
                     {
                         foreach (var t in direction)
@@ -64,8 +57,6 @@ namespace CourseWork.Client
                     {
                         MessageBox.Show(@"Добавление клиента невозможно");
                     }
-                    session.SaveChanges();
-                }
             }
             catch(Exception exception)
             {
@@ -133,7 +124,7 @@ namespace CourseWork.Client
                 using (var session = documentStore.OpenSession())
                 {
 
-                    var client = new Models.Client()
+                    var client = new Data.Models.Client()
                     {
                         Lastname = Lastname.Text,
                         Name = NameOfClient.Text,
@@ -144,7 +135,7 @@ namespace CourseWork.Client
                         Payment = Payment.Text,
                         Directions = new[]
                         {
-                            new Models.Direction()
+                            new Data.Models.Direction()
                             {
                                 NameOfDirection = DirectionName.Text,
                                 Description = DirectionDescription.Text
@@ -152,7 +143,7 @@ namespace CourseWork.Client
                         },
                         Services = new[]
                         {
-                            new Models.Service()
+                            new Data.Models.Service()
                             {
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),
@@ -209,23 +200,13 @@ namespace CourseWork.Client
        private void DirectionName_SelectedIndexChanged(object sender, EventArgs e)
        {
            var directionName = DirectionName.Text;
-           var documentStore = new DocumentStore
-           {
-               Url = "http://localhost:8080/",
-               DefaultDatabase = "Center"
-           };
-           documentStore.Initialize();
-           using (var session = documentStore.OpenSession())
-           {
-               var direction = session.Query<Models.Direction>().Where(x => x.NameOfDirection == directionName).ToList();
+           var direction = storage.GetDirectionsDirectionName(directionName);
                foreach (var t in direction)
                {
                    NameService.Items.Add(t.Services[0].NameService);
                    CostService.Items.Add(t.Services[0].Cost);
                    Duration.Items.Add(t.Services[0].Duration);
                }
-               session.SaveChanges();
-           }
+       }
        }
     }
-}

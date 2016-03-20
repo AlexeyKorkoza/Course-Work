@@ -3,37 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using CourseWork.Data;
 using Raven.Client.Document;
 
 namespace CourseWork.Service
 {
     public partial class AddService : Form
     {
-        private readonly List<Models.Direction> _direction;
+        IStorage storage = new Storage();
+        private readonly List<Data.Models.Direction> _direction;
         private readonly List<TextBox> _textBoxs;
         public AddService()
         {
             try
             {
                 InitializeComponent();
-                _textBoxs = new List<TextBox> {NameService, Duration, CostService};
-                var documentStore = new DocumentStore
+                _textBoxs = new List<TextBox> { NameService, Duration, CostService };
+                _direction = storage.GetDirections();
+                foreach (var t in _direction)
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    _direction = session.Query<Models.Direction>().ToList();
-                    foreach (var t in _direction)
+                    if (!DirectionName.Items.Contains(t.NameOfDirection))
                     {
-                        if (!DirectionName.Items.Contains(t.NameOfDirection))
-                        {
-                            DirectionName.Items.Add(t.NameOfDirection);
-                        }
+                        DirectionName.Items.Add(t.NameOfDirection);
                     }
-                    session.SaveChanges();
                 }
                 DirectionName.DropDownStyle = ComboBoxStyle.DropDownList;
             }
@@ -64,7 +56,7 @@ namespace CourseWork.Service
                 {
                     MessageBox.Show(@"Некорректное заполнение поля!");
                     return;
-                } 
+                }
                 match = regex.Match(CostService.Text);
                 if (!match.Success)
                 {
@@ -93,13 +85,13 @@ namespace CourseWork.Service
                 documentStore.Initialize();
                 using (var session = documentStore.OpenSession())
                 {
-                    var direction = new Models.Direction()
+                    var direction = new Data.Models.Direction()
                     {
                         NameOfDirection = DirectionName.Text,
                         Description = description,
                         Services = new[]
                         {
-                            new Models.Service()
+                            new Data.Models.Service()
                             {
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),

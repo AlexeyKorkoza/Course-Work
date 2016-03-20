@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Linq;
 using System.Windows.Forms;
+using CourseWork.Data;
 using CourseWork.Service;
-using Raven.Client.Document;
 
 namespace CourseWork.Direction
 {
     public partial class ViewDirection : Form
     {
+        IStorage storage = new Storage();
         public ViewDirection()
         {
             InitializeComponent();
@@ -24,34 +24,24 @@ namespace CourseWork.Direction
         {
             try
             {
-                var documentStore = new DocumentStore
+                var direction = storage.GetDirections();
+                if (direction.Count > 0)
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
+                    for (var i = 0; i < direction.Count; i++)
+                    {
+                        datagridViewDirections.Rows.Add();
+                        var massive = direction[i].Id.Split('/');
+                        datagridViewDirections.Rows[i].Cells[0].Value = massive[1];
+                        datagridViewDirections.Rows[i].Cells[1].Value = direction[i].NameOfDirection;
+                        datagridViewDirections.Rows[i].Cells[2].Value = direction[i].Description;
+                        datagridViewDirections.Rows[i].Cells[3].Value = direction[i].Services[0].NameService;
+                        datagridViewDirections.Rows[i].Cells[4].Value = direction[i].Services[0].Duration;
+                        datagridViewDirections.Rows[i].Cells[5].Value = direction[i].Services[0].Cost;
+                    }
+                }
+                else
                 {
-                    var direction = session.Query<Models.Direction>().ToList();
-                    if (direction.Count > 0)
-                    {
-                        for (var i = 0; i < direction.Count; i++)
-                        {
-                            datagridViewDirections.Rows.Add();
-                            var massive = direction[i].Id.Split('/');
-                            datagridViewDirections.Rows[i].Cells[0].Value = massive[1];
-                            datagridViewDirections.Rows[i].Cells[1].Value = direction[i].NameOfDirection;
-                            datagridViewDirections.Rows[i].Cells[2].Value = direction[i].Description;
-                            datagridViewDirections.Rows[i].Cells[3].Value = direction[i].Services[0].NameService;
-                            datagridViewDirections.Rows[i].Cells[4].Value = direction[i].Services[0].Duration;
-                            datagridViewDirections.Rows[i].Cells[5].Value = direction[i].Services[0].Cost;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(@"Список направлений пуст");
-                    }
-                    session.SaveChanges();
+                    MessageBox.Show(@"Список направлений пуст");
                 }
             }
             catch (Exception exception)
@@ -71,7 +61,6 @@ namespace CourseWork.Direction
             var add = new AddService();
             add.Show();
         }
-
         private void DeleteService_Click(object sender, EventArgs e)
         {
             try
@@ -84,18 +73,8 @@ namespace CourseWork.Direction
                             if (datagridViewDirections.CurrentRow != null)
                             {
                                 var index = datagridViewDirections.CurrentRow.Index;
-                                var id = datagridViewDirections.Rows[index].Cells[0].Value;
-                                var documentStore = new DocumentStore
-                                {
-                                    Url = "http://localhost:8080/",
-                                    DefaultDatabase = "Center"
-                                };
-                                documentStore.Initialize();
-                                using (var session = documentStore.OpenSession())
-                                {
-                                    documentStore.DatabaseCommands.Delete("directions/" + id, null);
-                                    session.SaveChanges();
-                                }
+                                var id = (int)datagridViewDirections.Rows[index].Cells[0].Value;
+                                storage.DeleteDirection(id);
                             }
                             MessageBox.Show(@"Услуга успешна удалена!");
                             break;
