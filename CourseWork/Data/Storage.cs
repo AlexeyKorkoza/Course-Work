@@ -112,5 +112,31 @@ namespace CourseWork.Data
                 return session.Query<Models.Direction>().Where(x => x.NameOfDirection == description).ToList();
             }
         }
+        public Models.Direction GetServiceId(string id)
+        {
+            ConnectDbDirection();
+            using (var session = store.OpenSession())
+            {
+                return session.Load<Models.Direction>(id);
+            }
+        }
+        public void UpdateService(Models.Direction service)
+        {
+         ConnectDbDirection();
+         using (var session = store.OpenSession())
+         {
+             session.Store(service);
+             session.SaveChanges();
+         }
+        }
+        public void DeleteService(int id)
+        {
+            ConnectDbDirection();
+            using (var session = store.OpenSession())
+            {
+                store.DatabaseCommands.Delete("directions/" + id, null);
+                session.SaveChanges();
+            }
+        }
     }
 }

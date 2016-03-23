@@ -187,15 +187,15 @@ namespace CourseWork
             search.Show();
         }
 
-        private void AddService_Click(object sender, EventArgs e)
-        {
-            var service = new AddService();
-            service.Show();
-        }
-
         private void ViewDirections_Click(object sender, EventArgs e)
         {
             var view = new ViewDirection();
+            view.Show();
+        }
+
+        private void ViewServices_Click(object sender, EventArgs e)
+        {
+            var view = new ViewService();
             view.Show();
         }
     }

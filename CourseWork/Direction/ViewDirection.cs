@@ -65,26 +65,33 @@ namespace CourseWork.Direction
         {
             try
             {
-                var result = MessageBox.Show(@"Вы уверены", @"Да", MessageBoxButtons.OKCancel);
-                switch (result)
+                var index = datagridViewDirections.CurrentRow.Index;
+                if (index > -1)
                 {
-                    case DialogResult.OK:
+                    var result = MessageBox.Show(@"Вы уверены", @"Да", MessageBoxButtons.OKCancel);
+                    switch (result)
+                    {
+                        case DialogResult.OK:
                         {
                             if (datagridViewDirections.CurrentRow != null)
                             {
-                                var index = datagridViewDirections.CurrentRow.Index;
-                                var id = (int)datagridViewDirections.Rows[index].Cells[0].Value;
+                                var id = (int) datagridViewDirections.Rows[index].Cells[0].Value;
                                 storage.DeleteDirection(id);
                             }
                             MessageBox.Show(@"Услуга успешна удалена!");
                             break;
                         }
-                    case DialogResult.Cancel:
+                        case DialogResult.Cancel:
                         {
                             break;
                         }
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(@"Выберите направления для удаления");
                 }
             }
             catch

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using CourseWork.Data;
-using Raven.Client.Document;
 
 namespace CourseWork.Direction
 {
@@ -14,7 +12,6 @@ namespace CourseWork.Direction
         public EditDirection()
         {
             InitializeComponent();
-            NewDirection.Enabled = false;
             View();
         }
 

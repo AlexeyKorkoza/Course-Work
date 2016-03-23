@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.DirectionAdd = new System.Windows.Forms.GroupBox();
+            this.DirectionName = new System.Windows.Forms.ComboBox();
+            this.ChangeDirectionName = new System.Windows.Forms.CheckBox();
+            this.NewDirection = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.Description = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.Услуга = new System.Windows.Forms.Label();
             this.Close = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
-            this.NewDirection = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ChangeDirectionName = new System.Windows.Forms.CheckBox();
-            this.DirectionName = new System.Windows.Forms.ComboBox();
             this.Refresh = new System.Windows.Forms.Button();
             this.DirectionAdd.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,43 @@
             this.DirectionAdd.TabIndex = 19;
             this.DirectionAdd.TabStop = false;
             this.DirectionAdd.Text = "Информация о направлении";
+            // 
+            // DirectionName
+            // 
+            this.DirectionName.FormattingEnabled = true;
+            this.DirectionName.Location = new System.Drawing.Point(29, 48);
+            this.DirectionName.Name = "DirectionName";
+            this.DirectionName.Size = new System.Drawing.Size(280, 21);
+            this.DirectionName.TabIndex = 26;
+            this.DirectionName.SelectedIndexChanged += new System.EventHandler(this.DirectionName_SelectedIndexChanged);
+            // 
+            // ChangeDirectionName
+            // 
+            this.ChangeDirectionName.AutoSize = true;
+            this.ChangeDirectionName.Location = new System.Drawing.Point(130, 20);
+            this.ChangeDirectionName.Name = "ChangeDirectionName";
+            this.ChangeDirectionName.Size = new System.Drawing.Size(197, 17);
+            this.ChangeDirectionName.TabIndex = 25;
+            this.ChangeDirectionName.Text = "Изменить название направления";
+            this.ChangeDirectionName.UseVisualStyleBackColor = true;
+            this.ChangeDirectionName.CheckedChanged += new System.EventHandler(this.ChangeDirectionName_CheckedChanged);
+            // 
+            // NewDirection
+            // 
+            this.NewDirection.Enabled = false;
+            this.NewDirection.Location = new System.Drawing.Point(29, 88);
+            this.NewDirection.Name = "NewDirection";
+            this.NewDirection.Size = new System.Drawing.Size(278, 20);
+            this.NewDirection.TabIndex = 24;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(159, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Новое название направления";
             // 
             // Description
             // 
@@ -103,42 +140,6 @@
             this.Add.Text = "Редактировать";
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // NewDirection
-            // 
-            this.NewDirection.Location = new System.Drawing.Point(29, 88);
-            this.NewDirection.Name = "NewDirection";
-            this.NewDirection.Size = new System.Drawing.Size(278, 20);
-            this.NewDirection.TabIndex = 24;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Направление";
-            // 
-            // ChangeDirectionName
-            // 
-            this.ChangeDirectionName.AutoSize = true;
-            this.ChangeDirectionName.Location = new System.Drawing.Point(130, 20);
-            this.ChangeDirectionName.Name = "ChangeDirectionName";
-            this.ChangeDirectionName.Size = new System.Drawing.Size(197, 17);
-            this.ChangeDirectionName.TabIndex = 25;
-            this.ChangeDirectionName.Text = "Изменить название направления";
-            this.ChangeDirectionName.UseVisualStyleBackColor = true;
-            this.ChangeDirectionName.CheckedChanged += new System.EventHandler(this.ChangeDirectionName_CheckedChanged);
-            // 
-            // DirectionName
-            // 
-            this.DirectionName.FormattingEnabled = true;
-            this.DirectionName.Location = new System.Drawing.Point(29, 48);
-            this.DirectionName.Name = "DirectionName";
-            this.DirectionName.Size = new System.Drawing.Size(280, 21);
-            this.DirectionName.TabIndex = 26;
-            this.DirectionName.SelectedIndexChanged += new System.EventHandler(this.DirectionName_SelectedIndexChanged);
             // 
             // Refresh
             // 

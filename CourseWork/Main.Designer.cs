@@ -50,7 +50,6 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.Center = new System.Windows.Forms.NotifyIcon(this.components);
             this.CurrentDate = new System.Windows.Forms.TextBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -59,9 +58,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.AddService = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ViewDirections = new System.Windows.Forms.Button();
+            this.ViewServices = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -228,16 +227,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(116, 240);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 38);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Добавить направление";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // Center
             // 
             this.Center.Icon = ((System.Drawing.Icon)(resources.GetObject("Center.Icon")));
@@ -308,16 +297,6 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // AddService
-            // 
-            this.AddService.Location = new System.Drawing.Point(580, 244);
-            this.AddService.Name = "AddService";
-            this.AddService.Size = new System.Drawing.Size(112, 33);
-            this.AddService.TabIndex = 13;
-            this.AddService.Text = "Добавить услугу";
-            this.AddService.UseVisualStyleBackColor = true;
-            this.AddService.Click += new System.EventHandler(this.AddService_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CourseWork.Properties.Resources._73e1bc97_2118_4e96_9366_a609b5c6f271;
@@ -339,13 +318,23 @@
             this.ViewDirections.UseVisualStyleBackColor = true;
             this.ViewDirections.Click += new System.EventHandler(this.ViewDirections_Click);
             // 
+            // ViewServices
+            // 
+            this.ViewServices.Location = new System.Drawing.Point(116, 244);
+            this.ViewServices.Name = "ViewServices";
+            this.ViewServices.Size = new System.Drawing.Size(102, 33);
+            this.ViewServices.TabIndex = 15;
+            this.ViewServices.Text = "Просмотр услуг";
+            this.ViewServices.UseVisualStyleBackColor = true;
+            this.ViewServices.Click += new System.EventHandler(this.ViewServices_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 290);
+            this.Controls.Add(this.ViewServices);
             this.Controls.Add(this.ViewDirections);
-            this.Controls.Add(this.AddService);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -354,7 +343,6 @@
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.CurrentDate);
             this.Controls.Add(this.datagridViewClients);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -377,7 +365,6 @@
         private System.Windows.Forms.DataGridView datagridViewClients;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.NotifyIcon Center;
         private System.Windows.Forms.TextBox CurrentDate;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
@@ -402,7 +389,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button AddService;
         private System.Windows.Forms.Button ViewDirections;
+        private System.Windows.Forms.Button ViewServices;
     }
 }
