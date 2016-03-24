@@ -36,7 +36,7 @@ namespace CourseWork.Service
                     MessageBox.Show(@"Некорректное заполнение поля!");
                     return;
                 }
-                pattern = "[0-9]";
+                pattern = "[0-9]{1,}";
                 regex = new Regex(pattern, RegexOptions.IgnoreCase);
                 match = regex.Match(Duration.Text);
                 if (!match.Success)

@@ -52,6 +52,7 @@
             this.Cancel.TabIndex = 21;
             this.Cancel.Text = "Закрыть";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // Search
             // 
@@ -91,6 +92,7 @@
             this.datagridViewServices.RowHeadersVisible = false;
             this.datagridViewServices.Size = new System.Drawing.Size(584, 231);
             this.datagridViewServices.TabIndex = 18;
+            this.datagridViewServices.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.datagridViewServices_MouseDoubleClick);
             // 
             // Column2
             // 
@@ -126,7 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(250, 9);
+            this.label2.Location = new System.Drawing.Point(350, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 13);
             this.label2.TabIndex = 25;
@@ -143,7 +145,7 @@
             // 
             // SearchStr
             // 
-            this.SearchStr.Location = new System.Drawing.Point(253, 30);
+            this.SearchStr.Location = new System.Drawing.Point(353, 30);
             this.SearchStr.Name = "SearchStr";
             this.SearchStr.Size = new System.Drawing.Size(243, 20);
             this.SearchStr.TabIndex = 23;
@@ -158,7 +160,7 @@
             "Цена"});
             this.Functions.Location = new System.Drawing.Point(13, 29);
             this.Functions.Name = "Functions";
-            this.Functions.Size = new System.Drawing.Size(206, 21);
+            this.Functions.Size = new System.Drawing.Size(279, 21);
             this.Functions.TabIndex = 22;
             // 
             // SearchService

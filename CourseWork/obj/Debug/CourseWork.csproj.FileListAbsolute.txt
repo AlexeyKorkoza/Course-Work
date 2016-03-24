@@ -89,3 +89,4 @@ C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Servic
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Settings.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.csproj.GenerateResource.Cache
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Service.ViewService.resources
+C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Service.SearchService.resources

@@ -223,6 +223,9 @@
     <EmbeddedResource Include="Service\EditService.resx">
       <DependentUpon>EditService.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Service\SearchService.resx">
+      <DependentUpon>SearchService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Service\ViewService.resx">
       <DependentUpon>ViewService.cs</DependentUpon>
     </EmbeddedResource>

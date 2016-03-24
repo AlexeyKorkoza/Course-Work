@@ -28,16 +28,13 @@ namespace CourseWork.Service
                     {
                         case DialogResult.OK:
                             {
-                                if (datagridViewServices.CurrentRow == null)
+                                if (datagridViewServices.CurrentRow != null)
                                 {
-                                    MessageBox.Show(@"Выберите услугу для удаления");
-                                    return;
+                                    var index = datagridViewServices.CurrentRow.Index;
+                                    var id = datagridViewServices.Rows[index].Cells[0].Value;
+                                    _storage.DeleteService((int) id);
+                                    MessageBox.Show(@"Данные успешно удалены!");
                                 }
-                                var index = datagridViewServices.CurrentRow.Index;
-                                /*BUG!!!!!!!!*/
-                                var id =  datagridViewServices.Rows[index].Cells[0].Value;
-                                 _storage.DeleteService((int) id);
-                                MessageBox.Show(@"Услуга успешно удалена!");
                                 break;
                             }
                         case DialogResult.Cancel:
@@ -47,6 +44,7 @@ namespace CourseWork.Service
                         default:
                             throw new ArgumentOutOfRangeException();
                 }
+
             }
             catch(Exception exception)
             {
