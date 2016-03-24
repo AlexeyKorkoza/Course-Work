@@ -31,8 +31,8 @@ namespace CourseWork.Service
                                 if (datagridViewServices.CurrentRow != null)
                                 {
                                     var index = datagridViewServices.CurrentRow.Index;
-                                    var id = datagridViewServices.Rows[index].Cells[0].Value;
-                                    _storage.DeleteService((int) id);
+                                    var id = (int) datagridViewServices.Rows[index].Cells[0].Value;
+                                    _storage.DeleteService(id);
                                     MessageBox.Show(@"Данные успешно удалены!");
                                 }
                                 break;
@@ -81,7 +81,7 @@ namespace CourseWork.Service
                     {
                         datagridViewServices.Rows.Add();
                         var massive = services[i].Id.Split('/');
-                        datagridViewServices.Rows[i].Cells[0].Value = massive[1];
+                        datagridViewServices.Rows[i].Cells[0].Value = Convert.ToInt32(massive[1]);
                         datagridViewServices.Rows[i].Cells[1].Value = services[i].NameOfDirection;
                         datagridViewServices.Rows[i].Cells[2].Value = services[i].Services[0].NameService;
                         datagridViewServices.Rows[i].Cells[3].Value = services[i].Services[0].Duration;
