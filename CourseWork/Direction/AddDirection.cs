@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Raven.Client.Document;
+using CourseWork.Data;
 
 namespace CourseWork.Direction
 {
     public partial class AddDirection : Form
     {
         private readonly List<TextBox> _textboxlist;
+        IStorage _storage = new Storage();
         public AddDirection()
         {
             InitializeComponent();
@@ -48,31 +49,23 @@ namespace CourseWork.Direction
                     MessageBox.Show(@"В поле продолжительность вводятся только цифры!");
                     return;
                 }
-                var documentStore = new DocumentStore
-                {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var direction = new Data.Models.Direction()
+                var direction = new Data.Models.Direction()
                     {
+                        Id = "directions/",
                         NameOfDirection = DirectionName.Text,
                         Description = Description.Text,
                         Services = new[]
                         {
                             new Data.Models.Service()
                             {
+                                Id = "services/",
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),
                                 Cost = Convert.ToInt32(Cost.Text),
                             }
                         },
                     };
-                    session.Store(direction);
-                    session.SaveChanges();
-                }
+                _storage.AddDirection(direction);
                 MessageBox.Show(@"Данные добавлены");
             }
             catch (Exception exception)

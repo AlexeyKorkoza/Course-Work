@@ -6,13 +6,12 @@ using CourseWork.Data;
 using CourseWork.Direction;
 using CourseWork.Input;
 using CourseWork.Service;
-using Raven.Client.Document;
 
 namespace CourseWork
 {
     public partial class Main : Form
     {
-        IStorage storage = new Storage();
+        IStorage _storage = new Storage();
         public Main()
         {
             try
@@ -48,12 +47,6 @@ namespace CourseWork
             Hide();
             var input = new InputOfAdmin();
             input.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            var adddirection = new AddDirection();
-            adddirection.Show();
         }
 
         private void Main_Resize(object sender, EventArgs e)
@@ -105,35 +98,35 @@ namespace CourseWork
         {
             try
             {
-               var clients = storage.GetClientByDate(currentdate);
-               if (clients.Count != 0)
+                var clients = _storage.GetClientByDate(currentdate);
+                if (clients.Count != 0)
+                {
+                    for (var i = 0; i < clients.Count; i++)
                     {
-                        for (var i = 0; i < clients.Count; i++)
-                        {
-                            datagridViewClients.Rows.Add();
-                            var massive = clients[i].Id.Split('/');
-                            datagridViewClients.Rows[i].Cells[0].Value = Convert.ToInt32(massive[1]);
-                            datagridViewClients.Rows[i].Cells[1].Value = clients[i].Lastname;
-                            datagridViewClients.Rows[i].Cells[2].Value = clients[i].Name;
-                            datagridViewClients.Rows[i].Cells[3].Value = clients[i].MiddleName;
-                            datagridViewClients.Rows[i].Cells[5].Value = clients[i].AgeCategory;
-                            datagridViewClients.Rows[i].Cells[4].Value = clients[i].Date;
-                            datagridViewClients.Rows[i].Cells[6].Value = clients[i].Payment;
-                            datagridViewClients.Rows[i].Cells[7].Value = clients[i].Decor;
-                            datagridViewClients.Rows[i].Cells[8].Value = clients[i].Directions[0].NameOfDirection;
-                            datagridViewClients.Rows[i].Cells[9].Value = clients[i].Services[0].NameService;
-                            datagridViewClients.Rows[i].Cells[10].Value = clients[i].Services[0].Duration;
-                            datagridViewClients.Rows[i].Cells[11].Value = clients[i].Services[0].Cost;
-                            datagridViewClients.Rows[i].Cells[12].Value = clients[i].Services[0].Visit;
-                            datagridViewClients.Rows[i].Cells[13].Value = clients[i].Discounts[0].Code;
-                            datagridViewClients.Rows[i].Cells[14].Value = clients[i].Discounts[0].Size;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(@"Сегодня клиентов нету!");
+                        datagridViewClients.Rows.Add();
+                        var massive = clients[i].Id.Split('/');
+                        datagridViewClients.Rows[i].Cells[0].Value = massive[1];
+                        datagridViewClients.Rows[i].Cells[1].Value = clients[i].Lastname;
+                        datagridViewClients.Rows[i].Cells[2].Value = clients[i].Name;
+                        datagridViewClients.Rows[i].Cells[3].Value = clients[i].MiddleName;
+                        datagridViewClients.Rows[i].Cells[5].Value = clients[i].AgeCategory;
+                        datagridViewClients.Rows[i].Cells[4].Value = clients[i].Date;
+                        datagridViewClients.Rows[i].Cells[6].Value = clients[i].Payment;
+                        datagridViewClients.Rows[i].Cells[7].Value = clients[i].Decor;
+                        datagridViewClients.Rows[i].Cells[8].Value = clients[i].Directions[0].NameOfDirection;
+                        datagridViewClients.Rows[i].Cells[9].Value = clients[i].Services[0].NameService;
+                        datagridViewClients.Rows[i].Cells[10].Value = clients[i].Services[0].Duration;
+                        datagridViewClients.Rows[i].Cells[11].Value = clients[i].Services[0].Cost;
+                        datagridViewClients.Rows[i].Cells[12].Value = clients[i].Visit;
+                        datagridViewClients.Rows[i].Cells[13].Value = clients[i].Discounts[0].Code;
+                        datagridViewClients.Rows[i].Cells[14].Value = clients[i].Discounts[0].Size;
                     }
                 }
+                else
+                {
+                    MessageBox.Show(@"Сегодня клиентов нету!");
+                }
+            }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
@@ -152,8 +145,8 @@ namespace CourseWork
                             if (datagridViewClients.CurrentRow != null)
                             {
                                 var index = datagridViewClients.CurrentRow.Index;
-                                var id = (int) datagridViewClients.Rows[index].Cells[0].Value;
-                                storage.DeleteClient(id);
+                                var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
+                                _storage.DeleteClient(id);
                             }
                             MessageBox.Show(@"Данные успешно удалены!");
                             break;
@@ -176,7 +169,7 @@ namespace CourseWork
         {
             if (datagridViewClients.CurrentRow == null) return;
             var index = datagridViewClients.CurrentRow.Index;
-            var id = "clients/"+(string)datagridViewClients.Rows[index].Cells[0].Value;
+            var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
             var editClient = new EditClient(id);
             editClient.Show();
         }

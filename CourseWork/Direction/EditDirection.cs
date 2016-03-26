@@ -95,21 +95,21 @@ namespace CourseWork.Direction
                         return;
                     }
                 }
-                var direction = storage.GetDirectionsDirectionName(DirectionName.Text);
-                foreach (var t in direction)
-                {
-                    if (ChangeDirectionName.Checked)
-                    {
-                        t.NameOfDirection = NewDirection.Text;
-                    }
-                    else
-                    {
-                        t.NameOfDirection = DirectionName.Text;
-                    }
-                    t.Description = Description.Text;
-                }
-                /*BUG!!!!*/
-                storage.UpdateDirection(direction);
+                //var direction = storage.GetDirectionsDirectionName(DirectionName.Text);
+                //foreach (var t in direction)
+                //{
+                //    if (ChangeDirectionName.Checked)
+                //    {
+                //        t.NameOfDirection = NewDirection.Text;
+                //    }
+                //    else
+                //    {
+                //        t.NameOfDirection = DirectionName.Text;
+                //    }
+                //    t.Description = Description.Text;
+                //}
+                /*BUG*/
+                //storage.UpdateDirection(direction);
 
             }
             catch (Exception exception)

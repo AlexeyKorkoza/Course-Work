@@ -40,12 +40,13 @@
             this.Date = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Middlename = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AgeCategory = new System.Windows.Forms.ComboBox();
             this.Lastname = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Client = new System.Windows.Forms.GroupBox();
+            this.Visit = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.Payment = new System.Windows.Forms.ComboBox();
             this.Decor = new System.Windows.Forms.ComboBox();
             this.NameOfClient = new System.Windows.Forms.TextBox();
@@ -53,8 +54,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Visit = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.NameService = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Duration = new System.Windows.Forms.ComboBox();
@@ -68,6 +67,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.Code = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.Direction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Client.SuspendLayout();
@@ -77,7 +77,7 @@
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(243, 509);
+            this.Add.Location = new System.Drawing.Point(243, 521);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(75, 34);
             this.Add.TabIndex = 10;
@@ -87,7 +87,7 @@
             // 
             // Close
             // 
-            this.Close.Location = new System.Drawing.Point(334, 509);
+            this.Close.Location = new System.Drawing.Point(334, 521);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(75, 34);
             this.Close.TabIndex = 11;
@@ -97,7 +97,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(102, 186);
+            this.monthCalendar1.Location = new System.Drawing.Point(121, 155);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 17;
             this.monthCalendar1.Visible = false;
@@ -154,7 +154,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 116);
+            this.label3.Location = new System.Drawing.Point(6, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 4;
@@ -163,7 +163,7 @@
             // Date
             // 
             this.Date.Enabled = false;
-            this.Date.Location = new System.Drawing.Point(11, 183);
+            this.Date.Location = new System.Drawing.Point(11, 155);
             this.Date.Name = "Date";
             this.Date.Size = new System.Drawing.Size(280, 20);
             this.Date.TabIndex = 7;
@@ -172,7 +172,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 163);
+            this.label4.Location = new System.Drawing.Point(6, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 6;
@@ -180,25 +180,16 @@
             // 
             // Middlename
             // 
-            this.Middlename.Location = new System.Drawing.Point(11, 132);
+            this.Middlename.Location = new System.Drawing.Point(9, 116);
             this.Middlename.Name = "Middlename";
             this.Middlename.Size = new System.Drawing.Size(280, 20);
             this.Middlename.TabIndex = 5;
             this.Middlename.TextChanged += new System.EventHandler(this.Middlename_TextChanged);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 210);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Возрастная категория";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 32);
+            this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 0;
@@ -211,14 +202,14 @@
             "Несовершеннолетний",
             "Взрослый",
             "Пожилой(от 65)"});
-            this.AgeCategory.Location = new System.Drawing.Point(11, 229);
+            this.AgeCategory.Location = new System.Drawing.Point(11, 202);
             this.AgeCategory.Name = "AgeCategory";
             this.AgeCategory.Size = new System.Drawing.Size(280, 21);
             this.AgeCategory.TabIndex = 12;
             // 
             // Lastname
             // 
-            this.Lastname.Location = new System.Drawing.Point(9, 52);
+            this.Lastname.Location = new System.Drawing.Point(9, 33);
             this.Lastname.Name = "Lastname";
             this.Lastname.Size = new System.Drawing.Size(280, 20);
             this.Lastname.TabIndex = 1;
@@ -227,7 +218,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CourseWork.Properties.Resources._73e1bc97_2118_4e96_9366_a609b5c6f271;
-            this.pictureBox1.Location = new System.Drawing.Point(297, 183);
+            this.pictureBox1.Location = new System.Drawing.Point(297, 155);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(21, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -235,9 +226,11 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // ClientByDate
+            // Client
             // 
+            this.Client.Controls.Add(this.Visit);
             this.Client.Controls.Add(this.monthCalendar1);
+            this.Client.Controls.Add(this.label15);
             this.Client.Controls.Add(this.Payment);
             this.Client.Controls.Add(this.Decor);
             this.Client.Controls.Add(this.NameOfClient);
@@ -248,7 +241,7 @@
             this.Client.Controls.Add(this.Lastname);
             this.Client.Controls.Add(this.AgeCategory);
             this.Client.Controls.Add(this.label1);
-            this.Client.Controls.Add(this.label5);
+            this.Client.Controls.Add(this.label16);
             this.Client.Controls.Add(this.Middlename);
             this.Client.Controls.Add(this.label4);
             this.Client.Controls.Add(this.Date);
@@ -260,13 +253,33 @@
             this.Client.TabStop = false;
             this.Client.Text = "Информация о клиенте";
             // 
+            // Visit
+            // 
+            this.Visit.FormattingEnabled = true;
+            this.Visit.Items.AddRange(new object[] {
+            "Одноразовое",
+            "Многоразовое"});
+            this.Visit.Location = new System.Drawing.Point(9, 342);
+            this.Visit.Name = "Visit";
+            this.Visit.Size = new System.Drawing.Size(280, 21);
+            this.Visit.TabIndex = 28;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(8, 326);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(126, 13);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Количество посещений";
+            // 
             // Payment
             // 
             this.Payment.FormattingEnabled = true;
             this.Payment.Items.AddRange(new object[] {
             "Наличный",
             "Безналичный"});
-            this.Payment.Location = new System.Drawing.Point(11, 269);
+            this.Payment.Location = new System.Drawing.Point(9, 245);
             this.Payment.Name = "Payment";
             this.Payment.Size = new System.Drawing.Size(280, 21);
             this.Payment.TabIndex = 21;
@@ -277,14 +290,14 @@
             this.Decor.Items.AddRange(new object[] {
             "По телефону",
             "По прибытию"});
-            this.Decor.Location = new System.Drawing.Point(11, 316);
+            this.Decor.Location = new System.Drawing.Point(11, 296);
             this.Decor.Name = "Decor";
             this.Decor.Size = new System.Drawing.Size(280, 21);
             this.Decor.TabIndex = 20;
             // 
             // NameOfClient
             // 
-            this.NameOfClient.Location = new System.Drawing.Point(11, 93);
+            this.NameOfClient.Location = new System.Drawing.Point(9, 75);
             this.NameOfClient.Name = "NameOfClient";
             this.NameOfClient.Size = new System.Drawing.Size(280, 20);
             this.NameOfClient.TabIndex = 19;
@@ -293,7 +306,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 75);
+            this.label2.Location = new System.Drawing.Point(8, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 18;
@@ -302,7 +315,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 300);
+            this.label7.Location = new System.Drawing.Point(6, 278);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 13);
             this.label7.TabIndex = 15;
@@ -311,7 +324,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 253);
+            this.label6.Location = new System.Drawing.Point(8, 229);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 13;
@@ -319,8 +332,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Visit);
-            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.NameService);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.Duration);
@@ -329,30 +340,10 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Location = new System.Drawing.Point(351, 175);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 206);
+            this.groupBox1.Size = new System.Drawing.Size(333, 174);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация о услуге";
-            // 
-            // Visit
-            // 
-            this.Visit.FormattingEnabled = true;
-            this.Visit.Items.AddRange(new object[] {
-            "Одноразовое",
-            "Многоразовое"});
-            this.Visit.Location = new System.Drawing.Point(28, 179);
-            this.Visit.Name = "Visit";
-            this.Visit.Size = new System.Drawing.Size(280, 21);
-            this.Visit.TabIndex = 28;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(25, 156);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(126, 13);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Количество посещений";
             // 
             // NameService
             // 
@@ -413,7 +404,7 @@
             this.Discount.Controls.Add(this.label13);
             this.Discount.Controls.Add(this.Code);
             this.Discount.Controls.Add(this.label8);
-            this.Discount.Location = new System.Drawing.Point(12, 387);
+            this.Discount.Location = new System.Drawing.Point(12, 399);
             this.Discount.Name = "Discount";
             this.Discount.Size = new System.Drawing.Size(672, 116);
             this.Discount.TabIndex = 16;
@@ -471,6 +462,15 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "Код";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 186);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(122, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Возрастная категория";
+            // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,7 +510,6 @@
         private System.Windows.Forms.TextBox Date;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Middlename;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox AgeCategory;
         private System.Windows.Forms.TextBox Lastname;
@@ -539,5 +538,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox Visit;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }

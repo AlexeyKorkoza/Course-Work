@@ -6,16 +6,15 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CourseWork.Data;
 using CourseWork.Data.Models;
-using Raven.Client.Document;
 
 namespace CourseWork.Client
 {
     public partial class AddClient : Form
     {
         private readonly List<ComboBox> _listcombobox;
-        private readonly List<TextBox>  _textBoxs;
-        private readonly List<RichTextBox> _richTextBoxs; 
-        IStorage storage = new Storage();
+        private readonly List<TextBox> _textBoxs;
+        private readonly List<RichTextBox> _richTextBoxs;
+        IStorage _storage = new Storage();
         public AddClient()
         {
             try
@@ -24,7 +23,7 @@ namespace CourseWork.Client
                 Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 Date.Text = Date.Text.Replace('.', '/');
                 Date.BackColor = Color.White;
-                _textBoxs = new List<TextBox> {Lastname, NameOfClient, Middlename};
+                _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
                 //  Code,Size
                 _listcombobox = new List<ComboBox>
                 {
@@ -37,28 +36,28 @@ namespace CourseWork.Client
                     CostService,
                     Visit
                 };
-                _richTextBoxs = new List<RichTextBox> {DescriptionDiscount, DirectionDescription};
+                _richTextBoxs = new List<RichTextBox> { DescriptionDiscount, DirectionDescription };
                 foreach (var t in _listcombobox)
                 {
                     t.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
-                 var direction = storage.GetDirections();
-                    if (direction.Count > 0)
+                var direction = _storage.GetDirections();
+                if (direction.Count > 0)
+                {
+                    foreach (var t in direction)
                     {
-                        foreach (var t in direction)
+                        if (!DirectionName.Items.Contains(t.NameOfDirection))
                         {
-                            if (!DirectionName.Items.Contains(t.NameOfDirection))
-                            {
-                                DirectionName.Items.Add(t.NameOfDirection);
-                            }
+                            DirectionName.Items.Add(t.NameOfDirection);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show(@"Добавление клиента невозможно");
-                    }
+                }
+                else
+                {
+                    MessageBox.Show(@"Добавление клиента невозможно");
+                }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -115,55 +114,48 @@ namespace CourseWork.Client
                     MessageBox.Show(@"Описание не должно быть пустым!");
                     break;
                 }
-                var documentStore = new DocumentStore
-                {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Client"
-                };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-
-                    var client = new Data.Models.Client()
-                    {
-                        Lastname = Lastname.Text,
-                        Name = NameOfClient.Text,
-                        MiddleName = Middlename.Text,
-                        Date = Date.Text,
-                        AgeCategory = AgeCategory.Text,
-                        Decor = Decor.Text,
-                        Payment = Payment.Text,
-                        Directions = new[]
+                var client = new Data.Models.Client()
+                   {
+                       Id = "clients/",
+                       Lastname = Lastname.Text,
+                       Name = NameOfClient.Text,
+                       MiddleName = Middlename.Text,
+                       Date = Date.Text,
+                       AgeCategory = AgeCategory.Text,
+                       Decor = Decor.Text,
+                       Visit = Visit.Text,
+                       Payment = Payment.Text,
+                       Directions = new[]
                         {
                             new Data.Models.Direction()
                             {
+                                Id = 0.ToString(),
                                 NameOfDirection = DirectionName.Text,
                                 Description = DirectionDescription.Text
                             }
                         },
-                        Services = new[]
+                       Services = new[]
                         {
                             new Data.Models.Service()
                             {
+                                Id = 0.ToString(),
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),
                                 Cost = Convert.ToInt32(CostService.Text),
-                                Visit = Visit.Text
                             }
                         },
-                        Discounts = new[]
+                       Discounts = new[]
                         {
                             new Discount()
                             {
+                                Id = 0.ToString(),
                                 Code = Convert.ToInt32(Code.Text),
                                 DescriptionDiscount = DescriptionDiscount.Text,
                                 Size = Convert.ToInt32(Size.Text)
                             }
                         }
-                    };
-                    session.Store(client);
-                    session.SaveChanges();
-                }
+                   };
+                _storage.AddClient(client);
                 MessageBox.Show(@"Данные добавлены");
             }
             catch (Exception exception)
@@ -192,21 +184,21 @@ namespace CourseWork.Client
             Date.BackColor = Color.White;
         }
 
-       private void NameOfClient_TextChanged(object sender, EventArgs e)
+        private void NameOfClient_TextChanged(object sender, EventArgs e)
         {
-           NameOfClient.BackColor = Color.White;
+            NameOfClient.BackColor = Color.White;
         }
 
-       private void DirectionName_SelectedIndexChanged(object sender, EventArgs e)
-       {
-           var directionName = DirectionName.Text;
-           var direction = storage.GetDirectionsDirectionName(directionName);
-               foreach (var t in direction)
-               {
-                   NameService.Items.Add(t.Services[0].NameService);
-                   CostService.Items.Add(t.Services[0].Cost);
-                   Duration.Items.Add(t.Services[0].Duration);
-               }
-       }
-       }
+        private void DirectionName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var directionName = DirectionName.Text;
+            var direction = _storage.GetDirectionsDirectionName(directionName);
+            foreach (var t in direction)
+            {
+                NameService.Items.Add(t.Services[0].NameService);
+                CostService.Items.Add(t.Services[0].Cost);
+                Duration.Items.Add(t.Services[0].Duration);
+            }
+        }
     }
+}

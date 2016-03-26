@@ -83,9 +83,9 @@ namespace CourseWork.Service
                         var massive = services[i].Id.Split('/');
                         datagridViewServices.Rows[i].Cells[0].Value = Convert.ToInt32(massive[1]);
                         datagridViewServices.Rows[i].Cells[1].Value = services[i].NameOfDirection;
-                        datagridViewServices.Rows[i].Cells[2].Value = services[i].Services[0].NameService;
-                        datagridViewServices.Rows[i].Cells[3].Value = services[i].Services[0].Duration;
-                        datagridViewServices.Rows[i].Cells[4].Value = services[i].Services[0].Cost;
+                        datagridViewServices.Rows[i].Cells[2].Value = services[i].Services[i].NameService;
+                        datagridViewServices.Rows[i].Cells[3].Value = services[i].Services[i].Duration;
+                        datagridViewServices.Rows[i].Cells[4].Value = services[i].Services[i].Cost;
                     }
                 }
                 else

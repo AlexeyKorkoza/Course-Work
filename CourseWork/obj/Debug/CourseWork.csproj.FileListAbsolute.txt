@@ -77,7 +77,6 @@ C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Client
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Client.EditClient.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Client.SearchClient.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Direction.AddDirection.resources
-C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Direction.DeleteDirection.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Direction.EditDirection.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Direction.SearchDirection.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Direction.ViewDirection.resources

@@ -10,8 +10,9 @@
         public string AgeCategory { get; set; }
         public string Decor { get; set; }
         public string Payment { get; set; }
+        public string Visit { get; set; }
         public Direction[] Directions { get; set; }
         public Service[] Services { get; set; }
         public Discount[] Discounts { get; set; }
-        }
+     }
 }

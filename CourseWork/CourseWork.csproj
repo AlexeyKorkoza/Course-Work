@@ -102,12 +102,6 @@
     <Compile Include="Direction\AddDirection.Designer.cs">
       <DependentUpon>AddDirection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Direction\DeleteDirection.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Direction\DeleteDirection.Designer.cs">
-      <DependentUpon>DeleteDirection.cs</DependentUpon>
-    </Compile>
     <Compile Include="Direction\EditDirection.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,9 +186,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Direction\AddDirection.resx">
       <DependentUpon>AddDirection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Direction\DeleteDirection.resx">
-      <DependentUpon>DeleteDirection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Direction\EditDirection.resx">
       <DependentUpon>EditDirection.cs</DependentUpon>

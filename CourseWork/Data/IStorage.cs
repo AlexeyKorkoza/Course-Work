@@ -6,16 +6,19 @@ namespace CourseWork.Data
     {
         List<Models.Client> GetAllClients();
         List<Models.Client> GetClientByDate(string date);
-        void DeleteClient(int id);
+        void DeleteClient(string id);
         void UpdateClientId(Models.Client clients);
+        void AddClient(Models.Client client);
         Models.Client GetClientId(string id);
         List<Models.Direction> GetDirections();
         List<Models.Direction> GetDirectionsDirectionName(string directionName);
-        void DeleteDirection(int id);
+        void DeleteDirection(string id);
         void UpdateDirection(List<Models.Direction> direction);
+        void AddDirection(Models.Direction direction);
         List<Models.Direction> GetDirectionsDescription(string description);
         Models.Direction GetServiceId(string id);
         void UpdateService(Models.Direction service);
         void DeleteService(int id);
-        }
+        void AddService(Models.Service service, int id);
+    }
 }

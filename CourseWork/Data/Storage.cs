@@ -1,28 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Raven.Abstractions.Data;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Linq;
+using Raven.Json.Linq;
 
 namespace CourseWork.Data
 {
     public class Storage : IStorage
     {
-        private IDocumentStore _store;
-        private IDocumentStore store;
+        private IDocumentStore _storeClient;
+        private IDocumentStore _storeCenter;
         public void ConnectDbClient()
         {
-            _store = new DocumentStore
+            _storeClient = new DocumentStore
             {
                 Url = "http://localhost:8080/",
                 DefaultDatabase = "Client"
             };
-            _store.Initialize();
+            _storeClient.Initialize();
         }
         public List<Models.Client> GetAllClients()
         {
             ConnectDbClient();
-            using (var session = _store.OpenSession())
+            using (var session = _storeClient.OpenSession())
             {
                 return session.Query<Models.Client>().ToList();
             }
@@ -30,24 +32,24 @@ namespace CourseWork.Data
         public List<Models.Client> GetClientByDate(string date)
         {
             ConnectDbClient();
-            using (var session = _store.OpenSession())
+            using (var session = _storeClient.OpenSession())
             {
                 return session.Query<Models.Client>().Where(x => x.Date == date).ToList();
             }
         }
-        public void DeleteClient(int id)
+        public void DeleteClient(string id)
         {
             ConnectDbClient();
-            using (var session = _store.OpenSession())
+            using (var session = _storeClient.OpenSession())
             {
-                _store.DatabaseCommands.Delete("clients/" + id, null);
+                _storeClient.DatabaseCommands.Delete("clients/" + id, null);
                 session.SaveChanges();
             }
         }
         public Models.Client GetClientId(string id)
         {
             ConnectDbClient();
-            using (var session = _store.OpenSession())
+            using (var session = _storeClient.OpenSession())
             {
                 return session.Load<Models.Client>(id);
             }
@@ -55,59 +57,78 @@ namespace CourseWork.Data
         public void UpdateClientId(Models.Client clients)
         {
             ConnectDbClient();
-            using (var session = _store.OpenSession())
+            using (var session = _storeClient.OpenSession())
             {
                 session.Store(clients);
                 session.SaveChanges();
             }
         }
+
+        public void AddClient(Models.Client client)
+        {
+            ConnectDbClient();
+            using (var session = _storeClient.OpenSession())
+            {
+                session.Store(client);
+                session.SaveChanges();
+            }
+        }
         public void ConnectDbDirection()
         {
-            store = new DocumentStore
+            _storeCenter = new DocumentStore
             {
                 Url = "http://localhost:8080/",
                 DefaultDatabase = "Center"
             };
-            store.Initialize();
+            _storeCenter.Initialize();
         }
         public List<Models.Direction> GetDirections()
         {
             ConnectDbDirection();
-            using (var session = store.OpenSession())
+            using (var session = _storeCenter.OpenSession())
             {
-                return session.Query<Data.Models.Direction>().ToList();
+                return session.Query<Models.Direction>().ToList();
             }
         }
         public List<Models.Direction> GetDirectionsDirectionName(string directionName)
         {
             ConnectDbDirection();
-            using (var session = store.OpenSession())
+            using (var session = _storeCenter.OpenSession())
             {
                 return session.Query<Models.Direction>().Where(x => x.NameOfDirection == directionName).ToList();
             }
         }
-        public void DeleteDirection(int id)
+        public void DeleteDirection(string id)
         {
             ConnectDbDirection();
-            using (var session = store.OpenSession())
+            using (var session = _storeCenter.OpenSession())
             {
-                store.DatabaseCommands.Delete("directions/" + id, null);
+                _storeCenter.DatabaseCommands.Delete("directions/" + id, null);
                 session.SaveChanges();
             }
         }
         public void UpdateDirection(List<Models.Direction> direction)
         {
-          ConnectDbDirection();
-          using (var session = store.OpenSession())
-          {
-              session.Store(direction);
-              session.SaveChanges();
-          }
+            ConnectDbDirection();
+            using (var session = _storeCenter.OpenSession())
+            {
+                session.Store(direction);
+                session.SaveChanges();
+            }
+        }
+        public void AddDirection(Models.Direction direction)
+        {
+            ConnectDbDirection();
+            using (var session = _storeCenter.OpenSession())
+            {
+                session.Store(direction);
+                session.SaveChanges();
+            }
         }
         public List<Models.Direction> GetDirectionsDescription(string description)
         {
             ConnectDbDirection();
-            using (var session = store.OpenSession())
+            using (var session = _storeCenter.OpenSession())
             {
                 return session.Query<Models.Direction>().Where(x => x.NameOfDirection == description).ToList();
             }
@@ -115,26 +136,45 @@ namespace CourseWork.Data
         public Models.Direction GetServiceId(string id)
         {
             ConnectDbDirection();
-            using (var session = store.OpenSession())
+            using (var session = _storeCenter.OpenSession())
             {
                 return session.Load<Models.Direction>(id);
             }
         }
         public void UpdateService(Models.Direction service)
         {
-         ConnectDbDirection();
-         using (var session = store.OpenSession())
-         {
-             session.Store(service);
-             session.SaveChanges();
-         }
+            ConnectDbDirection();
+            using (var session = _storeCenter.OpenSession())
+            {
+                session.Store(service);
+                session.SaveChanges();
+            }
         }
         public void DeleteService(int id)
         {
             ConnectDbDirection();
-            using (var session = store.OpenSession())
+            using (var session = _storeCenter.OpenSession())
             {
-                store.DatabaseCommands.Delete("directions/" + id, null);
+                _storeCenter.DatabaseCommands.Delete("directions/" + id, null);
+                session.SaveChanges();
+            }
+        }
+        public void AddService(Models.Service service, int id)
+        {
+            ConnectDbDirection();
+            using (var session = _storeCenter.OpenSession())
+            {
+                _storeCenter.DatabaseCommands.Patch("directions/" + id,
+                        new[]
+                        {  
+                     new PatchRequest
+                     {
+                          Type = PatchCommandType.Add,
+                         Name = "Services",
+                        Value = RavenJObject.FromObject(service),
+                        }
+                        }
+                       );
                 session.SaveChanges();
             }
         }

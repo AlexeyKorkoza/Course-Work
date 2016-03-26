@@ -8,7 +8,7 @@ namespace CourseWork.Client
 {
     public partial class SearchClient : Form
     {
-        IStorage storage = new Storage();
+        IStorage _storage = new Storage();
         public SearchClient()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace CourseWork.Client
         {
             try
             {
-                var clients = storage.GetAllClients();
+                var clients = _storage.GetAllClients();
                 if (Functions.Text == (string)Functions.Items[0])
                 {
                     const string pattern = "[0-9]{1,}";
@@ -54,7 +54,7 @@ namespace CourseWork.Client
                             datagridViewClients.Rows[k].Cells[9].Value = t.Services[0].NameService;
                             datagridViewClients.Rows[k].Cells[10].Value = t.Services[0].Duration;
                             datagridViewClients.Rows[k].Cells[11].Value = t.Services[0].Cost;
-                            datagridViewClients.Rows[k].Cells[12].Value = t.Services[0].Visit;
+                            datagridViewClients.Rows[k].Cells[12].Value = t.Visit;
                             datagridViewClients.Rows[k].Cells[13].Value = t.Discounts[0].Code;
                             datagridViewClients.Rows[k].Cells[14].Value = t.Discounts[0].Size;
                             k++;
@@ -82,7 +82,7 @@ namespace CourseWork.Client
                             datagridViewClients.Rows[k].Cells[9].Value = t.Services[0].NameService;
                             datagridViewClients.Rows[k].Cells[10].Value = t.Services[0].Duration;
                             datagridViewClients.Rows[k].Cells[11].Value = t.Services[0].Cost;
-                            datagridViewClients.Rows[k].Cells[12].Value = t.Services[0].Visit;
+                            datagridViewClients.Rows[k].Cells[12].Value = t.Visit;
                             datagridViewClients.Rows[k].Cells[13].Value = t.Discounts[0].Code;
                             datagridViewClients.Rows[k].Cells[14].Value = t.Discounts[0].Size;
                             k++;
@@ -110,7 +110,7 @@ namespace CourseWork.Client
                             datagridViewClients.Rows[k].Cells[9].Value = t.Services[0].NameService;
                             datagridViewClients.Rows[k].Cells[10].Value = t.Services[0].Duration;
                             datagridViewClients.Rows[k].Cells[11].Value = t.Services[0].Cost;
-                            datagridViewClients.Rows[k].Cells[12].Value = t.Services[0].Visit;
+                            datagridViewClients.Rows[k].Cells[12].Value = t.Visit;
                             datagridViewClients.Rows[k].Cells[13].Value = t.Discounts[0].Code;
                             datagridViewClients.Rows[k].Cells[14].Value = t.Discounts[0].Size;
                             k++;
@@ -146,7 +146,7 @@ namespace CourseWork.Client
                             datagridViewClients.Rows[k].Cells[9].Value = t.Services[0].NameService;
                             datagridViewClients.Rows[k].Cells[10].Value = t.Services[0].Duration;
                             datagridViewClients.Rows[k].Cells[11].Value = t.Services[0].Cost;
-                            datagridViewClients.Rows[k].Cells[12].Value = t.Services[0].Visit;
+                            datagridViewClients.Rows[k].Cells[12].Value = t.Visit;
                             datagridViewClients.Rows[k].Cells[13].Value = t.Discounts[0].Code;
                             datagridViewClients.Rows[k].Cells[14].Value = t.Discounts[0].Size;
                             k++;
@@ -174,7 +174,7 @@ namespace CourseWork.Client
                             datagridViewClients.Rows[k].Cells[9].Value = t.Services[0].NameService;
                             datagridViewClients.Rows[k].Cells[10].Value = t.Services[0].Duration;
                             datagridViewClients.Rows[k].Cells[11].Value = t.Services[0].Cost;
-                            datagridViewClients.Rows[k].Cells[12].Value = t.Services[0].Visit;
+                            datagridViewClients.Rows[k].Cells[12].Value = t.Visit;
                             datagridViewClients.Rows[k].Cells[13].Value = t.Discounts[0].Code;
                             datagridViewClients.Rows[k].Cells[14].Value = t.Discounts[0].Size;
                             k++;
@@ -202,7 +202,7 @@ namespace CourseWork.Client
                             datagridViewClients.Rows[k].Cells[9].Value = t.Services[0].NameService;
                             datagridViewClients.Rows[k].Cells[10].Value = t.Services[0].Duration;
                             datagridViewClients.Rows[k].Cells[11].Value = t.Services[0].Cost;
-                            datagridViewClients.Rows[k].Cells[12].Value = t.Services[0].Visit;
+                            datagridViewClients.Rows[k].Cells[12].Value = t.Visit;
                             datagridViewClients.Rows[k].Cells[13].Value = t.Discounts[0].Code;
                             datagridViewClients.Rows[k].Cells[14].Value = t.Discounts[0].Size;
                             k++;
@@ -261,8 +261,8 @@ namespace CourseWork.Client
                             if (datagridViewClients.CurrentRow != null)
                             {
                                 var index = datagridViewClients.CurrentRow.Index;
-                                var id = (int)datagridViewClients.Rows[index].Cells[0].Value;
-                                storage.DeleteClient(id);
+                                var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
+                                _storage.DeleteClient(id);
                             }
                             MessageBox.Show(@"Данные успешно удалены!");
                             break;
@@ -285,7 +285,7 @@ namespace CourseWork.Client
         {
             if (datagridViewClients.CurrentRow == null) return;
             var index = datagridViewClients.CurrentRow.Index;
-            var id = "clients/" + (string)datagridViewClients.Rows[index].Cells[0].Value;
+            var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
             var editClient = new EditClient(id);
             editClient.Show();
         }

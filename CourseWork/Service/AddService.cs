@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CourseWork.Data;
-using Raven.Client.Document;
 
 namespace CourseWork.Service
 {
     public partial class AddService : Form
     {
-        IStorage storage = new Storage();
+        IStorage _storage = new Storage();
         private readonly List<Data.Models.Direction> _direction;
         private readonly List<TextBox> _textBoxs;
         public AddService()
@@ -18,13 +17,10 @@ namespace CourseWork.Service
             {
                 InitializeComponent();
                 _textBoxs = new List<TextBox> { NameService, Duration, CostService };
-                _direction = storage.GetDirections();
+                _direction = _storage.GetDirections();
                 foreach (var t in _direction)
                 {
-                    if (!DirectionName.Items.Contains(t.NameOfDirection))
-                    {
-                        DirectionName.Items.Add(t.NameOfDirection);
-                    }
+                    DirectionName.Items.Add(t.NameOfDirection);
                 }
                 DirectionName.DropDownStyle = ComboBoxStyle.DropDownList;
             }
@@ -68,39 +64,23 @@ namespace CourseWork.Service
                     MessageBox.Show(@"Не все поля были заполнены");
                     break;
                 }
-                var description = string.Empty;
+                var id = 0;
                 foreach (var t in _direction)
                 {
                     if (t.NameOfDirection == DirectionName.Text)
                     {
-                        description = t.Description;
+                        var massive = t.Id.Split('/');
+                        id = Convert.ToInt32(massive[1]);
                     }
                 }
-                var documentStore = new DocumentStore
+                var service = new Data.Models.Service
                 {
-                    Url = "http://localhost:8080/",
-                    DefaultDatabase = "Center"
+                    NameService = NameService.Text,
+                    Id = _direction[0].Services.Length.ToString(),
+                    Cost = Convert.ToInt32(CostService.Text),
+                    Duration = Convert.ToInt32(Duration.Text)
                 };
-                documentStore.Initialize();
-                using (var session = documentStore.OpenSession())
-                {
-                    var direction = new Data.Models.Direction()
-                    {
-                        NameOfDirection = DirectionName.Text,
-                        Description = description,
-                        Services = new[]
-                        {
-                            new Data.Models.Service()
-                            {
-                                NameService = NameService.Text,
-                                Duration = Convert.ToInt32(Duration.Text),
-                                Cost = Convert.ToInt32(CostService.Text),
-                            }
-                        }
-                    };
-                    session.Store(direction);
-                    session.SaveChanges();
-                }
+                _storage.AddService(service, id);
                 MessageBox.Show(@"Услуга была добавлена!");
             }
             catch (Exception exception)

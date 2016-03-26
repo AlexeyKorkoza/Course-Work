@@ -29,9 +29,11 @@ namespace CourseWork.Direction
                     for (var i = 0; i < direction.Count; i++)
                     {
                         datagridViewDirections.Rows.Add();
-                        datagridViewDirections.Rows[i].Cells[0].Value = direction[i].NameOfDirection;
-                        datagridViewDirections.Rows[i].Cells[1].Value = direction[i].Description;
-                     }
+                        var massive = direction[i].Id.Split('/');
+                        datagridViewDirections.Rows[i].Cells[0].Value = massive[1];
+                        datagridViewDirections.Rows[i].Cells[1].Value = direction[i].NameOfDirection;
+                        datagridViewDirections.Rows[i].Cells[2].Value = direction[i].Description;
+                    }
                 }
                 else
                 {
@@ -49,7 +51,7 @@ namespace CourseWork.Direction
             datagridViewDirections.Rows.Clear();
             View();
         }
-        
+
         private void datagridViewDirections_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var edit = new EditDirection();
@@ -58,8 +60,34 @@ namespace CourseWork.Direction
 
         private void DeleteDirection_Click(object sender, EventArgs e)
         {
-            var del = new DeleteDirection();
-            del.Show();
+            try
+            {
+                var result = MessageBox.Show(@"Вы уверены", @"Да", MessageBoxButtons.OKCancel);
+                switch (result)
+                {
+                    case DialogResult.OK:
+                        {
+                            if (datagridViewDirections.CurrentRow != null)
+                            {
+                                var index = datagridViewDirections.CurrentRow.Index;
+                                var id = (string)datagridViewDirections.Rows[index].Cells[0].Value;
+                                _storage.DeleteDirection(id);
+                            }
+                            MessageBox.Show(@"Данные успешно удалены!");
+                            break;
+                        }
+                    case DialogResult.Cancel:
+                        {
+                            break;
+                        }
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            catch
+            {
+                MessageBox.Show(@"Выберите строку для удаления");
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
