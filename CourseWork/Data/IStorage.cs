@@ -15,9 +15,6 @@ namespace CourseWork.Data
         void DeleteDirection(string id);
         void UpdateDirection(Models.Direction direction);
         void AddDirection(Models.Direction direction);
-        List<Models.Direction> GetDirectionsDescription(string description);
-        Models.Direction GetServiceId(string id);
-        void UpdateService(Models.Direction service);
         void DeleteService(int id);
         void AddService(Models.Service service, int id);
        }
