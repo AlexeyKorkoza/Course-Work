@@ -189,16 +189,31 @@ namespace CourseWork.Client
             NameOfClient.BackColor = Color.White;
         }
 
+        private Data.Models.Direction _directionByName;
         private void DirectionName_SelectedIndexChanged(object sender, EventArgs e)
         {
             var directionName = DirectionName.Text;
-            var direction = _storage.GetDirectionsDirectionName(directionName);
-            foreach (var t in direction)
-            {
-                NameService.Items.Add(t.Services[0].NameService);
-                CostService.Items.Add(t.Services[0].Cost);
-                Duration.Items.Add(t.Services[0].Duration);
+            NameService.Items.Clear();
+            CostService.Items.Clear();
+            Duration.Items.Clear();
+            _directionByName = _storage.GetDirectionsDirectionName(directionName);
+            foreach (var t1 in _directionByName.Services)
+                {
+                    NameService.Items.Add(t1.NameService);
+                }
+        }
+
+        private void NameService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CostService.Items.Clear();
+            Duration.Items.Clear();
+            foreach (var t in _directionByName.Services)
+                {
+                    if (NameService.Text != t.NameService) continue;
+                    CostService.Items.Add(t.Cost);
+                    Duration.Items.Add(t.Duration);
+                    break;
+                }
             }
         }
     }
-}

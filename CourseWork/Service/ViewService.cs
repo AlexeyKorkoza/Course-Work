@@ -79,18 +79,20 @@ namespace CourseWork.Service
                 {
                     for (var i = 0; i < services.Count; i++)
                     {
-                        datagridViewServices.Rows.Add();
-                        var massive = services[i].Id.Split('/');
-                        datagridViewServices.Rows[i].Cells[0].Value = Convert.ToInt32(massive[1]);
-                        datagridViewServices.Rows[i].Cells[1].Value = services[i].NameOfDirection;
-                        datagridViewServices.Rows[i].Cells[2].Value = services[i].Services[i].NameService;
-                        datagridViewServices.Rows[i].Cells[3].Value = services[i].Services[i].Duration;
-                        datagridViewServices.Rows[i].Cells[4].Value = services[i].Services[i].Cost;
+                        foreach (var t in services[i].Services)
+                        {
+                            datagridViewServices.Rows.Add();
+                            datagridViewServices.Rows[i].Cells[0].Value = t.Id;
+                            datagridViewServices.Rows[i].Cells[1].Value = services[i].NameOfDirection;
+                            datagridViewServices.Rows[i].Cells[2].Value = t.NameService;
+                            datagridViewServices.Rows[i].Cells[3].Value = t.Duration;
+                            datagridViewServices.Rows[i].Cells[4].Value = t.Cost;
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show(@"Список направлений пуст");
+                    MessageBox.Show(@"Список услуг пуст");
                 }
             }
             catch (Exception exception)
@@ -103,8 +105,10 @@ namespace CourseWork.Service
         {
             if (datagridViewServices.CurrentRow == null) return;
             var index = datagridViewServices.CurrentRow.Index;
-            var id = "directions/" + (string)datagridViewServices.Rows[index].Cells[0].Value;
-            var edit = new EditService(id);
+            var id = (string)datagridViewServices.Rows[index].Cells[0].Value;
+            var directionName = (string)datagridViewServices.Rows[index].Cells[1].Value;
+            var nameService = (string)datagridViewServices.Rows[index].Cells[2].Value;
+            var edit = new EditService(id,directionName,nameService);
             edit.Show();
         }
     }

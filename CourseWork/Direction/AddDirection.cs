@@ -58,7 +58,7 @@ namespace CourseWork.Direction
                         {
                             new Data.Models.Service()
                             {
-                                Id = "services/",
+                                Id = 0.ToString(),
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),
                                 Cost = Convert.ToInt32(Cost.Text),

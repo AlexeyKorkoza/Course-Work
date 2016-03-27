@@ -64,23 +64,30 @@ namespace CourseWork.Service
                     MessageBox.Show(@"Не все поля были заполнены");
                     break;
                 }
-                var id = 0;
-                foreach (var t in _direction)
+                var idDirection = 0;
+                var idService = 0;
+                foreach (var i in _direction)
                 {
-                    if (t.NameOfDirection == DirectionName.Text)
+                    if (i.NameOfDirection != DirectionName.Text) continue;
+                    var massive = i.Id.Split('/');
+                    idDirection = Convert.ToInt32(massive[1]);
+                    idService = i.Services.Length;
+                    foreach (var t in i.Services)
                     {
-                        var massive = t.Id.Split('/');
-                        id = Convert.ToInt32(massive[1]);
+                        if (t.Id == idService.ToString())
+                        {
+                            idService++;
+                        }
                     }
                 }
                 var service = new Data.Models.Service
                 {
                     NameService = NameService.Text,
-                    Id = _direction[0].Services.Length.ToString(),
+                    Id = idService.ToString(),
                     Cost = Convert.ToInt32(CostService.Text),
                     Duration = Convert.ToInt32(Duration.Text)
                 };
-                _storage.AddService(service, id);
+                _storage.AddService(service, idDirection);
                 MessageBox.Show(@"Услуга была добавлена!");
             }
             catch (Exception exception)

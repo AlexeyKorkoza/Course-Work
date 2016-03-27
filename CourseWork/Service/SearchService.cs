@@ -133,7 +133,9 @@ namespace CourseWork.Service
             if (datagridViewServices.CurrentRow == null) return;
             var index = datagridViewServices.CurrentRow.Index;
             var id = "directions/" + (string)datagridViewServices.Rows[index].Cells[0].Value;
-            var edit = new EditService(id);
+            var directionName = (string)datagridViewServices.Rows[index].Cells[1].Value;
+            var nameService = (string)datagridViewServices.Rows[index].Cells[2].Value;
+            var edit = new EditService(id,directionName,nameService);
             edit.Show();
         }
 

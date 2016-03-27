@@ -90,12 +90,12 @@ namespace CourseWork.Data
                 return session.Query<Models.Direction>().ToList();
             }
         }
-        public List<Models.Direction> GetDirectionsDirectionName(string directionName)
+        public Models.Direction GetDirectionsDirectionName(string directionName)
         {
             ConnectDbDirection();
             using (var session = _storeCenter.OpenSession())
             {
-                return session.Query<Models.Direction>().Where(x => x.NameOfDirection == directionName).ToList();
+                return session.Query<Models.Direction>().First(x => x.NameOfDirection == directionName);
             }
         }
         public void DeleteDirection(string id)
@@ -107,7 +107,7 @@ namespace CourseWork.Data
                 session.SaveChanges();
             }
         }
-        public void UpdateDirection(List<Models.Direction> direction)
+        public void UpdateDirection(Models.Direction direction)
         {
             ConnectDbDirection();
             using (var session = _storeCenter.OpenSession())
@@ -178,5 +178,5 @@ namespace CourseWork.Data
                 session.SaveChanges();
             }
         }
-    }
+     }
 }

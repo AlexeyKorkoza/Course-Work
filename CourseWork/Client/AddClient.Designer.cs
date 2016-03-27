@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.NameService = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -67,7 +68,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.Code = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.Direction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Client.SuspendLayout();
@@ -330,6 +330,15 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Способ оплаты";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 186);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(122, 13);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Возрастная категория";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.NameService);
@@ -352,6 +361,7 @@
             this.NameService.Name = "NameService";
             this.NameService.Size = new System.Drawing.Size(280, 21);
             this.NameService.TabIndex = 26;
+            this.NameService.SelectedIndexChanged += new System.EventHandler(this.NameService_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -461,15 +471,6 @@
             this.label8.Size = new System.Drawing.Size(26, 13);
             this.label8.TabIndex = 27;
             this.label8.Text = "Код";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 186);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(122, 13);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Возрастная категория";
             // 
             // AddClient
             // 

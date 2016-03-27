@@ -11,14 +11,14 @@ namespace CourseWork.Data
         void AddClient(Models.Client client);
         Models.Client GetClientId(string id);
         List<Models.Direction> GetDirections();
-        List<Models.Direction> GetDirectionsDirectionName(string directionName);
+        Models.Direction GetDirectionsDirectionName(string directionName);
         void DeleteDirection(string id);
-        void UpdateDirection(List<Models.Direction> direction);
+        void UpdateDirection(Models.Direction direction);
         void AddDirection(Models.Direction direction);
         List<Models.Direction> GetDirectionsDescription(string description);
         Models.Direction GetServiceId(string id);
         void UpdateService(Models.Direction service);
         void DeleteService(int id);
         void AddService(Models.Service service, int id);
-    }
+       }
 }

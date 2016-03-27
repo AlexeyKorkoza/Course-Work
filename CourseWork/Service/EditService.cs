@@ -9,12 +9,16 @@ namespace CourseWork.Service
     public partial class EditService : Form
     {
         private string _id;
+        private string _directionName;
+        private string _nameService;
+        private Data.Models.Direction _currentService;
         IStorage storage = new Storage();
-        public EditService(string id)
+        public EditService(string id,string directionName,string nameService)
         {
             InitializeComponent();
             _id = id;
-            DirectionName.DropDownStyle = ComboBoxStyle.DropDownList;
+            _directionName = directionName;
+            _nameService = nameService;
             NewNameService.BackColor = Color.White;
             View();
         }
@@ -50,19 +54,23 @@ namespace CourseWork.Service
                     MessageBox.Show(@"Некорректное заполнение поля!");
                     return;
                 }
-                var service = storage.GetServiceId(_id);
-                service.NameOfDirection = DirectionName.Text;
-                if (changeNameService.Checked)
+                for (int k = 0; k < _currentService.Services.Length; k++)
                 {
-                    service.Services[0].NameService = NewNameService.Text;
+                    if (_currentService.Services[k].Id == _id)
+                    {
+                        if (changeNameService.Checked)
+                        {
+                            _currentService.Services[k].NameService = NewNameService.Text;
+                        }
+                        else
+                        {
+                            _currentService.Services[k].NameService = NameService.Text;
+                        }
+                        _currentService.Services[k].Cost = Convert.ToInt32(CostService.Text);
+                        _currentService.Services[k].Duration = Convert.ToInt32(Duration.Text);
+                        storage.UpdateDirection(_currentService);
+                    }
                 }
-                else
-                {
-                    service.Services[0].NameService = NameService.Text;
-                }
-                service.Services[0].Duration = Convert.ToInt32(Duration.Text);
-                service.Services[0].Cost = Convert.ToInt32(CostService.Text);
-                storage.UpdateService(service);
                 MessageBox.Show(@"Услуга успешно редактирована");
             }
             catch (Exception exception)
@@ -75,18 +83,13 @@ namespace CourseWork.Service
         {
             try
             {
-                var service = storage.GetServiceId(_id);
-                DirectionName.Text = service.NameOfDirection;
-                NameService.Text = service.Services[0].NameService;
-                Duration.Text = service.Services[0].Duration.ToString();
-                CostService.Text = service.Services[0].Cost.ToString();
-                var direction = storage.GetDirections();
-                foreach (var t in direction)
+                _currentService = storage.GetDirectionsDirectionName(_directionName);
+                foreach (var t in _currentService.Services)
                 {
-                    if (!DirectionName.Items.Contains(t.NameOfDirection))
-                    {
-                        DirectionName.Items.Add(t.NameOfDirection);
-                    }
+                    if (t.NameService != _nameService) continue;
+                    NameService.Text = t.NameService;
+                    CostService.Text = t.Cost.ToString();
+                    Duration.Text = t.Duration.ToString();
                 }
             }
             catch (Exception exception)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using CourseWork.Data;
 
@@ -35,12 +34,8 @@ namespace CourseWork.Direction
                 _direction = storage.GetDirections();
                 foreach (var t in _direction)
                 {
-                    if (!DirectionName.Items.Contains(t.NameOfDirection))
-                    {
                         DirectionName.Items.Add(t.NameOfDirection);
-                    }
                 }
-
                 DirectionName.DropDownStyle = ComboBoxStyle.DropDownList;
             }
             catch (Exception exception)
@@ -51,14 +46,15 @@ namespace CourseWork.Direction
 
         private void DirectionName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Description.Text = string.Empty;
             try
             {
                 Description.Text = string.Empty;
-                for (var i = 0; i < _direction.Count; i++)
+                foreach (var t in _direction)
                 {
-                    if (_direction[i].NameOfDirection == DirectionName.Text)
+                    if (t.NameOfDirection == DirectionName.Text)
                     {
-                        Description.Text = _direction[i].Description;
+                        Description.Text = t.Description;
                     }
                 }
             }
@@ -95,22 +91,18 @@ namespace CourseWork.Direction
                         return;
                     }
                 }
-                //var direction = storage.GetDirectionsDirectionName(DirectionName.Text);
-                //foreach (var t in direction)
-                //{
-                //    if (ChangeDirectionName.Checked)
-                //    {
-                //        t.NameOfDirection = NewDirection.Text;
-                //    }
-                //    else
-                //    {
-                //        t.NameOfDirection = DirectionName.Text;
-                //    }
-                //    t.Description = Description.Text;
-                //}
-                /*BUG*/
-                //storage.UpdateDirection(direction);
-
+                var editDirection = storage.GetDirectionsDirectionName(DirectionName.Text);
+                if (ChangeDirectionName.Checked)
+                {
+                    editDirection.NameOfDirection = NewDirection.Text;
+                }
+                else
+                {
+                    editDirection.NameOfDirection = DirectionName.Text;
+                }
+                editDirection.Description = Description.Text;
+                storage.UpdateDirection(editDirection);
+                MessageBox.Show(@"Данные успешно отредактированы!");
             }
             catch (Exception exception)
             {
