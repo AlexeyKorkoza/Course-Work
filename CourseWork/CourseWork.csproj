@@ -120,6 +120,7 @@
     <Compile Include="Direction\ViewDirection.Designer.cs">
       <DependentUpon>ViewDirection.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileExtension\FileExtension.cs" />
     <Compile Include="Input\CheckInput.cs" />
     <Compile Include="Input\Admin.cs" />
     <Compile Include="Input\InputOfAdmin.cs">
@@ -145,6 +146,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reading\IReading.cs" />
+    <Compile Include="Reading\CSVReading.cs" />
+    <Compile Include="Reading\TXTReader.cs" />
     <Compile Include="Service\AddService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +179,8 @@
     <Compile Include="Settings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Writer\IWriter.cs" />
+    <Compile Include="Writer\Writer.cs" />
     <EmbeddedResource Include="Client\AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>

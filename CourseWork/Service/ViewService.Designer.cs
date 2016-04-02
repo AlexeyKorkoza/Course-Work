@@ -39,6 +39,8 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileExtension = new System.Windows.Forms.Button();
+            this.inputServices = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewServices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,11 +146,26 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // FileExtension
+            // 
+            this.FileExtension.Location = new System.Drawing.Point(582, 203);
+            this.FileExtension.Name = "FileExtension";
+            this.FileExtension.Size = new System.Drawing.Size(111, 37);
+            this.FileExtension.TabIndex = 18;
+            this.FileExtension.Text = "Добавить услугу из файла";
+            this.FileExtension.UseVisualStyleBackColor = true;
+            this.FileExtension.Click += new System.EventHandler(this.FileExtension_Click);
+            // 
+            // inputServices
+            // 
+            this.inputServices.FileName = "inputServices";
+            // 
             // ViewService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 261);
+            this.Controls.Add(this.FileExtension);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Refresh);
             this.Controls.Add(this.Search);
@@ -175,5 +192,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button FileExtension;
+        private System.Windows.Forms.OpenFileDialog inputServices;
     }
 }

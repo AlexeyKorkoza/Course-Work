@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using CourseWork.Data;
+using CourseWork.Properties;
 
 namespace CourseWork.Service
 {
     public partial class ViewService : Form
     {
         IStorage _storage = new Storage();
+        List<Data.Models.Direction> _list = new List<Data.Models.Direction>();
+        OpenFileDialog _open;
         public ViewService()
         {
             InitializeComponent();
@@ -110,6 +114,51 @@ namespace CourseWork.Service
             var nameService = (string)datagridViewServices.Rows[index].Cells[2].Value;
             var edit = new EditService(id,directionName,nameService);
             edit.Show();
+        }
+
+        private void FileExtension_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var file = new FileExtension.FileExtension();
+                _open = new OpenFileDialog { Filter = Resources.ViewService_FileExtension_Click____csv____txt____csv___txt };
+                _open.ShowDialog();
+                var currentservices = _storage.GetDirections();
+                if (_open.FileName != "")
+                {
+                    if (_open.ShowDialog() != DialogResult.OK) return;
+                    _list = file.LoadingServices(_open.FileName);
+                    foreach (var t in currentservices)
+                    {
+                        for (var k = 0; k < _list.Count; k++)
+                        {
+                            if (t.NameOfDirection != _list[k].NameOfDirection) continue;
+                            var idService = t.Services.Length;
+                            if (idService == 0)
+                            {
+                                idService = 1;
+                            }
+                            else
+                            {
+                                idService++;
+                            }
+                            var service = new Data.Models.Service
+                            {
+                                NameService = _list[k].Services[k].NameService,
+                                Id = idService.ToString(),
+                                Cost = Convert.ToInt32(_list[k].Services[k].Cost),
+                                Duration = Convert.ToInt32(_list[k].Services[k].Duration)
+                            };
+                            var massive = t.Id.Split('/');
+                            _storage.AddService(service, Convert.ToInt32(massive[1]));
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }

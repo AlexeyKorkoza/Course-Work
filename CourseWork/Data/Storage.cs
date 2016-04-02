@@ -153,5 +153,5 @@ namespace CourseWork.Data
                 session.SaveChanges();
             }
         }
-     }
+    }
 }
