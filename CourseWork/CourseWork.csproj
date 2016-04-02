@@ -169,10 +169,10 @@
     <Compile Include="Service\ViewService.Designer.cs">
       <DependentUpon>ViewService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs">
+    <Compile Include="Settings\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
+    <Compile Include="Settings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Client\AddClient.resx">
@@ -220,7 +220,7 @@
     <EmbeddedResource Include="Service\ViewService.resx">
       <DependentUpon>ViewService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings.resx">
+    <EmbeddedResource Include="Settings\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

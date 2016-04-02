@@ -74,12 +74,17 @@ namespace CourseWork.Service
                     idService = i.Services.Length;
                     foreach (var t in i.Services)
                     {
-                        if (t.Id == idService.ToString())
+                        if (t.Id == idService.ToString() && idService!=0)
                         {
                             idService++;
                         }
                     }
                 }
+                if (idService == 0)
+                {
+                    idService++;
+                }
+
                 var service = new Data.Models.Service
                 {
                     NameService = NameService.Text,

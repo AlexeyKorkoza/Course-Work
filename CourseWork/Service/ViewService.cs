@@ -77,16 +77,16 @@ namespace CourseWork.Service
                 var services = _storage.GetDirections();
                 if (services.Count > 0)
                 {
-                    for (var i = 0; i < services.Count; i++)
+                    foreach (var t in services)
                     {
-                        foreach (var t in services[i].Services)
+                        for(var k = 0; k < t.Services.Length;k++)
                         {
                             datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[i].Cells[0].Value = t.Id;
-                            datagridViewServices.Rows[i].Cells[1].Value = services[i].NameOfDirection;
-                            datagridViewServices.Rows[i].Cells[2].Value = t.NameService;
-                            datagridViewServices.Rows[i].Cells[3].Value = t.Duration;
-                            datagridViewServices.Rows[i].Cells[4].Value = t.Cost;
+                            datagridViewServices.Rows[k].Cells[0].Value = t.Services[k].Id;
+                            datagridViewServices.Rows[k].Cells[1].Value = t.NameOfDirection;
+                            datagridViewServices.Rows[k].Cells[2].Value = t.Services[k].NameService;
+                            datagridViewServices.Rows[k].Cells[3].Value = t.Services[k].Duration;
+                            datagridViewServices.Rows[k].Cells[4].Value = t.Services[k].Cost;
                         }
                     }
                 }
