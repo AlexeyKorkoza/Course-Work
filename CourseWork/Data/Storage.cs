@@ -125,12 +125,23 @@ namespace CourseWork.Data
                 session.SaveChanges();
             }
         }
-        public void DeleteService(int id)
+        public void DeleteService(int idDirection, int idService)
         {
             ConnectDbDirection();
             using (var session = _storeCenter.OpenSession())
             {
-                _storeCenter.DatabaseCommands.Delete("directions/" + id, null);
+                _storeCenter.DatabaseCommands.Patch("directions/" + idDirection,
+                        new[]
+                        {  
+                     new PatchRequest
+                     {
+                         /*BUG for deleting*/
+                          Type = PatchCommandType.Unset,
+                         //Name = "Services",
+                        Position = idService
+                        }
+                        }
+                       );
                 session.SaveChanges();
             }
         }

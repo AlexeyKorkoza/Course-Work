@@ -179,8 +179,6 @@
     <Compile Include="Settings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Writer\IWriter.cs" />
-    <Compile Include="Writer\Writer.cs" />
     <EmbeddedResource Include="Client\AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>

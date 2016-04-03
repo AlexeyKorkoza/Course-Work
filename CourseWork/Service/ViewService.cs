@@ -10,6 +10,7 @@ namespace CourseWork.Service
     {
         IStorage _storage = new Storage();
         List<Data.Models.Direction> _list = new List<Data.Models.Direction>();
+        List<Data.Models.Direction> services = new List<Data.Models.Direction>();
         OpenFileDialog _open;
         public ViewService()
         {
@@ -35,8 +36,17 @@ namespace CourseWork.Service
                                 if (datagridViewServices.CurrentRow != null)
                                 {
                                     var index = datagridViewServices.CurrentRow.Index;
-                                    var id = (int) datagridViewServices.Rows[index].Cells[0].Value;
-                                    _storage.DeleteService(id);
+                                    var idService = (string) datagridViewServices.Rows[index].Cells[0].Value;
+                                    var idDirection = 0;
+                                    foreach (var t in services)
+                                    {
+                                        if (t.NameOfDirection == (string) datagridViewServices.Rows[index].Cells[1].Value)
+                                        {
+                                            var massive = t.Id.Split('/');
+                                            idDirection = Convert.ToInt32(massive[1]);
+                                        }
+                                    }
+                                    _storage.DeleteService(idDirection,Convert.ToInt32(idService));
                                     MessageBox.Show(@"Данные успешно удалены!");
                                 }
                                 break;
@@ -78,7 +88,7 @@ namespace CourseWork.Service
             try
             {
                 datagridViewServices.Rows.Clear();
-                var services = _storage.GetDirections();
+                services = _storage.GetDirections();
                 if (services.Count > 0)
                 {
                     foreach (var t in services)
@@ -124,34 +134,32 @@ namespace CourseWork.Service
                 _open = new OpenFileDialog { Filter = Resources.ViewService_FileExtension_Click____csv____txt____csv___txt };
                 _open.ShowDialog();
                 var currentservices = _storage.GetDirections();
-                if (_open.FileName != "")
+                if (_open.FileName == "") return;
+                if (_open.ShowDialog() != DialogResult.OK) return;
+                _list = file.LoadingServices(_open.FileName);
+                foreach (var t in currentservices)
                 {
-                    if (_open.ShowDialog() != DialogResult.OK) return;
-                    _list = file.LoadingServices(_open.FileName);
-                    foreach (var t in currentservices)
+                    for (var k = 0; k < _list.Count; k++)
                     {
-                        for (var k = 0; k < _list.Count; k++)
+                        if (t.NameOfDirection != _list[k].NameOfDirection) continue;
+                        var idService = t.Services.Length + k;
+                        if (idService == 0)
                         {
-                            if (t.NameOfDirection != _list[k].NameOfDirection) continue;
-                            var idService = t.Services.Length;
-                            if (idService == 0)
-                            {
-                                idService = 1;
-                            }
-                            else
-                            {
-                                idService++;
-                            }
-                            var service = new Data.Models.Service
-                            {
-                                NameService = _list[k].Services[k].NameService,
-                                Id = idService.ToString(),
-                                Cost = Convert.ToInt32(_list[k].Services[k].Cost),
-                                Duration = Convert.ToInt32(_list[k].Services[k].Duration)
-                            };
-                            var massive = t.Id.Split('/');
-                            _storage.AddService(service, Convert.ToInt32(massive[1]));
+                            idService = 1;
                         }
+                        else
+                        {
+                            idService++;
+                        }
+                        var service = new Data.Models.Service
+                        {
+                            NameService = _list[k].Services[0].NameService,
+                            Id = idService.ToString(),
+                            Cost = Convert.ToInt32(_list[k].Services[0].Cost),
+                            Duration = Convert.ToInt32(_list[k].Services[0].Duration)
+                        };
+                        var massive = t.Id.Split('/');
+                        _storage.AddService(service, Convert.ToInt32(massive[1]));
                     }
                 }
             }

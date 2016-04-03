@@ -82,7 +82,7 @@ namespace CourseWork.Service
                 }
                 if (idService == 0)
                 {
-                    idService++;
+                    idService = 1;
                 }
 
                 var service = new Data.Models.Service
