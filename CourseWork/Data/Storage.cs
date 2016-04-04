@@ -130,18 +130,28 @@ namespace CourseWork.Data
             ConnectDbDirection();
             using (var session = _storeCenter.OpenSession())
             {
+                var j = 0;
+                var services = GetDirections();
+                foreach (var t in services)
+                {
+                    for (var k = 0; k < t.Services.Length; k++)
+                    {
+                        if (t.Services[k].Id != idService.ToString()) continue;
+                        j = k;
+                        break;
+                    }
+                }
                 _storeCenter.DatabaseCommands.Patch("directions/" + idDirection,
-                        new[]
-                        {  
-                     new PatchRequest
-                     {
-                         /*BUG for deleting*/
-                          Type = PatchCommandType.Unset,
-                         //Name = "Services",
-                        Position = idService
-                        }
-                        }
-                       );
+                new[]
+                { 
+                    new PatchRequest
+                    {
+                    Type = PatchCommandType.Remove,
+                    Name = "Services",
+                    Position = j
+                    }
+                    }
+                );
                 session.SaveChanges();
             }
         }
