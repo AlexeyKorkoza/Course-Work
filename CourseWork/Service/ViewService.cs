@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CourseWork.Data;
 using CourseWork.Properties;
-using CourseWork.Reading;
 
 namespace CourseWork.Service
 {
     public partial class ViewService : Form
     {
-        IStorage _storage = new Storage();
+        readonly IStorage _storage = new Storage();
+        readonly Random _random = new Random();
         List<Data.Models.Direction> _list = new List<Data.Models.Direction>();
-        List<Data.Models.Direction> services = new List<Data.Models.Direction>();
-        OpenFileDialog _open;
+        List<Data.Models.Direction> _services = new List<Data.Models.Direction>();
+        private OpenFileDialog _open;
         public ViewService()
         {
             InitializeComponent();
@@ -29,39 +29,39 @@ namespace CourseWork.Service
         {
             try
             {
-                var result = MessageBox.Show(@"Вы уверены", @"Да", MessageBoxButtons.OKCancel);
-                    switch (result)
-                    {
-                        case DialogResult.OK:
+                var result = MessageBox.Show(@"Вы уверены", @"", MessageBoxButtons.OKCancel);
+                switch (result)
+                {
+                    case DialogResult.OK:
+                        {
+                            if (datagridViewServices.CurrentRow != null)
                             {
-                                if (datagridViewServices.CurrentRow != null)
+                                var index = datagridViewServices.CurrentRow.Index;
+                                var idService = (string)datagridViewServices.Rows[index].Cells[0].Value;
+                                var idDirection = 0;
+                                foreach (var t in _services)
                                 {
-                                    var index = datagridViewServices.CurrentRow.Index;
-                                    var idService = (string) datagridViewServices.Rows[index].Cells[0].Value;
-                                    var idDirection = 0;
-                                    foreach (var t in services)
+                                    if (t.NameOfDirection == (string)datagridViewServices.Rows[index].Cells[1].Value)
                                     {
-                                        if (t.NameOfDirection == (string) datagridViewServices.Rows[index].Cells[1].Value)
-                                        {
-                                            var massive = t.Id.Split('/');
-                                            idDirection = Convert.ToInt32(massive[1]);
-                                        }
+                                        var massive = t.Id.Split('/');
+                                        idDirection = Convert.ToInt32(massive[1]);
                                     }
-                                    _storage.DeleteService(idDirection,Convert.ToInt32(idService));
-                                    MessageBox.Show(@"Данные успешно удалены!");
                                 }
-                                break;
+                                _storage.DeleteService(idDirection, Convert.ToInt32(idService));
+                                MessageBox.Show(@"Данные успешно удалены!");
                             }
-                        case DialogResult.Cancel:
-                            {
-                                break;
-                            }
-                        default:
-                            throw new ArgumentOutOfRangeException();
+                            break;
+                        }
+                    case DialogResult.Cancel:
+                        {
+                            break;
+                        }
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
 
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
             }
@@ -89,12 +89,12 @@ namespace CourseWork.Service
             try
             {
                 datagridViewServices.Rows.Clear();
-                services = _storage.GetDirections();
-                if (services.Count > 0)
+                _services = _storage.GetDirections();
+                if (_services.Count > 0)
                 {
-                    foreach (var t in services)
+                    foreach (var t in _services)
                     {
-                        for(var k = 0; k < t.Services.Count;k++)
+                        for (var k = 0; k < t.Services.Count; k++)
                         {
                             datagridViewServices.Rows.Add();
                             datagridViewServices.Rows[k].Cells[0].Value = Convert.ToInt32(t.Services[k].Id);
@@ -123,7 +123,7 @@ namespace CourseWork.Service
             var id = (string)datagridViewServices.Rows[index].Cells[0].Value;
             var directionName = (string)datagridViewServices.Rows[index].Cells[1].Value;
             var nameService = (string)datagridViewServices.Rows[index].Cells[2].Value;
-            var edit = new EditService(id,directionName,nameService);
+            var edit = new EditService(id, directionName, nameService);
             edit.Show();
         }
 
@@ -146,22 +146,17 @@ namespace CourseWork.Service
                         for (var k = 0; k < _list.Count; k++)
                         {
                             if (t.NameOfDirection != _list[k].NameOfDirection) continue;
-                            var idService = t.Services.Count;
-                            if (idService == 0)
-                            {
-                                idService = 1;
-                            }
+                            var value = _random.Next(1, 500);
                             for (var i = 0; i < t.Services.Count; i++)
                             {
-                                if (idService == Convert.ToInt32(t.Services[i].Id) &&  idService != 1)
-                                {
-                                    idService++;
-                                }
+                                if (value != Convert.ToInt32(t.Services[i].Id)) continue;
+                                value = 0;
+                                i--;
                             }
                             var service = new Data.Models.Service
                             {
                                 NameService = _list[k].Services[0].NameService,
-                                Id = idService.ToString(),
+                                Id = value.ToString(),
                                 Cost = Convert.ToInt32(_list[k].Services[0].Cost),
                                 Duration = Convert.ToInt32(_list[k].Services[0].Duration)
                             };
@@ -172,55 +167,30 @@ namespace CourseWork.Service
                 }
                 if (array[1] == "json")
                 {
-                    var z = 0;
                     foreach (var t in currentservices)
                     {
                         for (var k = 0; k < _list.Count; k++)
                         {
-                            if(t.NameOfDirection != _list[k].NameOfDirection) continue;
-                            var idService = t.Services.Count;
-                            var countServices = _list[k].Services.Count;
-                            if (idService == 0)
-                            {
-                                idService = 1;
-                            }
+                            if (t.NameOfDirection != _list[k].NameOfDirection) continue;
                             for (var j = 0; j < _list[k].Services.Count; j++)
                             {
+                                var value = _random.Next(1, 500);
                                 for (var i = 0; i < t.Services.Count; i++)
                                 {
-                                    if (idService == Convert.ToInt32(t.Services[i].Id) && idService != 1)
-                                    {
-                                        idService++;
-                                    }
+                                    if (value != Convert.ToInt32(t.Services[i].Id)) continue;
+                                    value = 0;
+                                    i--;
                                 }
-                                if (z < countServices)
+                                var service = new Data.Models.Service
                                 {
-                                    var service = new Data.Models.Service
-                                    {
-                                        NameService = _list[k].Services[z].NameService,
-                                        Id = idService.ToString(),
-                                        Cost = Convert.ToInt32(_list[k].Services[z].Cost),
-                                        Duration = Convert.ToInt32(_list[k].Services[z].Duration)
-                                    };
-                                    var massive = t.Id.Split('/');
-                                    _storage.AddService(service, Convert.ToInt32(massive[1]));
-                                    z++;
-                                }
-                                currentservices = _storage.GetDirections();
+                                    NameService = _list[k].Services[j].NameService,
+                                    Id = value.ToString(),
+                                    Cost = Convert.ToInt32(_list[k].Services[j].Cost),
+                                    Duration = Convert.ToInt32(_list[k].Services[j].Duration)
+                                };
+                                var massive = t.Id.Split('/');
+                                _storage.AddService(service, Convert.ToInt32(massive[1]));
                             }
-
-                            //for (var j = 0; j < _list[k].Services.Count; j++)
-                            //{
-                            //    var service = new Data.Models.Service
-                            //    {
-                            //        NameService = _list[k].Services[j].NameService,
-                            //        Id = idService.ToString(),
-                            //        Cost = Convert.ToInt32(_list[k].Services[j].Cost),
-                            //        Duration = Convert.ToInt32(_list[k].Services[j].Duration)
-                            //    };
-                            //    var massive = t.Id.Split('/');
-                            //    _storage.AddService(service, Convert.ToInt32(massive[1]));
-                            //}
                         }
                     }
                 }

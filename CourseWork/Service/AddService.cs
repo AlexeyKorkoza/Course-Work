@@ -8,7 +8,7 @@ namespace CourseWork.Service
 {
     public partial class AddService : Form
     {
-        IStorage _storage = new Storage();
+        readonly IStorage _storage = new Storage();
         private readonly List<Data.Models.Direction> _direction;
         private readonly List<TextBox> _textBoxs;
         public AddService()
@@ -74,7 +74,7 @@ namespace CourseWork.Service
                     idService = i.Services.Count;
                     foreach (var t in i.Services)
                     {
-                        if (t.Id == idService.ToString() && idService!=0)
+                        if (t.Id == idService.ToString() && idService != 0)
                         {
                             idService++;
                         }

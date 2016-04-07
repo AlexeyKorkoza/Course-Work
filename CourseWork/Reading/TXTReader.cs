@@ -19,7 +19,7 @@ namespace CourseWork.Reading
                     var services = new Data.Models.Direction
                     {
                         NameOfDirection = array[0],
-                        Services =  new List<Data.Models.Service>()
+                        Services = new List<Data.Models.Service>()
                         {
                             new Data.Models.Service()
                             {

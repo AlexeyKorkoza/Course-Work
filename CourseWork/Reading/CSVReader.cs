@@ -18,8 +18,8 @@ namespace CourseWork.Reading
                     var array = line.Split(',', '\t');
                     var services = new Data.Models.Direction
                     {
-                       NameOfDirection = array[0],
-                       Services =  new List<Data.Models.Service>()
+                        NameOfDirection = array[0],
+                        Services = new List<Data.Models.Service>()
                         {
                             new Data.Models.Service()
                             {
@@ -29,7 +29,7 @@ namespace CourseWork.Reading
                             }
                         },
                     };
-                   list.Add(services);
+                    list.Add(services);
                 }
             }
             catch (Exception ex)

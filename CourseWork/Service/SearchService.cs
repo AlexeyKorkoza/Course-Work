@@ -7,13 +7,13 @@ namespace CourseWork.Service
 {
     public partial class SearchService : Form
     {
-        IStorage _storage = new Storage();
+        readonly IStorage _storage = new Storage();
         public SearchService()
         {
             InitializeComponent();
             Functions.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-         
+
         private void Search_Click(object sender, EventArgs e)
         {
             try
@@ -31,7 +31,7 @@ namespace CourseWork.Service
                 var services = _storage.GetDirections();
                 const string pattern = "[0-9]{1,}";
                 var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-                if (Functions.Text == (string) Functions.Items[0])
+                if (Functions.Text == (string)Functions.Items[0])
                 {
                     var match = regex.Match(SearchStr.Text);
                     if (!match.Success)
@@ -135,7 +135,7 @@ namespace CourseWork.Service
             var id = "directions/" + (string)datagridViewServices.Rows[index].Cells[0].Value;
             var directionName = (string)datagridViewServices.Rows[index].Cells[1].Value;
             var nameService = (string)datagridViewServices.Rows[index].Cells[2].Value;
-            var edit = new EditService(id,directionName,nameService);
+            var edit = new EditService(id, directionName, nameService);
             edit.Show();
         }
 

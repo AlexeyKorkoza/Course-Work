@@ -8,11 +8,11 @@ namespace CourseWork.Service
 {
     public partial class EditService : Form
     {
-        private string _id;
-        private string _directionName;
-        private string _nameService;
+        private readonly string _id;
+        private readonly string _directionName;
+        private readonly string _nameService;
         private Data.Models.Direction _currentService;
-        IStorage storage = new Storage();
+        readonly IStorage _storage = new Storage();
         public EditService(string id,string directionName,string nameService)
         {
             InitializeComponent();
@@ -54,7 +54,7 @@ namespace CourseWork.Service
                     MessageBox.Show(@"Некорректное заполнение поля!");
                     return;
                 }
-                for (int k = 0; k < _currentService.Services.Count; k++)
+                for (var k = 0; k < _currentService.Services.Count; k++)
                 {
                     if (_currentService.Services[k].Id == _id)
                     {
@@ -68,7 +68,7 @@ namespace CourseWork.Service
                         }
                         _currentService.Services[k].Cost = Convert.ToInt32(CostService.Text);
                         _currentService.Services[k].Duration = Convert.ToInt32(Duration.Text);
-                        storage.UpdateDirection(_currentService);
+                        _storage.UpdateDirection(_currentService);
                     }
                 }
                 MessageBox.Show(@"Услуга успешно редактирована");
@@ -83,7 +83,7 @@ namespace CourseWork.Service
         {
             try
             {
-                _currentService = storage.GetDirectionsDirectionName(_directionName);
+                _currentService = _storage.GetDirectionsDirectionName(_directionName);
                 foreach (var t in _currentService.Services)
                 {
                     if (t.NameService != _nameService) continue;
