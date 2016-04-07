@@ -4,7 +4,7 @@ using System.IO;
 
 namespace CourseWork.Reading
 {
-    public class TxtReader : IReader
+    public class CsvReader : IReader
     {
         public List<Data.Models.Direction> ReadServices(string path)
         {
@@ -15,11 +15,11 @@ namespace CourseWork.Reading
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    var array = line.Split(' ', '\t');
+                    var array = line.Split(',', '\t');
                     var services = new Data.Models.Direction
                     {
-                        NameOfDirection = array[0],
-                        Services =  new List<Data.Models.Service>()
+                       NameOfDirection = array[0],
+                       Services =  new List<Data.Models.Service>()
                         {
                             new Data.Models.Service()
                             {
@@ -29,7 +29,7 @@ namespace CourseWork.Reading
                             }
                         },
                     };
-                    list.Add(services);
+                   list.Add(services);
                 }
             }
             catch (Exception ex)

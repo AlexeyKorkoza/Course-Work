@@ -54,7 +54,7 @@ namespace CourseWork.Service
                     MessageBox.Show(@"Некорректное заполнение поля!");
                     return;
                 }
-                for (int k = 0; k < _currentService.Services.Length; k++)
+                for (int k = 0; k < _currentService.Services.Count; k++)
                 {
                     if (_currentService.Services[k].Id == _id)
                     {

@@ -1,4 +1,6 @@
-﻿namespace CourseWork.Data.Models
+﻿using System.Collections.Generic;
+
+namespace CourseWork.Data.Models
 {
     public class Client
     {
@@ -11,8 +13,8 @@
         public string Decor { get; set; }
         public string Payment { get; set; }
         public string Visit { get; set; }
-        public Direction[] Directions { get; set; }
-        public Service[] Services { get; set; }
-        public Discount[] Discounts { get; set; }
+        public List<Direction> Directions { get; set; }
+        public List<Service> Services { get; set; }
+        public List<Discount> Discounts { get; set; }
      }
 }

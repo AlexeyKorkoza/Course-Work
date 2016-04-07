@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using CourseWork.Data;
 using CourseWork.Properties;
+using CourseWork.Reading;
 
 namespace CourseWork.Service
 {
@@ -93,10 +94,10 @@ namespace CourseWork.Service
                 {
                     foreach (var t in services)
                     {
-                        for(var k = 0; k < t.Services.Length;k++)
+                        for(var k = 0; k < t.Services.Count;k++)
                         {
                             datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[k].Cells[0].Value = t.Services[k].Id;
+                            datagridViewServices.Rows[k].Cells[0].Value = Convert.ToInt32(t.Services[k].Id);
                             datagridViewServices.Rows[k].Cells[1].Value = t.NameOfDirection;
                             datagridViewServices.Rows[k].Cells[2].Value = t.Services[k].NameService;
                             datagridViewServices.Rows[k].Cells[3].Value = t.Services[k].Duration;
@@ -137,29 +138,90 @@ namespace CourseWork.Service
                 if (_open.FileName == "") return;
                 if (_open.ShowDialog() != DialogResult.OK) return;
                 _list = file.LoadingServices(_open.FileName);
-                foreach (var t in currentservices)
+                var array = _open.FileName.Split('.');
+                if (array[1] == "csv" || array[1] == "txt")
                 {
-                    for (var k = 0; k < _list.Count; k++)
+                    foreach (var t in currentservices)
                     {
-                        if (t.NameOfDirection != _list[k].NameOfDirection) continue;
-                        var idService = t.Services.Length + k;
-                        if (idService == 0)
+                        for (var k = 0; k < _list.Count; k++)
                         {
-                            idService = 1;
+                            if (t.NameOfDirection != _list[k].NameOfDirection) continue;
+                            var idService = t.Services.Count;
+                            if (idService == 0)
+                            {
+                                idService = 1;
+                            }
+                            for (var i = 0; i < t.Services.Count; i++)
+                            {
+                                if (idService == Convert.ToInt32(t.Services[i].Id) &&  idService != 1)
+                                {
+                                    idService++;
+                                }
+                            }
+                            var service = new Data.Models.Service
+                            {
+                                NameService = _list[k].Services[0].NameService,
+                                Id = idService.ToString(),
+                                Cost = Convert.ToInt32(_list[k].Services[0].Cost),
+                                Duration = Convert.ToInt32(_list[k].Services[0].Duration)
+                            };
+                            var massive = t.Id.Split('/');
+                            _storage.AddService(service, Convert.ToInt32(massive[1]));
                         }
-                        else
+                    }
+                }
+                if (array[1] == "json")
+                {
+                    var z = 0;
+                    foreach (var t in currentservices)
+                    {
+                        for (var k = 0; k < _list.Count; k++)
                         {
-                            idService++;
+                            if(t.NameOfDirection != _list[k].NameOfDirection) continue;
+                            var idService = t.Services.Count;
+                            var countServices = _list[k].Services.Count;
+                            if (idService == 0)
+                            {
+                                idService = 1;
+                            }
+                            for (var j = 0; j < _list[k].Services.Count; j++)
+                            {
+                                for (var i = 0; i < t.Services.Count; i++)
+                                {
+                                    if (idService == Convert.ToInt32(t.Services[i].Id) && idService != 1)
+                                    {
+                                        idService++;
+                                    }
+                                }
+                                if (z < countServices)
+                                {
+                                    var service = new Data.Models.Service
+                                    {
+                                        NameService = _list[k].Services[z].NameService,
+                                        Id = idService.ToString(),
+                                        Cost = Convert.ToInt32(_list[k].Services[z].Cost),
+                                        Duration = Convert.ToInt32(_list[k].Services[z].Duration)
+                                    };
+                                    var massive = t.Id.Split('/');
+                                    _storage.AddService(service, Convert.ToInt32(massive[1]));
+                                    z++;
+                                }
+                                currentservices = _storage.GetDirections();
+                            }
+
+                            //for (var j = 0; j < _list[k].Services.Count; j++)
+                            //{
+                            //    var service = new Data.Models.Service
+                            //    {
+                            //        NameService = _list[k].Services[j].NameService,
+                            //        Id = idService.ToString(),
+                            //        Cost = Convert.ToInt32(_list[k].Services[j].Cost),
+                            //        Duration = Convert.ToInt32(_list[k].Services[j].Duration)
+                            //    };
+                            //    var massive = t.Id.Split('/');
+                            //    _storage.AddService(service, Convert.ToInt32(massive[1]));
+                            //}
                         }
-                        var service = new Data.Models.Service
-                        {
-                            NameService = _list[k].Services[0].NameService,
-                            Id = idService.ToString(),
-                            Cost = Convert.ToInt32(_list[k].Services[0].Cost),
-                            Duration = Convert.ToInt32(_list[k].Services[0].Duration)
-                        };
-                        var massive = t.Id.Split('/');
-                        _storage.AddService(service, Convert.ToInt32(massive[1]));
                     }
                 }
             }

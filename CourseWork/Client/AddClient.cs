@@ -125,7 +125,7 @@ namespace CourseWork.Client
                        Decor = Decor.Text,
                        Visit = Visit.Text,
                        Payment = Payment.Text,
-                       Directions = new[]
+                       Directions = new List<Data.Models.Direction>()
                         {
                             new Data.Models.Direction()
                             {
@@ -134,7 +134,7 @@ namespace CourseWork.Client
                                 Description = DirectionDescription.Text
                             }
                         },
-                       Services = new[]
+                       Services = new List<Data.Models.Service>()
                         {
                             new Data.Models.Service()
                             {
@@ -144,7 +144,7 @@ namespace CourseWork.Client
                                 Cost = Convert.ToInt32(CostService.Text),
                             }
                         },
-                       Discounts = new[]
+                       Discounts = new List<Discount>()
                         {
                             new Discount()
                             {

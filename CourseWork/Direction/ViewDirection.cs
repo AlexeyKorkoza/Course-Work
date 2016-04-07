@@ -30,7 +30,7 @@ namespace CourseWork.Direction
                     {
                         datagridViewDirections.Rows.Add();
                         var massive = direction[i].Id.Split('/');
-                        datagridViewDirections.Rows[i].Cells[0].Value = massive[1];
+                        datagridViewDirections.Rows[i].Cells[0].Value = Convert.ToInt32(massive[1]);
                         datagridViewDirections.Rows[i].Cells[1].Value = direction[i].NameOfDirection;
                         datagridViewDirections.Rows[i].Cells[2].Value = direction[i].Description;
                     }

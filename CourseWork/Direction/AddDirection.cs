@@ -54,7 +54,7 @@ namespace CourseWork.Direction
                         Id = "directions/",
                         NameOfDirection = DirectionName.Text,
                         Description = Description.Text,
-                        Services = new[]
+                        Services = new List<Data.Models.Service>()
                         {
                             new Data.Models.Service()
                             {

@@ -134,7 +134,7 @@ namespace CourseWork.Data
                 var services = GetDirections();
                 foreach (var t in services)
                 {
-                    for (var k = 0; k < t.Services.Length; k++)
+                    for (var k = 0; k < t.Services.Count; k++)
                     {
                         if (t.Services[k].Id != idService.ToString()) continue;
                         j = k;

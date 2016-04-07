@@ -7,17 +7,22 @@ namespace CourseWork.FileExtension
     {
         public List<Data.Models.Direction> LoadingServices(string path)
         {
-            IReading reader;
+            IReader reader;
             var list = new List<Data.Models.Direction>();
             var maStrings = path.Split('.');
             if (maStrings[1] == "txt")
             {
-                reader = new TxtReader();
-                list = reader.ReadServices(path);
+               reader = new TxtReader();
+               list =  reader.ReadServices(path);
             }
             if (maStrings[1] == "csv")
             {
-                reader = new CsvReading();
+                reader = new CsvReader();
+               list = reader.ReadServices(path);
+            }
+            if (maStrings[1] == "json")
+            {
+                reader = new JsonReader();
                 list = reader.ReadServices(path);
             }
             return list;

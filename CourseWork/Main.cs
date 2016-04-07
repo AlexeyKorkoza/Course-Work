@@ -105,7 +105,7 @@ namespace CourseWork
                     {
                         datagridViewClients.Rows.Add();
                         var massive = clients[i].Id.Split('/');
-                        datagridViewClients.Rows[i].Cells[0].Value = massive[1];
+                        datagridViewClients.Rows[i].Cells[0].Value = Convert.ToInt32(massive[1]);
                         datagridViewClients.Rows[i].Cells[1].Value = clients[i].Lastname;
                         datagridViewClients.Rows[i].Cells[2].Value = clients[i].Name;
                         datagridViewClients.Rows[i].Cells[3].Value = clients[i].MiddleName;

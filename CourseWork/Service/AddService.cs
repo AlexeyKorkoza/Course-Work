@@ -71,7 +71,7 @@ namespace CourseWork.Service
                     if (i.NameOfDirection != DirectionName.Text) continue;
                     var massive = i.Id.Split('/');
                     idDirection = Convert.ToInt32(massive[1]);
-                    idService = i.Services.Length;
+                    idService = i.Services.Count;
                     foreach (var t in i.Services)
                     {
                         if (t.Id == idService.ToString() && idService!=0)
