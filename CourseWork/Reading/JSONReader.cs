@@ -12,5 +12,11 @@ namespace CourseWork.Reading
             var dir = JsonConvert.DeserializeObject<List<Data.Models.Direction>>(json);
             return dir;
         }
+
+        public List<Data.Models.Client> ReadClients(string path)
+        {
+            var list = new List<Data.Models.Client>();
+            return list;
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace CourseWork.Client
 {
     public partial class EditClient : Form
     {
-        IStorage storage = new Storage();
+        readonly IStorage _storage = new Storage();
         private string Id { get; set; }
         public EditClient(string id)
         {
@@ -19,7 +19,7 @@ namespace CourseWork.Client
         {
             try
             {
-                var clients = storage.GetClientId(Id);
+                var clients = _storage.GetClientId(Id);
                 clients.Lastname = Lastname.Text;
                 clients.Name = NameOfClient.Text;
                 clients.MiddleName = Middlename.Text;
@@ -34,9 +34,8 @@ namespace CourseWork.Client
                 clients.Services[0].Cost = Convert.ToInt32(CostService.Text);
                 clients.Visit = Visit.Text;
                 clients.Discounts[0].Code = Convert.ToInt32(Code.Text);
-                clients.Discounts[0].DescriptionDiscount = DescriptionDiscount.Text;
                 clients.Discounts[0].Size = Convert.ToInt32(Size.Text);
-                storage.UpdateClientId(clients);
+                _storage.UpdateClientId(clients);
                 MessageBox.Show(@"Данные успешно обновлены!");
             }
             catch (Exception exception)
@@ -53,7 +52,7 @@ namespace CourseWork.Client
         {
             try
             {
-                var clients = storage.GetClientId(Id);
+                var clients = _storage.GetClientId(Id);
                 Lastname.Text = clients.Lastname;
                 NameOfClient.Text = clients.Name;
                 Middlename.Text = clients.MiddleName;
@@ -68,7 +67,6 @@ namespace CourseWork.Client
                 CostService.Text = clients.Services[0].Cost.ToString();
                 Visit.Text = clients.Visit;
                 Code.Text = clients.Discounts[0].Code.ToString();
-                DescriptionDiscount.Text = clients.Discounts[0].DescriptionDiscount;
                 Size.Text = clients.Discounts[0].Size.ToString();
             }
             catch (Exception exception)

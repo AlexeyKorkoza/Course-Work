@@ -62,8 +62,6 @@
             this.CostService = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Discount = new System.Windows.Forms.GroupBox();
-            this.DescriptionDiscount = new System.Windows.Forms.RichTextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.Size = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Code = new System.Windows.Forms.ComboBox();
@@ -77,7 +75,7 @@
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(243, 521);
+            this.Add.Location = new System.Drawing.Point(240, 477);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(75, 34);
             this.Add.TabIndex = 10;
@@ -87,7 +85,7 @@
             // 
             // Close
             // 
-            this.Close.Location = new System.Drawing.Point(334, 521);
+            this.Close.Location = new System.Drawing.Point(334, 477);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(75, 34);
             this.Close.TabIndex = 11;
@@ -408,40 +406,21 @@
             // 
             // Discount
             // 
-            this.Discount.Controls.Add(this.DescriptionDiscount);
-            this.Discount.Controls.Add(this.label14);
             this.Discount.Controls.Add(this.Size);
             this.Discount.Controls.Add(this.label13);
             this.Discount.Controls.Add(this.Code);
             this.Discount.Controls.Add(this.label8);
             this.Discount.Location = new System.Drawing.Point(12, 399);
             this.Discount.Name = "Discount";
-            this.Discount.Size = new System.Drawing.Size(672, 116);
+            this.Discount.Size = new System.Drawing.Size(672, 72);
             this.Discount.TabIndex = 16;
             this.Discount.TabStop = false;
             this.Discount.Text = "Информация о скидке";
             // 
-            // DescriptionDiscount
-            // 
-            this.DescriptionDiscount.Location = new System.Drawing.Point(322, 32);
-            this.DescriptionDiscount.Name = "DescriptionDiscount";
-            this.DescriptionDiscount.Size = new System.Drawing.Size(280, 70);
-            this.DescriptionDiscount.TabIndex = 32;
-            this.DescriptionDiscount.Text = "";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(319, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Описание";
-            // 
             // Size
             // 
             this.Size.FormattingEnabled = true;
-            this.Size.Location = new System.Drawing.Point(11, 81);
+            this.Size.Location = new System.Drawing.Point(339, 32);
             this.Size.Name = "Size";
             this.Size.Size = new System.Drawing.Size(280, 21);
             this.Size.TabIndex = 30;
@@ -449,7 +428,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 65);
+            this.label13.Location = new System.Drawing.Point(336, 16);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 29;
@@ -476,7 +455,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 555);
+            this.ClientSize = new System.Drawing.Size(696, 518);
             this.Controls.Add(this.Discount);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Direction);
@@ -535,8 +514,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox Size;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.RichTextBox DescriptionDiscount;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox Visit;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;

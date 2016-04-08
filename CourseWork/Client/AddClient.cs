@@ -14,7 +14,7 @@ namespace CourseWork.Client
         private readonly List<ComboBox> _listcombobox;
         private readonly List<TextBox> _textBoxs;
         private readonly List<RichTextBox> _richTextBoxs;
-        IStorage _storage = new Storage();
+        readonly IStorage _storage = new Storage();
         public AddClient()
         {
             try
@@ -36,7 +36,7 @@ namespace CourseWork.Client
                     CostService,
                     Visit
                 };
-                _richTextBoxs = new List<RichTextBox> { DescriptionDiscount, DirectionDescription };
+                _richTextBoxs = new List<RichTextBox> { DirectionDescription };
                 foreach (var t in _listcombobox)
                 {
                     t.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -148,9 +148,7 @@ namespace CourseWork.Client
                         {
                             new Discount()
                             {
-                                Id = 0.ToString(),
                                 Code = Convert.ToInt32(Code.Text),
-                                DescriptionDiscount = DescriptionDiscount.Text,
                                 Size = Convert.ToInt32(Size.Text)
                             }
                         }

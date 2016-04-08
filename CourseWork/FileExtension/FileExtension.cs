@@ -28,9 +28,27 @@ namespace CourseWork.FileExtension
             return list;
         }
 
-        //public List<Data.Models.Direction> LoadingClients(string path)
-        //{
-           
-        //}
+        public List<Data.Models.Client> LoadingClients(string path)
+        {
+            IReader reader;
+            var list = new List<Data.Models.Client>();
+            var maStrings = path.Split('.');
+            if (maStrings[1] == "txt")
+            {
+                reader = new TxtReader();
+                list = reader.ReadClients(path);
+            }
+            if (maStrings[1] == "csv")
+            {
+                reader = new CsvReader();
+                list = reader.ReadClients(path);
+            }
+            if (maStrings[1] == "json")
+            {
+                reader = new JsonReader();
+                list = reader.ReadClients(path);
+            }
+            return list;
+        }
     }
 }

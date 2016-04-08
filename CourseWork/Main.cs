@@ -1,17 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 using CourseWork.Client;
 using CourseWork.Data;
 using CourseWork.Direction;
 using CourseWork.Input;
+using CourseWork.Properties;
 using CourseWork.Service;
 
 namespace CourseWork
 {
     public partial class Main : Form
     {
-        IStorage _storage = new Storage();
+        private List<Data.Models.Client> _list = new List<Data.Models.Client>();
+        private OpenFileDialog _open;
+        readonly IStorage _storage = new Storage();
         public Main()
         {
             try
@@ -190,6 +194,66 @@ namespace CourseWork
         {
             var view = new ViewService();
             view.Show();
+        }
+
+        private void AddClientFromFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var file = new FileExtension.FileExtension();
+                _open = new OpenFileDialog
+                {
+                    Filter = Resources.ViewService_FileExtension_Click____csv____txt____csv___txt
+                };
+                _open.ShowDialog();
+                if (_open.FileName == "") return;
+                if (_open.ShowDialog() != DialogResult.OK) return;
+                _list = file.LoadingClients(_open.FileName);
+                for (var k = 0; k < _list.Count; k++)
+                {
+                    var client = new Data.Models.Client
+                    {
+                        Id = "clients/",
+                        Lastname = _list[k].Lastname,
+                        Name = _list[k].Name,
+                        MiddleName = _list[k].MiddleName,
+                        Date = _list[k].Date,
+                        AgeCategory = _list[k].AgeCategory,
+                        Decor = _list[k].Decor,
+                        Payment = _list[k].Payment,
+                        Visit = _list[k].Visit,
+                        Directions = new List<Data.Models.Direction>()
+                        {
+                            new Data.Models.Direction()
+                            {
+                                NameOfDirection = _list[k].Directions[0].NameOfDirection
+                            }
+                        },
+                        Services = new List<Data.Models.Service>()
+                        {
+                            new Data.Models.Service()
+                            {
+                               NameService = _list[k].Services[0].NameService,
+                               Cost = _list[k].Services[0].Cost,
+                               Duration = _list[k].Services[0].Duration
+                            }
+                        },
+                        Discounts = new List<Data.Models.Discount>()
+                        {
+                            new Data.Models.Discount()
+                            {
+                              Code = _list[k].Discounts[0].Code,
+                              Size = _list[k].Discounts[0].Size
+                            }
+                        }
+                    };
+                    _storage.AddClient(client);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }
