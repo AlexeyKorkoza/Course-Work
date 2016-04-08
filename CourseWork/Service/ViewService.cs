@@ -139,7 +139,7 @@ namespace CourseWork.Service
                 if (_open.ShowDialog() != DialogResult.OK) return;
                 _list = file.LoadingServices(_open.FileName);
                 var array = _open.FileName.Split('.');
-                if (array[1] == "csv" || array[1] == "txt")
+                if (array[1] == "csv")
                 {
                     foreach (var t in currentservices)
                     {

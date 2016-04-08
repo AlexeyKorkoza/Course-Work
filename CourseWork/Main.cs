@@ -117,11 +117,11 @@ namespace CourseWork
                         datagridViewClients.Rows[i].Cells[4].Value = clients[i].Date;
                         datagridViewClients.Rows[i].Cells[6].Value = clients[i].Payment;
                         datagridViewClients.Rows[i].Cells[7].Value = clients[i].Decor;
-                        datagridViewClients.Rows[i].Cells[8].Value = clients[i].Directions[0].NameOfDirection;
-                        datagridViewClients.Rows[i].Cells[9].Value = clients[i].Services[0].NameService;
-                        datagridViewClients.Rows[i].Cells[10].Value = clients[i].Services[0].Duration;
-                        datagridViewClients.Rows[i].Cells[11].Value = clients[i].Services[0].Cost;
-                        datagridViewClients.Rows[i].Cells[12].Value = clients[i].Visit;
+                        datagridViewClients.Rows[i].Cells[8].Value = clients[i].Visit;
+                        datagridViewClients.Rows[i].Cells[9].Value = clients[i].Directions[0].NameOfDirection;
+                        datagridViewClients.Rows[i].Cells[10].Value = clients[i].Services[0].NameService;
+                        datagridViewClients.Rows[i].Cells[11].Value = clients[i].Services[0].Duration;
+                        datagridViewClients.Rows[i].Cells[12].Value = clients[i].Services[0].Cost;
                         datagridViewClients.Rows[i].Cells[13].Value = clients[i].Discounts[0].Code;
                         datagridViewClients.Rows[i].Cells[14].Value = clients[i].Discounts[0].Size;
                     }
@@ -209,43 +209,43 @@ namespace CourseWork
                 if (_open.FileName == "") return;
                 if (_open.ShowDialog() != DialogResult.OK) return;
                 _list = file.LoadingClients(_open.FileName);
-                for (var k = 0; k < _list.Count; k++)
+                foreach (var t in _list)
                 {
                     var client = new Data.Models.Client
                     {
                         Id = "clients/",
-                        Lastname = _list[k].Lastname,
-                        Name = _list[k].Name,
-                        MiddleName = _list[k].MiddleName,
-                        Date = _list[k].Date,
-                        AgeCategory = _list[k].AgeCategory,
-                        Decor = _list[k].Decor,
-                        Payment = _list[k].Payment,
-                        Visit = _list[k].Visit,
+                        Lastname = t.Lastname,
+                        Name = t.Name,
+                        MiddleName = t.MiddleName,
+                        Date = t.Date,
+                        AgeCategory = t.AgeCategory,
+                        Decor = t.Decor,
+                        Payment = t.Payment,
+                        Visit = t.Visit,
                         Directions = new List<Data.Models.Direction>()
-                        {
-                            new Data.Models.Direction()
                             {
-                                NameOfDirection = _list[k].Directions[0].NameOfDirection
-                            }
-                        },
+                                new Data.Models.Direction()
+                                {
+                                    NameOfDirection = t.Directions[0].NameOfDirection
+                                }
+                            },
                         Services = new List<Data.Models.Service>()
-                        {
-                            new Data.Models.Service()
                             {
-                               NameService = _list[k].Services[0].NameService,
-                               Cost = _list[k].Services[0].Cost,
-                               Duration = _list[k].Services[0].Duration
-                            }
-                        },
+                                new Data.Models.Service()
+                                {
+                                    NameService = t.Services[0].NameService,
+                                    Cost = t.Services[0].Cost,
+                                    Duration = t.Services[0].Duration
+                                }
+                            },
                         Discounts = new List<Data.Models.Discount>()
-                        {
-                            new Data.Models.Discount()
                             {
-                              Code = _list[k].Discounts[0].Code,
-                              Size = _list[k].Discounts[0].Size
+                                new Data.Models.Discount()
+                                {
+                                    Code = t.Discounts[0].Code,
+                                    Size = t.Discounts[0].Size
+                                }
                             }
-                        }
                     };
                     _storage.AddClient(client);
                 }

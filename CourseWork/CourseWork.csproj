@@ -153,7 +153,6 @@
     <Compile Include="Reading\IReader.cs" />
     <Compile Include="Reading\CSVReader.cs" />
     <Compile Include="Reading\JSONReader.cs" />
-    <Compile Include="Reading\TXTReader.cs" />
     <Compile Include="Service\AddService.cs">
       <SubType>Form</SubType>
     </Compile>

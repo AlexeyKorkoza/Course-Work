@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using CourseWork.Data;
+using CourseWork.Properties;
 
 namespace CourseWork.Direction
 {
     public partial class ViewDirection : Form
     {
-        IStorage _storage = new Storage();
+        private List<Data.Models.Direction> _list = new List<Data.Models.Direction>();
+        private OpenFileDialog _open;
+        readonly IStorage _storage = new Storage();
         public ViewDirection()
         {
             InitializeComponent();
@@ -99,6 +103,45 @@ namespace CourseWork.Direction
         {
             var search = new SearchDirection();
             search.Show();
+        }
+
+        private void AddDirectionsFromFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var file = new FileExtension.FileExtension();
+                _open = new OpenFileDialog
+                {
+                    Filter = Resources.ViewService_FileExtension_Click____csv____txt____csv___txt
+                };
+                _open.ShowDialog();
+                if (_open.FileName == "") return;
+                if (_open.ShowDialog() != DialogResult.OK) return;
+                _list = file.LoadingDirections(_open.FileName);
+                foreach (var t in _list)
+                {
+                    var direction = new Data.Models.Direction
+                    {
+                        NameOfDirection = t.NameOfDirection,
+                        Description = t.Description,
+                        Services = new List<Data.Models.Service>()
+                        {
+                            new Data.Models.Service()
+                            {
+                                Id = "directions/",
+                                NameService = t.Services[0].NameService,
+                                Cost = t.Services[0].Cost,
+                                Duration = t.Services[0].Duration
+                            }
+                        }
+                    };
+                    _storage.AddDirection(direction);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }

@@ -37,6 +37,7 @@
             this.Search = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.Refresh = new System.Windows.Forms.Button();
+            this.AddDirectionsFromFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewDirections)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             this.datagridViewDirections.Name = "datagridViewDirections";
             this.datagridViewDirections.ReadOnly = true;
             this.datagridViewDirections.RowHeadersVisible = false;
-            this.datagridViewDirections.Size = new System.Drawing.Size(383, 206);
+            this.datagridViewDirections.Size = new System.Drawing.Size(384, 265);
             this.datagridViewDirections.TabIndex = 4;
             this.datagridViewDirections.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.datagridViewDirections_MouseDoubleClick);
             // 
@@ -128,11 +129,22 @@
             this.Refresh.UseVisualStyleBackColor = true;
             this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
             // 
+            // AddDirectionsFromFile
+            // 
+            this.AddDirectionsFromFile.Location = new System.Drawing.Point(415, 236);
+            this.AddDirectionsFromFile.Name = "AddDirectionsFromFile";
+            this.AddDirectionsFromFile.Size = new System.Drawing.Size(97, 54);
+            this.AddDirectionsFromFile.TabIndex = 17;
+            this.AddDirectionsFromFile.Text = "Добавить направления из файла";
+            this.AddDirectionsFromFile.UseVisualStyleBackColor = true;
+            this.AddDirectionsFromFile.Click += new System.EventHandler(this.AddDirectionsFromFile_Click);
+            // 
             // ViewDirection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 262);
+            this.ClientSize = new System.Drawing.Size(536, 302);
+            this.Controls.Add(this.AddDirectionsFromFile);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Refresh);
             this.Controls.Add(this.Search);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Button AddDirectionsFromFile;
 
     }
 }

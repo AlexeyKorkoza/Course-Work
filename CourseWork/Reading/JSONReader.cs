@@ -15,8 +15,16 @@ namespace CourseWork.Reading
 
         public List<Data.Models.Client> ReadClients(string path)
         {
-            var list = new List<Data.Models.Client>();
-            return list;
+            var json = File.ReadAllText(path);
+            var client = JsonConvert.DeserializeObject<List<Data.Models.Client>>(json);
+            return client;
+        }
+
+        public List<Data.Models.Direction> ReadDirections(string path)
+        {
+            var json = File.ReadAllText(path);
+            var dir = JsonConvert.DeserializeObject<List<Data.Models.Direction>>(json);
+            return dir;
         }
     }
 }

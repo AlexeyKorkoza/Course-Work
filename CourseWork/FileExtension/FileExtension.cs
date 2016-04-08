@@ -10,11 +10,6 @@ namespace CourseWork.FileExtension
             IReader reader;
             var list = new List<Data.Models.Direction>();
             var maStrings = path.Split('.');
-            if (maStrings[1] == "txt")
-            {
-               reader = new TxtReader();
-               list =  reader.ReadServices(path);
-            }
             if (maStrings[1] == "csv")
             {
                 reader = new CsvReader();
@@ -33,11 +28,6 @@ namespace CourseWork.FileExtension
             IReader reader;
             var list = new List<Data.Models.Client>();
             var maStrings = path.Split('.');
-            if (maStrings[1] == "txt")
-            {
-                reader = new TxtReader();
-                list = reader.ReadClients(path);
-            }
             if (maStrings[1] == "csv")
             {
                 reader = new CsvReader();
@@ -47,6 +37,24 @@ namespace CourseWork.FileExtension
             {
                 reader = new JsonReader();
                 list = reader.ReadClients(path);
+            }
+            return list;
+        }
+
+        public List<Data.Models.Direction> LoadingDirections(string path)
+        {
+            IReader reader;
+            var list = new List<Data.Models.Direction>();
+            var maStrings = path.Split('.');
+            if (maStrings[1] == "csv")
+            {
+                reader = new CsvReader();
+                list = reader.ReadDirections(path);
+            }
+            if (maStrings[1] == "json")
+            {
+                reader = new JsonReader();
+                list = reader.ReadDirections(path);
             }
             return list;
         }

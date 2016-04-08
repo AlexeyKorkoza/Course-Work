@@ -43,7 +43,6 @@ namespace CourseWork.Reading
             }
             return list;
         }
-
         public List<Data.Models.Client> ReadClients(string path)
         {
             var list = new List<Data.Models.Client>();
@@ -88,6 +87,43 @@ namespace CourseWork.Reading
                                 Size = Convert.ToInt32(array[13])
                             }
                         }
+                    };
+                    list.Add(services);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sr.Close();
+            }
+            return list;
+        }
+        public List<Data.Models.Direction> ReadDirections(string path)
+        {
+            var list = new List<Data.Models.Direction>();
+            var sr = new StreamReader(path);
+            try
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    var array = line.Split(',', '\t');
+                    var services = new Data.Models.Direction
+                    {
+                        NameOfDirection = array[0],
+                        Description = array[1],
+                        Services = new List<Data.Models.Service>()
+                        {
+                            new Data.Models.Service()
+                            {
+                                NameService = array[2],
+                                Duration = int.Parse(array[3]),
+                                Cost = int.Parse(array[4])
+                            }
+                        },
                     };
                     list.Add(services);
                 }
