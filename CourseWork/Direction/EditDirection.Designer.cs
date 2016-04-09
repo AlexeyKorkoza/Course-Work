@@ -161,7 +161,7 @@
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Add);
             this.Name = "EditDirection";
-            this.Text = "EditDirection";
+            this.Text = "Редактирования направления";
             this.DirectionAdd.ResumeLayout(false);
             this.DirectionAdd.PerformLayout();
             this.ResumeLayout(false);

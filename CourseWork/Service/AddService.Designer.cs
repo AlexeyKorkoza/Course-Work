@@ -32,14 +32,14 @@
             this.DirectionName = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CostService = new System.Windows.Forms.TextBox();
+            this.Duration = new System.Windows.Forms.TextBox();
+            this.NameService = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Add = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
-            this.NameService = new System.Windows.Forms.TextBox();
-            this.Duration = new System.Windows.Forms.TextBox();
-            this.CostService = new System.Windows.Forms.TextBox();
             this.Direction.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,29 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация о услуге";
+            // 
+            // CostService
+            // 
+            this.CostService.Location = new System.Drawing.Point(28, 122);
+            this.CostService.Name = "CostService";
+            this.CostService.Size = new System.Drawing.Size(280, 20);
+            this.CostService.TabIndex = 28;
+            this.CostService.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CostService_KeyPress);
+            // 
+            // Duration
+            // 
+            this.Duration.Location = new System.Drawing.Point(28, 83);
+            this.Duration.Name = "Duration";
+            this.Duration.Size = new System.Drawing.Size(280, 20);
+            this.Duration.TabIndex = 27;
+            this.Duration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Duration_KeyPress);
+            // 
+            // NameService
+            // 
+            this.NameService.Location = new System.Drawing.Point(28, 43);
+            this.NameService.Name = "NameService";
+            this.NameService.Size = new System.Drawing.Size(280, 20);
+            this.NameService.TabIndex = 26;
             // 
             // label9
             // 
@@ -134,27 +157,6 @@
             this.Cancel.UseVisualStyleBackColor = true;
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
-            // NameService
-            // 
-            this.NameService.Location = new System.Drawing.Point(28, 43);
-            this.NameService.Name = "NameService";
-            this.NameService.Size = new System.Drawing.Size(280, 20);
-            this.NameService.TabIndex = 26;
-            // 
-            // Duration
-            // 
-            this.Duration.Location = new System.Drawing.Point(28, 83);
-            this.Duration.Name = "Duration";
-            this.Duration.Size = new System.Drawing.Size(280, 20);
-            this.Duration.TabIndex = 27;
-            // 
-            // CostService
-            // 
-            this.CostService.Location = new System.Drawing.Point(28, 122);
-            this.CostService.Name = "CostService";
-            this.CostService.Size = new System.Drawing.Size(280, 20);
-            this.CostService.TabIndex = 28;
-            // 
             // AddService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,7 +167,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Direction);
             this.Name = "AddService";
-            this.Text = "AddService";
+            this.Text = "Добавление услуги";
             this.Direction.ResumeLayout(false);
             this.Direction.PerformLayout();
             this.groupBox1.ResumeLayout(false);

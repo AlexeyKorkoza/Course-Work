@@ -7,11 +7,12 @@ namespace CourseWork.Direction
 {
     public partial class SearchDirection : Form
     {
-        IStorage _storage = new Storage();
+        private readonly IStorage _storage = new Storage();
         public SearchDirection()
         {
             InitializeComponent();
             DeleteDirection.Enabled = false;
+            Functions.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -53,6 +54,7 @@ namespace CourseWork.Direction
                         datagridViewDirections.Rows[i].Cells[1].Value = direction[i].NameOfDirection;
                         datagridViewDirections.Rows[i].Cells[2].Value = direction[i].Description;
                     }
+                    DeleteDirection.Enabled = true;
                 }
                 if (Functions.Text == (string)Functions.Items[1])
                 {
@@ -65,6 +67,7 @@ namespace CourseWork.Direction
                         datagridViewDirections.Rows[i].Cells[1].Value = direction[i].NameOfDirection;
                         datagridViewDirections.Rows[i].Cells[2].Value = direction[i].Description;
                     }
+                    DeleteDirection.Enabled = true;
                 }
                 if (Functions.Text == (string) Functions.Items[2])
                 {
@@ -77,6 +80,7 @@ namespace CourseWork.Direction
                         datagridViewDirections.Rows[i].Cells[1].Value = direction[i].NameOfDirection;
                         datagridViewDirections.Rows[i].Cells[2].Value = direction[i].Description;
                     }
+                    DeleteDirection.Enabled = true;
                 }
             }
             catch (Exception exception)
@@ -115,6 +119,12 @@ namespace CourseWork.Direction
             {
                 MessageBox.Show(@"Выберите строку для удаления");
             }    
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datagridViewDirections.Rows.Clear();
+            DeleteDirection.Enabled = false;
         }
     }
 }

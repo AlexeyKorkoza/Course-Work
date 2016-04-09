@@ -183,7 +183,7 @@
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(372, 285);
+            this.Search.Location = new System.Drawing.Point(372, 262);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(94, 37);
             this.Search.TabIndex = 5;
@@ -193,7 +193,7 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(472, 285);
+            this.Cancel.Location = new System.Drawing.Point(472, 262);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(75, 37);
             this.Cancel.TabIndex = 6;
@@ -264,7 +264,7 @@
             // 
             // Delete
             // 
-            this.Delete.Location = new System.Drawing.Point(251, 285);
+            this.Delete.Location = new System.Drawing.Point(270, 262);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(96, 37);
             this.Delete.TabIndex = 13;
@@ -288,7 +288,7 @@
             this.Controls.Add(this.Search);
             this.Controls.Add(this.datagridViewClients);
             this.Name = "SearchClient";
-            this.Text = "SearchClient";
+            this.Text = "Поиск клиента";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

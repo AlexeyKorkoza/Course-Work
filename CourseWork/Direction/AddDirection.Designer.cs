@@ -120,7 +120,7 @@
             this.AddService.Controls.Add(this.label2);
             this.AddService.Controls.Add(this.Duration);
             this.AddService.Controls.Add(this.NameService);
-            this.AddService.Location = new System.Drawing.Point(399, 12);
+            this.AddService.Location = new System.Drawing.Point(362, 12);
             this.AddService.Name = "AddService";
             this.AddService.Size = new System.Drawing.Size(399, 180);
             this.AddService.TabIndex = 16;
@@ -142,6 +142,7 @@
             this.Cost.Name = "Cost";
             this.Cost.Size = new System.Drawing.Size(372, 20);
             this.Cost.TabIndex = 6;
+            this.Cost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cost_KeyPress);
             // 
             // label3
             // 
@@ -167,6 +168,7 @@
             this.Duration.Name = "Duration";
             this.Duration.Size = new System.Drawing.Size(372, 20);
             this.Duration.TabIndex = 2;
+            this.Duration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Duration_KeyPress);
             // 
             // NameService
             // 
@@ -179,13 +181,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 257);
+            this.ClientSize = new System.Drawing.Size(771, 257);
             this.Controls.Add(this.AddService);
             this.Controls.Add(this.DirectionAdd);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Add);
             this.Name = "AddDirection";
-            this.Text = "AddDirection";
+            this.Text = "Добавление направления";
             this.DirectionAdd.ResumeLayout(false);
             this.DirectionAdd.PerformLayout();
             this.AddService.ResumeLayout(false);

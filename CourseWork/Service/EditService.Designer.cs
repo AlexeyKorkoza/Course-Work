@@ -115,6 +115,7 @@
             this.CostService.Name = "CostService";
             this.CostService.Size = new System.Drawing.Size(280, 20);
             this.CostService.TabIndex = 28;
+            this.CostService.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CostService_KeyPress);
             // 
             // Duration
             // 
@@ -122,6 +123,7 @@
             this.Duration.Name = "Duration";
             this.Duration.Size = new System.Drawing.Size(280, 20);
             this.Duration.TabIndex = 27;
+            this.Duration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Duration_KeyPress);
             // 
             // NameService
             // 
@@ -167,7 +169,7 @@
             this.Controls.Add(this.Edit);
             this.Controls.Add(this.groupBox1);
             this.Name = "EditService";
-            this.Text = "EditService";
+            this.Text = "Редактирование услуги";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

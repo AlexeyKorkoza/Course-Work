@@ -173,7 +173,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.datagridViewServices);
             this.Name = "ViewService";
-            this.Text = "ViewService";
+            this.Text = "Редактирование услуги";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewServices)).EndInit();
             this.ResumeLayout(false);
 

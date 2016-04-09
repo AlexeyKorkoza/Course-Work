@@ -28,25 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.button1 = new System.Windows.Forms.Button();
-            this.NavigationMenu = new System.Windows.Forms.MenuStrip();
             this.datagridViewClients = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.Center = new System.Windows.Forms.NotifyIcon(this.components);
-            this.CurrentDate = new System.Windows.Forms.TextBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ViewDirections = new System.Windows.Forms.Button();
-            this.ViewServices = new System.Windows.Forms.Button();
-            this.AddClientFromFile = new System.Windows.Forms.Button();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +45,18 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.CurrentDate = new System.Windows.Forms.TextBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ViewDirections = new System.Windows.Forms.Button();
+            this.ViewServices = new System.Windows.Forms.Button();
+            this.AddClientFromFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,14 +70,6 @@
             this.button1.Text = "Настройки";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // NavigationMenu
-            // 
-            this.NavigationMenu.Location = new System.Drawing.Point(0, 0);
-            this.NavigationMenu.Name = "NavigationMenu";
-            this.NavigationMenu.Size = new System.Drawing.Size(1362, 24);
-            this.NavigationMenu.TabIndex = 1;
-            this.NavigationMenu.Text = "menuStrip1";
             // 
             // datagridViewClients
             // 
@@ -114,137 +101,6 @@
             this.datagridViewClients.Size = new System.Drawing.Size(1375, 179);
             this.datagridViewClients.TabIndex = 2;
             this.datagridViewClients.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.datagridViewClients_MouseDoubleClick);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(237, 240);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(135, 38);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Добавление клиента";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(378, 240);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 38);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Выход";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // Center
-            // 
-            this.Center.Icon = ((System.Drawing.Icon)(resources.GetObject("Center.Icon")));
-            this.Center.Text = "Center";
-            this.Center.Visible = true;
-            this.Center.Click += new System.EventHandler(this.notifyIcon1_Click);
-            // 
-            // CurrentDate
-            // 
-            this.CurrentDate.Location = new System.Drawing.Point(284, 27);
-            this.CurrentDate.Name = "CurrentDate";
-            this.CurrentDate.Size = new System.Drawing.Size(100, 20);
-            this.CurrentDate.TabIndex = 6;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(423, 27);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 7;
-            this.monthCalendar1.Visible = false;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(171, 25);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 23);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Вывести по дате";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(93, 25);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Обновить";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1362, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(12, 24);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Удалить";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(478, 244);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(96, 33);
-            this.button8.TabIndex = 12;
-            this.button8.Text = "Поиск";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CourseWork.Properties.Resources._73e1bc97_2118_4e96_9366_a609b5c6f271;
-            this.pictureBox1.Location = new System.Drawing.Point(390, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // ViewDirections
-            // 
-            this.ViewDirections.Location = new System.Drawing.Point(590, 244);
-            this.ViewDirections.Name = "ViewDirections";
-            this.ViewDirections.Size = new System.Drawing.Size(134, 34);
-            this.ViewDirections.TabIndex = 14;
-            this.ViewDirections.Text = "Просмотр направлений";
-            this.ViewDirections.UseVisualStyleBackColor = true;
-            this.ViewDirections.Click += new System.EventHandler(this.ViewDirections_Click);
-            // 
-            // ViewServices
-            // 
-            this.ViewServices.Location = new System.Drawing.Point(116, 244);
-            this.ViewServices.Name = "ViewServices";
-            this.ViewServices.Size = new System.Drawing.Size(102, 33);
-            this.ViewServices.TabIndex = 15;
-            this.ViewServices.Text = "Просмотр услуг";
-            this.ViewServices.UseVisualStyleBackColor = true;
-            this.ViewServices.Click += new System.EventHandler(this.ViewServices_Click);
-            // 
-            // AddClientFromFile
-            // 
-            this.AddClientFromFile.Location = new System.Drawing.Point(743, 244);
-            this.AddClientFromFile.Name = "AddClientFromFile";
-            this.AddClientFromFile.Size = new System.Drawing.Size(141, 34);
-            this.AddClientFromFile.TabIndex = 16;
-            this.AddClientFromFile.Text = "Добавить клиентов из файла";
-            this.AddClientFromFile.UseVisualStyleBackColor = true;
-            this.AddClientFromFile.Click += new System.EventHandler(this.AddClientFromFile_Click);
             // 
             // Column13
             // 
@@ -339,6 +195,122 @@
             this.Column12.ReadOnly = true;
             this.Column12.Width = 120;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(224, 240);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(135, 38);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Добавление клиента";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(365, 240);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 38);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Выход";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // CurrentDate
+            // 
+            this.CurrentDate.Location = new System.Drawing.Point(390, 27);
+            this.CurrentDate.Name = "CurrentDate";
+            this.CurrentDate.Size = new System.Drawing.Size(100, 20);
+            this.CurrentDate.TabIndex = 6;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(518, 27);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 7;
+            this.monthCalendar1.Visible = false;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(171, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(107, 36);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Вывести по дате";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(93, 12);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 36);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Обновить";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(12, 12);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 35);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Удалить";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(284, 12);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(96, 36);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Поиск";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CourseWork.Properties.Resources._73e1bc97_2118_4e96_9366_a609b5c6f271;
+            this.pictureBox1.Location = new System.Drawing.Point(496, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // ViewDirections
+            // 
+            this.ViewDirections.Location = new System.Drawing.Point(446, 239);
+            this.ViewDirections.Name = "ViewDirections";
+            this.ViewDirections.Size = new System.Drawing.Size(134, 38);
+            this.ViewDirections.TabIndex = 14;
+            this.ViewDirections.Text = "Просмотр направлений";
+            this.ViewDirections.UseVisualStyleBackColor = true;
+            this.ViewDirections.Click += new System.EventHandler(this.ViewDirections_Click);
+            // 
+            // ViewServices
+            // 
+            this.ViewServices.Location = new System.Drawing.Point(116, 240);
+            this.ViewServices.Name = "ViewServices";
+            this.ViewServices.Size = new System.Drawing.Size(102, 37);
+            this.ViewServices.TabIndex = 15;
+            this.ViewServices.Text = "Просмотр услуг";
+            this.ViewServices.UseVisualStyleBackColor = true;
+            this.ViewServices.Click += new System.EventHandler(this.ViewServices_Click);
+            // 
+            // AddClientFromFile
+            // 
+            this.AddClientFromFile.Location = new System.Drawing.Point(586, 239);
+            this.AddClientFromFile.Name = "AddClientFromFile";
+            this.AddClientFromFile.Size = new System.Drawing.Size(166, 38);
+            this.AddClientFromFile.TabIndex = 16;
+            this.AddClientFromFile.Text = "Добавить клиентов из файла";
+            this.AddClientFromFile.UseVisualStyleBackColor = true;
+            this.AddClientFromFile.Click += new System.EventHandler(this.AddClientFromFile_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,11 +330,8 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.NavigationMenu);
-            this.MainMenuStrip = this.NavigationMenu;
             this.Name = "Main";
-            this.Text = "Main";
-            this.Resize += new System.EventHandler(this.Main_Resize);
+            this.Text = "Список клиентов";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -373,17 +342,14 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.MenuStrip NavigationMenu;
         private System.Windows.Forms.DataGridView datagridViewClients;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.NotifyIcon Center;
         private System.Windows.Forms.TextBox CurrentDate;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button ViewDirections;

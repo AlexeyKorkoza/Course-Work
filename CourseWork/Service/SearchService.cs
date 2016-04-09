@@ -7,7 +7,7 @@ namespace CourseWork.Service
 {
     public partial class SearchService : Form
     {
-        readonly IStorage _storage = new Storage();
+        private readonly IStorage _storage = new Storage();
         public SearchService()
         {
             InitializeComponent();
@@ -40,36 +40,40 @@ namespace CourseWork.Service
                         return;
                     }
                     var k = 0;
-                    foreach (var t in services)
+                    for(var j = 0; j < services.Count;j++)
                     {
-                        var massive = t.Id.Split('/');
-                        if (massive[1] == SearchStr.Text)
+                        for (var i = 0; i < services[j].Services.Count; i++)
                         {
-                            datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[k].Cells[0].Value = massive[1];
-                            datagridViewServices.Rows[k].Cells[1].Value = t.NameOfDirection;
-                            datagridViewServices.Rows[k].Cells[2].Value = t.Services[0].NameService;
-                            datagridViewServices.Rows[k].Cells[3].Value = t.Services[0].Duration;
-                            datagridViewServices.Rows[k].Cells[4].Value = t.Services[0].Cost;
-                            k++;
+                            if (services[j].Services[i].Id == SearchStr.Text)
+                            {
+                                datagridViewServices.Rows.Add();
+                                datagridViewServices.Rows[k].Cells[0].Value = services[j].Services[i].Id;
+                                datagridViewServices.Rows[k].Cells[1].Value = services[j].NameOfDirection;
+                                datagridViewServices.Rows[k].Cells[2].Value = services[j].Services[i].NameService;
+                                datagridViewServices.Rows[k].Cells[3].Value = services[j].Services[i].Duration;
+                                datagridViewServices.Rows[k].Cells[4].Value = services[j].Services[i].Cost;
+                                k++;
+                            }
                         }
                     }
                 }
                 if (Functions.Text == (string)Functions.Items[1])
                 {
                     var k = 0;
-                    foreach (var t in services)
+                    for (var j = 0; j < services.Count; j++)
                     {
-                        var massive = t.Id.Split('/');
-                        if (massive[1] == SearchStr.Text)
+                        for (var i = 0; i < services[j].Services.Count; i++)
                         {
-                            datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[k].Cells[0].Value = massive[1];
-                            datagridViewServices.Rows[k].Cells[1].Value = t.NameOfDirection;
-                            datagridViewServices.Rows[k].Cells[2].Value = t.Services[0].NameService;
-                            datagridViewServices.Rows[k].Cells[3].Value = t.Services[0].Duration;
-                            datagridViewServices.Rows[k].Cells[4].Value = t.Services[0].Cost;
-                            k++;
+                            if (services[j].Services[i].NameService == SearchStr.Text)
+                            {
+                                datagridViewServices.Rows.Add();
+                                datagridViewServices.Rows[k].Cells[0].Value = services[j].Services[i].Id;
+                                datagridViewServices.Rows[k].Cells[1].Value = services[j].NameOfDirection;
+                                datagridViewServices.Rows[k].Cells[2].Value = services[j].Services[i].NameService;
+                                datagridViewServices.Rows[k].Cells[3].Value = services[j].Services[i].Duration;
+                                datagridViewServices.Rows[k].Cells[4].Value = services[j].Services[i].Cost;
+                                k++;
+                            }
                         }
                     }
                 }
@@ -82,18 +86,20 @@ namespace CourseWork.Service
                         return;
                     }
                     var k = 0;
-                    foreach (var t in services)
+                    for (var j = 0; j < services.Count; j++)
                     {
-                        var massive = t.Id.Split('/');
-                        if (t.Services[0].Duration == Convert.ToInt32(SearchStr.Text))
+                        for (var i = 0; i < services[j].Services.Count; i++)
                         {
-                            datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[k].Cells[0].Value = massive[1];
-                            datagridViewServices.Rows[k].Cells[1].Value = t.NameOfDirection;
-                            datagridViewServices.Rows[k].Cells[2].Value = t.Services[0].NameService;
-                            datagridViewServices.Rows[k].Cells[3].Value = t.Services[0].Duration;
-                            datagridViewServices.Rows[k].Cells[4].Value = t.Services[0].Cost;
-                            k++;
+                            if (services[j].Services[i].Duration == Convert.ToInt32(SearchStr.Text))
+                            {
+                                datagridViewServices.Rows.Add();
+                                datagridViewServices.Rows[k].Cells[0].Value = services[j].Services[i].Id;
+                                datagridViewServices.Rows[k].Cells[1].Value = services[j].NameOfDirection;
+                                datagridViewServices.Rows[k].Cells[2].Value = services[j].Services[i].NameService;
+                                datagridViewServices.Rows[k].Cells[3].Value = services[j].Services[i].Duration;
+                                datagridViewServices.Rows[k].Cells[4].Value = services[j].Services[i].Cost;
+                                k++;
+                            }
                         }
                     }
                 }
@@ -106,18 +112,20 @@ namespace CourseWork.Service
                         return;
                     }
                     var k = 0;
-                    foreach (var t in services)
+                    for (var j = 0; j < services.Count; j++)
                     {
-                        var massive = t.Id.Split('/');
-                        if (t.Services[0].Cost == Convert.ToInt32(SearchStr.Text))
+                        for (var i = 0; i < services[j].Services.Count; i++)
                         {
-                            datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[k].Cells[0].Value = massive[1];
-                            datagridViewServices.Rows[k].Cells[1].Value = t.NameOfDirection;
-                            datagridViewServices.Rows[k].Cells[2].Value = t.Services[0].NameService;
-                            datagridViewServices.Rows[k].Cells[3].Value = t.Services[0].Duration;
-                            datagridViewServices.Rows[k].Cells[4].Value = t.Services[0].Cost;
-                            k++;
+                            if (services[j].Services[i].Cost == Convert.ToInt32(SearchStr.Text))
+                            {
+                                datagridViewServices.Rows.Add();
+                                datagridViewServices.Rows[k].Cells[0].Value = services[j].Services[i].Id;
+                                datagridViewServices.Rows[k].Cells[1].Value = services[j].NameOfDirection;
+                                datagridViewServices.Rows[k].Cells[2].Value = services[j].Services[i].NameService;
+                                datagridViewServices.Rows[k].Cells[3].Value = services[j].Services[i].Duration;
+                                datagridViewServices.Rows[k].Cells[4].Value = services[j].Services[i].Cost;
+                                k++;
+                            }
                         }
                     }
                 }
@@ -142,6 +150,11 @@ namespace CourseWork.Service
         private void Cancel_Click(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datagridViewServices.Rows.Clear();
         }
     }
 }

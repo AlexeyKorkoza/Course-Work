@@ -39,13 +39,13 @@
             this.CostService = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Discount = new System.Windows.Forms.GroupBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.DescriptionDiscount = new System.Windows.Forms.RichTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.Size = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Code = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.Decor = new System.Windows.Forms.ComboBox();
             this.Client = new System.Windows.Forms.GroupBox();
             this.NameOfClient = new System.Windows.Forms.TextBox();
@@ -190,6 +190,13 @@
             this.Discount.TabStop = false;
             this.Discount.Text = "Информация о скидке";
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(66, 0);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 17;
+            this.monthCalendar1.Visible = false;
+            // 
             // DescriptionDiscount
             // 
             this.DescriptionDiscount.Location = new System.Drawing.Point(322, 32);
@@ -241,13 +248,6 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "Код";
             // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(66, 0);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 17;
-            this.monthCalendar1.Visible = false;
-            // 
             // Decor
             // 
             this.Decor.FormattingEnabled = true;
@@ -259,7 +259,7 @@
             this.Decor.Size = new System.Drawing.Size(280, 21);
             this.Decor.TabIndex = 20;
             // 
-            // ClientByDate
+            // Client
             // 
             this.Client.Controls.Add(this.Payment);
             this.Client.Controls.Add(this.Decor);
@@ -476,7 +476,7 @@
             this.Controls.Add(this.Client);
             this.Controls.Add(this.Direction);
             this.Name = "EditClient";
-            this.Text = "EditClient";
+            this.Text = "Редактирование клиента";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.Discount.ResumeLayout(false);

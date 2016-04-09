@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SearchStr = new System.Windows.Forms.TextBox();
             this.Functions = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewServices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +91,7 @@
             this.datagridViewServices.Name = "datagridViewServices";
             this.datagridViewServices.ReadOnly = true;
             this.datagridViewServices.RowHeadersVisible = false;
-            this.datagridViewServices.Size = new System.Drawing.Size(584, 231);
+            this.datagridViewServices.Size = new System.Drawing.Size(583, 231);
             this.datagridViewServices.TabIndex = 18;
             this.datagridViewServices.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.datagridViewServices_MouseDoubleClick);
             // 
@@ -163,11 +164,22 @@
             this.Functions.Size = new System.Drawing.Size(279, 21);
             this.Functions.TabIndex = 22;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(298, 293);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 37);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Очистить поле вывода";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SearchService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 333);
+            this.ClientSize = new System.Drawing.Size(764, 333);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SearchStr);
@@ -177,7 +189,7 @@
             this.Controls.Add(this.DeleteService);
             this.Controls.Add(this.datagridViewServices);
             this.Name = "SearchService";
-            this.Text = "SearchService";
+            this.Text = "Поиск услуги";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewServices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,5 +211,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox SearchStr;
         private System.Windows.Forms.ComboBox Functions;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CourseWork.Data;
 
@@ -35,19 +34,14 @@ namespace CourseWork.Direction
                 {
                     MessageBox.Show(@"Заполните все поля в блоке услуги!");
                 }
-                const string pattern = "[0-9]{1,}";
-                var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-                var match = regex.Match(Duration.Text);
-                if (!match.Success)
+                var directions = _storage.GetDirections();
+                for (var k = 0; k < directions.Count; k++)
                 {
-                    MessageBox.Show(@"В поле цена вводятся только цифры!");
-                    return;
-                }
-                match = regex.Match(Cost.Text);
-                if (!match.Success)
-                {
-                    MessageBox.Show(@"В поле продолжительность вводятся только цифры!");
-                    return;
+                    if (directions[k].NameOfDirection == DirectionName.Text)
+                    {
+                        MessageBox.Show(@"Данное направление уже имеется");
+                        return;
+                    }
                 }
                 var direction = new Data.Models.Direction()
                     {
@@ -58,7 +52,7 @@ namespace CourseWork.Direction
                         {
                             new Data.Models.Service()
                             {
-                                Id = 0.ToString(),
+                                Id = 1.ToString(),
                                 NameService = NameService.Text,
                                 Duration = Convert.ToInt32(Duration.Text),
                                 Cost = Convert.ToInt32(Cost.Text),
@@ -77,6 +71,18 @@ namespace CourseWork.Direction
         private void Close_Click(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        private void Duration_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8)
+                e.Handled = true;
+        }
+
+        private void Cost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8)
+                e.Handled = true;
         }
     }
 }

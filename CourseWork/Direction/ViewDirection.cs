@@ -14,6 +14,7 @@ namespace CourseWork.Direction
         public ViewDirection()
         {
             InitializeComponent();
+            DeleteDirection.Enabled = false;
             View();
         }
 
@@ -30,6 +31,7 @@ namespace CourseWork.Direction
                 var direction = _storage.GetDirections();
                 if (direction.Count > 0)
                 {
+                    DeleteDirection.Enabled = true;
                     for (var i = 0; i < direction.Count; i++)
                     {
                         datagridViewDirections.Rows.Add();

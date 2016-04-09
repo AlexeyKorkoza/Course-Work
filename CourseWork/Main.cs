@@ -15,7 +15,7 @@ namespace CourseWork
     {
         private List<Data.Models.Client> _list = new List<Data.Models.Client>();
         private OpenFileDialog _open;
-        readonly IStorage _storage = new Storage();
+        private readonly IStorage _storage = new Storage();
         public Main()
         {
             try
@@ -23,9 +23,7 @@ namespace CourseWork
                 InitializeComponent();
                 CurrentDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
                 CurrentDate.Text = CurrentDate.Text.Replace('.', '/');
-                Center.Visible = false;
-                Center.MouseDoubleClick += notifyIcon1_Click;
-                Resize += Main_Resize;
+                button7.Enabled = false;
                 RefreshDg(CurrentDate.Text);
             }
             catch (Exception exception)
@@ -51,20 +49,6 @@ namespace CourseWork
             Hide();
             var input = new InputOfAdmin();
             input.Show();
-        }
-
-        private void Main_Resize(object sender, EventArgs e)
-        {
-            if (WindowState != FormWindowState.Minimized) return;
-            ShowInTaskbar = false;
-            Center.Visible = true;
-        }
-
-        private void notifyIcon1_Click(object sender, EventArgs e)
-        {
-            Center.Visible = false;
-            ShowInTaskbar = true;
-            WindowState = FormWindowState.Normal;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -103,8 +87,9 @@ namespace CourseWork
             try
             {
                 var clients = _storage.GetClientByDate(currentdate);
-                if (clients.Count != 0)
+                if (clients.Count > 0)
                 {
+                    button7.Enabled = true;
                     for (var i = 0; i < clients.Count; i++)
                     {
                         datagridViewClients.Rows.Add();

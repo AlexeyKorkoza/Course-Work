@@ -152,7 +152,7 @@
             this.Controls.Add(this.AddDirection);
             this.Controls.Add(this.datagridViewDirections);
             this.Name = "ViewDirection";
-            this.Text = "ViewDirection";
+            this.Text = "Редактирование направления";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewDirections)).EndInit();
             this.ResumeLayout(false);
 

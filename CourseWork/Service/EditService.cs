@@ -32,27 +32,16 @@ namespace CourseWork.Service
         {
             try
             {
-                var pattern = "[A-Za-zА-Яа-я]";
-                var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-                var match = regex.Match(NewNameService.Text);
-                if (!match.Success)
+                if (changeNameService.Checked)
                 {
-                    MessageBox.Show(@"Некорректное заполнение поля!");
-                    return;
-                }
-                pattern = "[0-9]{1,}";
-                regex = new Regex(pattern, RegexOptions.IgnoreCase);
-                match = regex.Match(Duration.Text);
-                if (!match.Success)
-                {
-                    MessageBox.Show(@"Некорректное заполнение поля!");
-                    return;
-                }
-                match = regex.Match(CostService.Text);
-                if (!match.Success)
-                {
-                    MessageBox.Show(@"Некорректное заполнение поля!");
-                    return;
+                    const string pattern = "[A-Za-zА-Яа-я]";
+                    var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+                    var match = regex.Match(NewNameService.Text);
+                    if (!match.Success)
+                    {
+                        MessageBox.Show(@"Некорректное заполнение поля!");
+                        return;
+                    }
                 }
                 for (var k = 0; k < _currentService.Services.Count; k++)
                 {
@@ -108,6 +97,18 @@ namespace CourseWork.Service
             {
                 NewNameService.Enabled = false;
             }
+        }
+
+        private void Duration_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8)
+                e.Handled = true;
+        }
+
+        private void CostService_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8)
+                e.Handled = true;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace CourseWork.Service
                             if (datagridViewServices.CurrentRow != null)
                             {
                                 var index = datagridViewServices.CurrentRow.Index;
-                                var idService = (string)datagridViewServices.Rows[index].Cells[0].Value;
+                                var idService = datagridViewServices.Rows[index].Cells[0].Value;
                                 var idDirection = 0;
                                 foreach (var t in _services)
                                 {
@@ -92,16 +92,18 @@ namespace CourseWork.Service
                 _services = _storage.GetDirections();
                 if (_services.Count > 0)
                 {
-                    foreach (var t in _services)
+                    var count = 0;
+                    for(var i = 0; i < _services.Count;i++)
                     {
-                        for (var k = 0; k < t.Services.Count; k++)
+                        for (var k = 0; k < _services[i].Services.Count; k++)
                         {
                             datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[k].Cells[0].Value = Convert.ToInt32(t.Services[k].Id);
-                            datagridViewServices.Rows[k].Cells[1].Value = t.NameOfDirection;
-                            datagridViewServices.Rows[k].Cells[2].Value = t.Services[k].NameService;
-                            datagridViewServices.Rows[k].Cells[3].Value = t.Services[k].Duration;
-                            datagridViewServices.Rows[k].Cells[4].Value = t.Services[k].Cost;
+                            datagridViewServices.Rows[count].Cells[0].Value = Convert.ToInt32(_services[i].Services[k].Id);
+                            datagridViewServices.Rows[count].Cells[1].Value = _services[i].NameOfDirection;
+                            datagridViewServices.Rows[count].Cells[2].Value = _services[i].Services[k].NameService;
+                            datagridViewServices.Rows[count].Cells[3].Value = _services[i].Services[k].Duration;
+                            datagridViewServices.Rows[count].Cells[4].Value = _services[i].Services[k].Cost;
+                            count++;
                         }
                     }
                 }
@@ -120,9 +122,9 @@ namespace CourseWork.Service
         {
             if (datagridViewServices.CurrentRow == null) return;
             var index = datagridViewServices.CurrentRow.Index;
-            var id = (string)datagridViewServices.Rows[index].Cells[0].Value;
-            var directionName = (string)datagridViewServices.Rows[index].Cells[1].Value;
-            var nameService = (string)datagridViewServices.Rows[index].Cells[2].Value;
+            var id = datagridViewServices.Rows[index].Cells[0].Value.ToString();
+            var directionName = datagridViewServices.Rows[index].Cells[1].Value.ToString();
+            var nameService = datagridViewServices.Rows[index].Cells[2].Value.ToString();
             var edit = new EditService(id, directionName, nameService);
             edit.Show();
         }
