@@ -124,6 +124,32 @@
     <Compile Include="Direction\ViewDirection.Designer.cs">
       <DependentUpon>ViewDirection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Discounts\AddDiscounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Discounts\AddDiscounts.Designer.cs">
+      <DependentUpon>AddDiscounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Discounts\Discounts.cs" />
+    <Compile Include="Discounts\EditDiscounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Discounts\EditDiscounts.Designer.cs">
+      <DependentUpon>EditDiscounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Discounts\IDiscount.cs" />
+    <Compile Include="Discounts\SearchDiscounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Discounts\SearchDiscounts.Designer.cs">
+      <DependentUpon>SearchDiscounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Discounts\ViewDiscounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Discounts\ViewDiscounts.Designer.cs">
+      <DependentUpon>ViewDiscounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileExtension\FileExtension.cs" />
     <Compile Include="Input\CheckInput.cs" />
     <Compile Include="Input\Admin.cs" />
@@ -203,6 +229,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Direction\ViewDirection.resx">
       <DependentUpon>ViewDirection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Discounts\AddDiscounts.resx">
+      <DependentUpon>AddDiscounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Discounts\EditDiscounts.resx">
+      <DependentUpon>EditDiscounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Discounts\SearchDiscounts.resx">
+      <DependentUpon>SearchDiscounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Discounts\ViewDiscounts.resx">
+      <DependentUpon>ViewDiscounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Input\InputOfAdmin.resx">
       <DependentUpon>InputOfAdmin.cs</DependentUpon>

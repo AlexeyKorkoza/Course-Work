@@ -26,12 +26,9 @@ namespace CourseWork.Input
                     MessageBox.Show(@"Некорректные данные для входа");
                     return;
                 }
-                else
-                {
-                    var main = new Main();
-                    main.Show();
-                    this.Hide();
-                }
+                var main = new Main();
+                main.Show();
+                Hide();
             }
             catch (Exception exception)
             {

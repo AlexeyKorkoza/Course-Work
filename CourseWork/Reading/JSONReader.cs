@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using CourseWork.Data.Models;
 using Newtonsoft.Json;
 
 namespace CourseWork.Reading
@@ -25,6 +26,13 @@ namespace CourseWork.Reading
             var json = File.ReadAllText(path);
             var dir = JsonConvert.DeserializeObject<List<Data.Models.Direction>>(json);
             return dir;
+        }
+
+        public List<Discount> ReadDiscountses(string path)
+        {
+            var json = File.ReadAllText(path);
+            var discountses = JsonConvert.DeserializeObject<List<Discount>>(json);
+            return discountses;
         }
     }
 }

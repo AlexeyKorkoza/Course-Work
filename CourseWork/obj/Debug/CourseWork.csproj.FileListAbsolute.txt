@@ -121,3 +121,7 @@ C:\Users\Alexey\Desktop\Course-Work-master\CourseWork\bin\Debug\Newtonsoft.Json.
 C:\Users\Alexey\Desktop\Course-Work-master\CourseWork\bin\Debug\Newtonsoft.Json.xml
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\bin\Debug\Newtonsoft.Json.dll
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.ViewDiscounts.resources
+C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.AddDiscounts.resources
+C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.EditDiscounts.resources
+C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.SearchDiscounts.resources

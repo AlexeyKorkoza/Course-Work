@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CourseWork.Data.Models;
 using CourseWork.Reading;
 
 namespace CourseWork.FileExtension
@@ -55,6 +56,24 @@ namespace CourseWork.FileExtension
             {
                 reader = new JsonReader();
                 list = reader.ReadDirections(path);
+            }
+            return list;
+        }
+
+        public List<Discount> LoadingDiscountses(string path)
+        {
+            IReader reader;
+            var list = new List<Discount>();
+            var maStrings = path.Split('.');
+            if (maStrings[1] == "csv")
+            {
+                reader = new CsvReader();
+                list = reader.ReadDiscountses(path);
+            }
+            if (maStrings[1] == "json")
+            {
+                reader = new JsonReader();
+                list = reader.ReadDiscountses(path);
             }
             return list;
         }

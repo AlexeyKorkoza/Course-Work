@@ -138,5 +138,34 @@ namespace CourseWork.Reading
             }
             return list;
         }
+
+        public List<Discount> ReadDiscountses(string path)
+        {
+            var list = new List<Discount>();
+            var sr = new StreamReader(path);
+            try
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    var array = line.Split(',', '\t');
+                    var discount = new Discount
+                    {
+                        Code = Convert.ToInt32(array[0]),
+                        Size = Convert.ToInt32(array[1])
+                    };
+                    list.Add(discount);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sr.Close();
+            }
+            return list;
+        }
     }
 }

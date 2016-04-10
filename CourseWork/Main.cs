@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using CourseWork.Client;
 using CourseWork.Data;
 using CourseWork.Direction;
+using CourseWork.Discounts;
 using CourseWork.Input;
 using CourseWork.Properties;
 using CourseWork.Service;
@@ -113,6 +114,7 @@ namespace CourseWork
                 }
                 else
                 {
+                    button7.Enabled = false;
                     MessageBox.Show(@"Сегодня клиентов нету!");
                 }
             }
@@ -239,6 +241,12 @@ namespace CourseWork
             {
                 MessageBox.Show(exception.Message);
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var view = new ViewDiscounts();
+            view.Show();
         }
     }
 }

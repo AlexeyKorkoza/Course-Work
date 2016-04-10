@@ -57,6 +57,7 @@
             this.ViewDirections = new System.Windows.Forms.Button();
             this.ViewServices = new System.Windows.Forms.Button();
             this.AddClientFromFile = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -311,11 +312,22 @@
             this.AddClientFromFile.UseVisualStyleBackColor = true;
             this.AddClientFromFile.Click += new System.EventHandler(this.AddClientFromFile_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(758, 240);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(100, 38);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Просмотр скидок";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 290);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.AddClientFromFile);
             this.Controls.Add(this.ViewServices);
             this.Controls.Add(this.ViewDirections);
@@ -370,5 +382,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Button button4;
     }
 }
