@@ -35,7 +35,8 @@ namespace CourseWork.Client
                     NameService,
                     Payment,
                     Decor,
-                    Visit 
+                    Visit,
+					Code
                 };
                 _richTextBoxs = new List<RichTextBox> { DirectionDescription };
                 foreach (var t in _listcombobox)
