@@ -57,15 +57,15 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.NameService = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Duration = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.CostService = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Discount = new System.Windows.Forms.GroupBox();
-            this.Size = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Code = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.Size = new System.Windows.Forms.TextBox();
+            this.Duration = new System.Windows.Forms.TextBox();
+            this.CostService = new System.Windows.Forms.TextBox();
             this.Direction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Client.SuspendLayout();
@@ -116,6 +116,7 @@
             // 
             // DirectionDescription
             // 
+            this.DirectionDescription.Enabled = false;
             this.DirectionDescription.Location = new System.Drawing.Point(28, 75);
             this.DirectionDescription.Name = "DirectionDescription";
             this.DirectionDescription.Size = new System.Drawing.Size(280, 61);
@@ -339,11 +340,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CostService);
+            this.groupBox1.Controls.Add(this.Duration);
             this.groupBox1.Controls.Add(this.NameService);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.Duration);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.CostService);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Location = new System.Drawing.Point(351, 175);
             this.groupBox1.Name = "groupBox1";
@@ -370,14 +371,6 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Название услуги";
             // 
-            // Duration
-            // 
-            this.Duration.FormattingEnabled = true;
-            this.Duration.Location = new System.Drawing.Point(28, 82);
-            this.Duration.Name = "Duration";
-            this.Duration.Size = new System.Drawing.Size(280, 21);
-            this.Duration.TabIndex = 24;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -386,14 +379,6 @@
             this.label11.Size = new System.Drawing.Size(111, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Продолжительность";
-            // 
-            // CostService
-            // 
-            this.CostService.FormattingEnabled = true;
-            this.CostService.Location = new System.Drawing.Point(28, 129);
-            this.CostService.Name = "CostService";
-            this.CostService.Size = new System.Drawing.Size(280, 21);
-            this.CostService.TabIndex = 22;
             // 
             // label12
             // 
@@ -417,14 +402,6 @@
             this.Discount.TabStop = false;
             this.Discount.Text = "Информация о скидке";
             // 
-            // Size
-            // 
-            this.Size.FormattingEnabled = true;
-            this.Size.Location = new System.Drawing.Point(339, 32);
-            this.Size.Name = "Size";
-            this.Size.Size = new System.Drawing.Size(280, 21);
-            this.Size.TabIndex = 30;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -441,6 +418,7 @@
             this.Code.Name = "Code";
             this.Code.Size = new System.Drawing.Size(280, 21);
             this.Code.TabIndex = 28;
+            this.Code.SelectedIndexChanged += new System.EventHandler(this.Code_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -450,6 +428,31 @@
             this.label8.Size = new System.Drawing.Size(26, 13);
             this.label8.TabIndex = 27;
             this.label8.Text = "Код";
+            // 
+            // Size
+            // 
+            this.Size.Enabled = false;
+            this.Size.Location = new System.Drawing.Point(339, 32);
+            this.Size.Name = "Size";
+            this.Size.Size = new System.Drawing.Size(280, 20);
+            this.Size.TabIndex = 31;
+            this.Size.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // Duration
+            // 
+            this.Duration.Enabled = false;
+            this.Duration.Location = new System.Drawing.Point(28, 83);
+            this.Duration.Name = "Duration";
+            this.Duration.Size = new System.Drawing.Size(280, 20);
+            this.Duration.TabIndex = 27;
+            // 
+            // CostService
+            // 
+            this.CostService.Enabled = false;
+            this.CostService.Location = new System.Drawing.Point(28, 122);
+            this.CostService.Name = "CostService";
+            this.CostService.Size = new System.Drawing.Size(280, 20);
+            this.CostService.TabIndex = 28;
             // 
             // AddClient
             // 
@@ -504,18 +507,18 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox NameService;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox Duration;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox CostService;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RichTextBox DirectionDescription;
         private System.Windows.Forms.GroupBox Discount;
         private System.Windows.Forms.ComboBox Code;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox Size;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox Visit;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox Size;
+        private System.Windows.Forms.TextBox Duration;
+        private System.Windows.Forms.TextBox CostService;
     }
 }

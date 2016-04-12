@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CourseWork.Data;
 using CourseWork.Data.Models;
+using CourseWork.Discounts;
 
 namespace CourseWork.Client
 {
@@ -14,7 +15,10 @@ namespace CourseWork.Client
         private readonly List<ComboBox> _listcombobox;
         private readonly List<TextBox> _textBoxs;
         private readonly List<RichTextBox> _richTextBoxs;
-        readonly IStorage _storage = new Storage();
+        private readonly IStorage _storage = new Storage();
+        private readonly IDiscount _discount = new Discounts.Discounts();
+        readonly List<Discount> _discounts = new List<Discount>();
+        private string _currentcode = string.Empty;
         public AddClient()
         {
             try
@@ -24,7 +28,6 @@ namespace CourseWork.Client
                 Date.Text = Date.Text.Replace('.', '/');
                 Date.BackColor = Color.White;
                 _textBoxs = new List<TextBox> { Lastname, NameOfClient, Middlename };
-                //  Code,Size
                 _listcombobox = new List<ComboBox>
                 {
                     AgeCategory,
@@ -32,9 +35,7 @@ namespace CourseWork.Client
                     NameService,
                     Payment,
                     Decor,
-                    Duration,
-                    CostService,
-                    Visit
+                    Visit 
                 };
                 _richTextBoxs = new List<RichTextBox> { DirectionDescription };
                 foreach (var t in _listcombobox)
@@ -55,6 +56,11 @@ namespace CourseWork.Client
                 else
                 {
                     MessageBox.Show(@"Добавление клиента невозможно");
+                }
+                _discounts = _discount.ReadDiscountses();
+                for (var k = 0; k < _discounts.Count; k++)
+                {
+                    Code.Items.Add(_discounts[k].Code);
                 }
             }
             catch (Exception exception)
@@ -113,6 +119,28 @@ namespace CourseWork.Client
                     if (t.TextLength != 0) continue;
                     MessageBox.Show(@"Описание не должно быть пустым!");
                     break;
+                }
+                if (Code.Text.Length != 0 && Size.Text.Length == 0)
+                {
+                    MessageBox.Show(@"Выбирите размер скидки");
+                    return;
+                }
+                var sum = 0;
+                if (Size.Text.Length != 0 && CostService.Text.Length != 0)
+                {
+                    var cost = Convert.ToInt32(CostService.Text);
+                    var size = Convert.ToInt32(Size.Text);
+                    sum = cost - size*cost/100;
+                    MessageBox.Show(@"С учетом скидки цена услуга будет равна:" + sum);
+                }
+                else
+                {
+                    Size.Text = 0.ToString();
+                    Code.Text = 0.ToString();
+                }
+                if (CostService.Text != sum.ToString() && sum != 0)
+                {
+                    CostService.Text = string.Empty + sum;
                 }
                 var client = new Data.Models.Client()
                    {
@@ -192,26 +220,51 @@ namespace CourseWork.Client
         {
             var directionName = DirectionName.Text;
             NameService.Items.Clear();
-            CostService.Items.Clear();
-            Duration.Items.Clear();
             _directionByName = _storage.GetDirectionsDirectionName(directionName);
-            foreach (var t1 in _directionByName.Services)
-                {
-                    NameService.Items.Add(t1.NameService);
-                }
+            foreach (var t in _directionByName.Services)
+            {
+                NameService.Items.Add(t.NameService);
+            }
+            var direction = _storage.GetDirections();
+            foreach (var t in direction)
+            {
+                if (t.NameOfDirection != DirectionName.Text) continue;
+                DirectionDescription.Text = string.Empty + t.Description;
+                break;
+            }
         }
 
         private void NameService_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CostService.Items.Clear();
-            Duration.Items.Clear();
             foreach (var t in _directionByName.Services)
-                {
-                    if (NameService.Text != t.NameService) continue;
-                    CostService.Items.Add(t.Cost);
-                    Duration.Items.Add(t.Duration);
-                    break;
-                }
+            {
+                if (NameService.Text != t.NameService) continue;
+                CostService.Text = string.Empty + t.Cost;
+                Duration.Text = string.Empty + t.Duration;
+                break;
             }
         }
+        private void Code_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentcode = Code.Text;
+            foreach (var t in _discounts)
+            {
+                if (_currentcode != t.Code.ToString()) continue;
+                Size.Text = string.Empty + t.Size;
+                break;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //if (Size.Text.Length != 0 && CostService.Text.Length != 0)
+            //{
+            //    var cost = Convert.ToInt32(CostService.Text);
+            //    var size = Convert.ToInt32(Size.Text);
+            //    var sum = cost - size * cost / 100;
+            //    CostService.Text = string.Empty + sum;
+            //}
+        }
+
     }
+}

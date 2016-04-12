@@ -58,6 +58,7 @@
             this.ViewServices = new System.Windows.Forms.Button();
             this.AddClientFromFile = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -218,14 +219,14 @@
             // 
             // CurrentDate
             // 
-            this.CurrentDate.Location = new System.Drawing.Point(390, 27);
+            this.CurrentDate.Location = new System.Drawing.Point(474, 27);
             this.CurrentDate.Name = "CurrentDate";
             this.CurrentDate.Size = new System.Drawing.Size(100, 20);
             this.CurrentDate.TabIndex = 6;
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(518, 27);
+            this.monthCalendar1.Location = new System.Drawing.Point(613, 27);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 7;
             this.monthCalendar1.Visible = false;
@@ -263,7 +264,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(284, 12);
+            this.button8.Location = new System.Drawing.Point(372, 11);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(96, 36);
             this.button8.TabIndex = 12;
@@ -274,7 +275,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CourseWork.Properties.Resources._73e1bc97_2118_4e96_9366_a609b5c6f271;
-            this.pictureBox1.Location = new System.Drawing.Point(496, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(580, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(21, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -322,11 +323,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(284, 12);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(82, 35);
+            this.button9.TabIndex = 18;
+            this.button9.Text = "Вывести";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 290);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.AddClientFromFile);
             this.Controls.Add(this.ViewServices);
@@ -383,5 +395,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button9;
     }
 }
