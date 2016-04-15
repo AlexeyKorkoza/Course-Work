@@ -17,6 +17,10 @@ namespace CourseWork
         private List<Data.Models.Client> _list = new List<Data.Models.Client>();
         private OpenFileDialog _open;
         private readonly IStorage _storage = new Storage();
+        private readonly List<string> _agecategory = new List<string>{"Несовершеннолетний","Взрослый","Пожилой(от 65)"};
+        private readonly List<string> _payment = new List<string>{"Наличный","Безналичный"};
+        private readonly List<string> _decor = new List<string>{"По телефону","По прибытию"}; 
+        private readonly List<string> _visit = new List<string>{"Одноразовое","Многоразовое"}; 
         public Main()
         {
             try
@@ -198,6 +202,56 @@ namespace CourseWork
                 _list = file.LoadingClients(_open.FileName);
                 foreach (var t in _list)
                 {
+                    var flag = true;
+                    var count = 0;
+                    for (var k = 0; k < _agecategory.Count; k++)
+                    {
+                        if (t.AgeCategory == _agecategory[k])
+                        {
+                            count++;
+                        }
+                    }
+                    if (count == 0)
+                    {
+                        flag = false;
+                    }
+                    count = 0;
+                    for (var k = 0; k < _decor.Count; k++)
+                    {
+                        if (t.Decor == _decor[k])
+                        {
+                            count++;
+                        }
+                    }
+                    if (count == 0)
+                    {
+                        flag = false;
+                    }
+                    count = 0;
+                    for (var k = 0; k < _payment.Count; k++)
+                    {
+                        if (t.Payment == _payment[k])
+                        {
+                            count++;
+                        }
+                    }
+                    if (count == 0)
+                    {
+                        flag = false;
+                    }
+                    count = 0;
+                    for (var k = 0; k < _visit.Count; k++)
+                    {
+                        if (t.Visit == _visit[k])
+                        {
+                            count++;
+                        }
+                    }
+                    if (count == 0)
+                    {
+                        flag = false;
+                    }
+                    if (!flag) continue;
                     var client = new Data.Models.Client
                     {
                         Id = "clients/",
@@ -210,29 +264,29 @@ namespace CourseWork
                         Payment = t.Payment,
                         Visit = t.Visit,
                         Directions = new List<Data.Models.Direction>()
+                        {
+                            new Data.Models.Direction()
                             {
-                                new Data.Models.Direction()
-                                {
-                                    NameOfDirection = t.Directions[0].NameOfDirection
-                                }
-                            },
-                        Services = new List<Data.Models.Service>()
-                            {
-                                new Data.Models.Service()
-                                {
-                                    NameService = t.Services[0].NameService,
-                                    Cost = t.Services[0].Cost,
-                                    Duration = t.Services[0].Duration
-                                }
-                            },
-                        Discounts = new List<Data.Models.Discount>()
-                            {
-                                new Data.Models.Discount()
-                                {
-                                    Code = t.Discounts[0].Code,
-                                    Size = t.Discounts[0].Size
-                                }
+                                NameOfDirection = t.Directions[0].NameOfDirection
                             }
+                        },
+                        Services = new List<Data.Models.Service>()
+                        {
+                            new Data.Models.Service()
+                            {
+                                NameService = t.Services[0].NameService,
+                                Cost = t.Services[0].Cost,
+                                Duration = t.Services[0].Duration
+                            }
+                        },
+                        Discounts = new List<Data.Models.Discount>()
+                        {
+                            new Data.Models.Discount()
+                            {
+                                Code = t.Discounts[0].Code,
+                                Size = t.Discounts[0].Size
+                            }
+                        }
                     };
                     _storage.AddClient(client);
                 }
