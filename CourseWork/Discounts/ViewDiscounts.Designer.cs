@@ -139,6 +139,7 @@
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Hide);
             this.Controls.Add(this.dataGridViewDiscounts);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ViewDiscounts";
             this.Text = "Просмотр скидок";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDiscounts)).EndInit();

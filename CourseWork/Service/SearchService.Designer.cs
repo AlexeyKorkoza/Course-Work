@@ -188,6 +188,7 @@
             this.Controls.Add(this.Search);
             this.Controls.Add(this.DeleteService);
             this.Controls.Add(this.datagridViewServices);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SearchService";
             this.Text = "Поиск услуги";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewServices)).EndInit();

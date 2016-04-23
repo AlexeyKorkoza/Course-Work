@@ -151,8 +151,9 @@
             this.Controls.Add(this.DeleteDirection);
             this.Controls.Add(this.AddDirection);
             this.Controls.Add(this.datagridViewDirections);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ViewDirection";
-            this.Text = "Редактирование направления";
+            this.Text = "Просмотр направлений";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewDirections)).EndInit();
             this.ResumeLayout(false);
 

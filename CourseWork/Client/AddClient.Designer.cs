@@ -55,17 +55,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CostService = new System.Windows.Forms.TextBox();
+            this.Duration = new System.Windows.Forms.TextBox();
             this.NameService = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Discount = new System.Windows.Forms.GroupBox();
+            this.Size = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Code = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.Size = new System.Windows.Forms.TextBox();
-            this.Duration = new System.Windows.Forms.TextBox();
-            this.CostService = new System.Windows.Forms.TextBox();
             this.Direction.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Client.SuspendLayout();
@@ -353,6 +353,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Информация о услуге";
             // 
+            // CostService
+            // 
+            this.CostService.Enabled = false;
+            this.CostService.Location = new System.Drawing.Point(28, 122);
+            this.CostService.Name = "CostService";
+            this.CostService.Size = new System.Drawing.Size(280, 20);
+            this.CostService.TabIndex = 28;
+            // 
+            // Duration
+            // 
+            this.Duration.Enabled = false;
+            this.Duration.Location = new System.Drawing.Point(28, 83);
+            this.Duration.Name = "Duration";
+            this.Duration.Size = new System.Drawing.Size(280, 20);
+            this.Duration.TabIndex = 27;
+            // 
             // NameService
             // 
             this.NameService.FormattingEnabled = true;
@@ -402,6 +418,15 @@
             this.Discount.TabStop = false;
             this.Discount.Text = "Информация о скидке";
             // 
+            // Size
+            // 
+            this.Size.Enabled = false;
+            this.Size.Location = new System.Drawing.Point(339, 32);
+            this.Size.Name = "Size";
+            this.Size.Size = new System.Drawing.Size(280, 20);
+            this.Size.TabIndex = 31;
+            this.Size.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -429,31 +454,6 @@
             this.label8.TabIndex = 27;
             this.label8.Text = "Код";
             // 
-            // Size
-            // 
-            this.Size.Enabled = false;
-            this.Size.Location = new System.Drawing.Point(339, 32);
-            this.Size.Name = "Size";
-            this.Size.Size = new System.Drawing.Size(280, 20);
-            this.Size.TabIndex = 31;
-            this.Size.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // Duration
-            // 
-            this.Duration.Enabled = false;
-            this.Duration.Location = new System.Drawing.Point(28, 83);
-            this.Duration.Name = "Duration";
-            this.Duration.Size = new System.Drawing.Size(280, 20);
-            this.Duration.TabIndex = 27;
-            // 
-            // CostService
-            // 
-            this.CostService.Enabled = false;
-            this.CostService.Location = new System.Drawing.Point(28, 122);
-            this.CostService.Name = "CostService";
-            this.CostService.Size = new System.Drawing.Size(280, 20);
-            this.CostService.TabIndex = 28;
-            // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,6 +465,7 @@
             this.Controls.Add(this.Client);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Add);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddClient";
             this.Text = "Добавить клиента";
             this.Direction.ResumeLayout(false);

@@ -475,6 +475,7 @@
             this.Controls.Add(this.Discount);
             this.Controls.Add(this.Client);
             this.Controls.Add(this.Direction);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EditClient";
             this.Text = "Редактирование клиента";
             this.groupBox1.ResumeLayout(false);

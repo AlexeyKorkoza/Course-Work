@@ -160,6 +160,7 @@
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.Search);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SearchDiscounts";
             this.Text = "SearchDiscounts";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDiscounts)).EndInit();

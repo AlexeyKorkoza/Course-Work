@@ -186,6 +186,7 @@
             this.Controls.Add(this.DirectionAdd);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Add);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddDirection";
             this.Text = "Добавление направления";
             this.DirectionAdd.ResumeLayout(false);

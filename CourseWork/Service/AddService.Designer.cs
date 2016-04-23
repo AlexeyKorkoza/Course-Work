@@ -166,6 +166,7 @@
             this.Controls.Add(this.Add);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Direction);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddService";
             this.Text = "Добавление услуги";
             this.Direction.ResumeLayout(false);

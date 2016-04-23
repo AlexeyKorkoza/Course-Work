@@ -35,5 +35,6 @@ namespace CourseWork.Input
                 MessageBox.Show(exception.Message);
             }
         }
-    }
 }
+    }
+

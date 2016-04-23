@@ -219,7 +219,7 @@
             // 
             // CurrentDate
             // 
-            this.CurrentDate.Location = new System.Drawing.Point(474, 27);
+            this.CurrentDate.Location = new System.Drawing.Point(480, 28);
             this.CurrentDate.Name = "CurrentDate";
             this.CurrentDate.Size = new System.Drawing.Size(100, 20);
             this.CurrentDate.TabIndex = 6;
@@ -264,7 +264,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(372, 11);
+            this.button8.Location = new System.Drawing.Point(378, 11);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(96, 36);
             this.button8.TabIndex = 12;
@@ -275,7 +275,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::CourseWork.Properties.Resources._73e1bc97_2118_4e96_9366_a609b5c6f271;
-            this.pictureBox1.Location = new System.Drawing.Point(580, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(586, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(21, 20);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -327,9 +327,9 @@
             // 
             this.button9.Location = new System.Drawing.Point(284, 12);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(82, 35);
+            this.button9.Size = new System.Drawing.Size(88, 35);
             this.button9.TabIndex = 18;
-            this.button9.Text = "Вывести";
+            this.button9.Text = "Вывести всех";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
@@ -354,6 +354,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Main";
             this.Text = "Список клиентов";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).EndInit();

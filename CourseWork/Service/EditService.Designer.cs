@@ -168,6 +168,7 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Edit);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EditService";
             this.Text = "Редактирование услуги";
             this.groupBox1.ResumeLayout(false);

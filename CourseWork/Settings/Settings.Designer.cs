@@ -101,6 +101,7 @@
             this.Controls.Add(this.oldpassword);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Ok);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Settings";
             this.Text = "Настройка пароля";
             this.ResumeLayout(false);

@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="e8e91aa5-9b15-4ecc-aa39-aabf777e2253" name="SportCenter" linkedPackageId="55e8dfdf-1977-49b7-bd32-dadfaacd748a" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="96464e4b-f05e-4527-83ae-6e3e48e828df">
+      <profileInstance Id="e5c48746-df61-48a2-bf1d-a8d3a59b29b3" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="284babfc-d8b6-4bfe-a91c-ace670558ad5">
+      <profileInstance Id="1a70c64e-7958-4739-9404-be48816d2d6e" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="9289faef-9131-4ff4-aeda-1c937c809967" name="Администратор" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f536c685-8105-47ba-a343-dc2e112105d9" />
+        <targetEnds>
+          <association Id="f55d0906-4ce5-4f3e-a3ab-eaf335464db0" isDerived="false" sourceEndRoleName="Администратор" targetEndRoleName="UseCase1" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="00a83059-de3c-45ca-a0ef-f96d25479851" LastKnownName="Работа с клиентами" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e722ce92-f496-4d4c-b400-f6632cdb5a18" name="Администратор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9a689d1d-213f-476d-a3cc-395cbb64fc5f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ac92b107-ad04-4818-839b-7c5874a02b94" name="UseCase1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="6e8cdec0-61dd-4b54-8c80-148e59f70e6f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fce36bec-9bf1-40df-9417-3f32bae0a7b6" />
+          </association>
+          <association Id="676ed83b-bc13-4947-9e6c-3670badd90e9" isDerived="false" sourceEndRoleName="Администратор" targetEndRoleName="UseCase2" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="97dec859-c44d-4ac0-b129-a91e5c6df6ac" LastKnownName="Работа с направлениями" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4660b217-d54a-4785-ad3b-58c0ae0f4fa0" name="Администратор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6d5c4904-e6a7-48ee-ab54-bf1d696f43c9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d9d37b9c-8c90-4e80-82bc-6c7043e0d0c5" name="UseCase2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="633e16da-9b4f-4ca0-a5c4-e4a675b25647" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7c78970d-8410-4689-bc6a-db9ac119f4bf" />
+          </association>
+          <association Id="c8b3dc99-0909-4021-a9ab-bb8f14bf5fbd" isDerived="false" sourceEndRoleName="Администратор" targetEndRoleName="UseCase21" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="35b9a148-169f-4a9d-9646-9e4622419f87" LastKnownName="Работа с услугами" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="15bcd5ca-1114-4920-8bb9-bfa7a5c15670" name="Администратор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="074e10b3-ecb0-422a-b346-afcdfb2e37fc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="76f3f161-0cda-4376-8f0e-8da4b04364bb" name="UseCase21" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1a0f27fa-45f2-4470-a815-d4c6aa912a30" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="871c0e54-f976-45f0-a3f3-6e7a01419ae2" />
+          </association>
+          <association Id="6be15b76-0571-4d14-9e28-a9565c64bf5b" isDerived="false" sourceEndRoleName="Администратор" targetEndRoleName="UseCase22" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="927b8ec2-a8c3-4761-a11e-d5e98ed9693a" LastKnownName="Работа со скидками" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b2abb1f3-dfe2-4fe5-8565-7324bb162eca" name="Администратор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="10196946-f964-4f2b-af8c-3e80cf90b79f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1f74886c-deb5-455f-b062-de84b4718c94" name="UseCase22" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5b439277-7ad3-4b54-ba57-eb40938d4ece" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7208bf4c-035e-493d-8bfd-ec736f5d9dea" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="00a83059-de3c-45ca-a0ef-f96d25479851" name="Работа с клиентами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c63f68c0-b83a-4435-a9da-c1f758bc4bc3" />
+        <additions>
+          <include Id="d4738629-123c-495d-bc9b-5c5909d7aa51">
+            <useCaseMoniker Id="1a4a8a7e-730c-424a-be53-e8ef8265a147" LastKnownName="Просмотреть список клиентов" />
+            <elementDefinition Id="18fdbd9e-2528-4e28-b7b8-55743a4dfc8a" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="97dec859-c44d-4ac0-b129-a91e5c6df6ac" name="Работа с направлениями" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1a33bce6-354d-48de-95c1-80361d8d51c2" />
+        <additions>
+          <include Id="e637fcff-7655-4745-bbfa-b3699e628a9d">
+            <useCaseMoniker Id="cb3161c2-8a25-4f28-822f-102e83f6ec90" LastKnownName="Просмотреть список направлений" />
+            <elementDefinition Id="3838725b-646c-41a1-9b63-76ebb3f98f10" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="35b9a148-169f-4a9d-9646-9e4622419f87" name="Работа с услугами" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="05b58045-d063-4a90-b431-d4a89130238f" />
+        <additions>
+          <include Id="0526e81f-b19a-4ed1-98fa-7a5a59f38919">
+            <useCaseMoniker Id="21d14d3d-1014-4bbb-9e53-087d5bdc9348" LastKnownName="Просмотреть список услуг" />
+            <elementDefinition Id="952a793c-1637-429d-bf8b-b77ddd9bb047" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="927b8ec2-a8c3-4761-a11e-d5e98ed9693a" name="Работа со скидками" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d399c145-6440-4588-b84e-053e233543f2" />
+        <additions>
+          <include Id="ccb697bf-e529-4f59-bbe0-08977240083e">
+            <useCaseMoniker Id="d009d1dc-8184-43f0-a674-e473e99f3741" LastKnownName="Просмотреть список скидок" />
+            <elementDefinition Id="097e015b-9f6d-4b3e-a6c2-b382b536315e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d009d1dc-8184-43f0-a674-e473e99f3741" name="Просмотреть список скидок" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2c000e77-a172-4a87-89bd-e700bb6b1a8f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="21d14d3d-1014-4bbb-9e53-087d5bdc9348" name="Просмотреть список услуг" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f16b97a5-5b60-4f0a-9bf8-ba0e7080d79d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="cb3161c2-8a25-4f28-822f-102e83f6ec90" name="Просмотреть список направлений" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7c3d556a-e1e9-43f8-890f-4f9f35397dac" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1a4a8a7e-730c-424a-be53-e8ef8265a147" name="Просмотреть список клиентов" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6748f56a-f90e-4c45-936f-5a48e5181520" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c9df2a6f-16a2-402f-b710-95b3e457177b" name="Поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="17aedd53-3cbb-4ce5-a881-eb99feb956b7" />
+        <extendedCases>
+          <extend Id="5218c753-7c26-426e-8d4a-36902a4d3e5b">
+            <useCaseMoniker Id="d009d1dc-8184-43f0-a674-e473e99f3741" LastKnownName="Просмотреть список скидок" />
+            <elementDefinition Id="49e04e94-41ac-4532-8d40-07898cc18ce3" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b1b28084-7f8d-4a91-bfb4-4e863a2d3310" name="Добавить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="082ba772-d9ef-4fe1-a37e-9780701f10be" />
+        <extendedCases>
+          <extend Id="d222ea21-76bc-4b82-814f-aa0843994228">
+            <useCaseMoniker Id="d009d1dc-8184-43f0-a674-e473e99f3741" LastKnownName="Просмотреть список скидок" />
+            <elementDefinition Id="7aecad94-d752-438a-b615-f1b42338e547" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8792dde0-35dd-4bb9-a0ff-32d6ca7b7581" name="Редактировать" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a34acd5c-2fa7-40af-8462-46126afda782" />
+        <extendedCases>
+          <extend Id="526310de-332b-414e-bcf3-4ed1629025f9">
+            <useCaseMoniker Id="d009d1dc-8184-43f0-a674-e473e99f3741" LastKnownName="Просмотреть список скидок" />
+            <elementDefinition Id="5abcc9eb-c40a-468b-9727-dddb522ce76b" />
+          </extend>
+          <extend Id="52e46ca3-c4df-4cbd-bfcd-2b4840c41644">
+            <useCaseMoniker Id="c9df2a6f-16a2-402f-b710-95b3e457177b" LastKnownName="Поиск" />
+            <elementDefinition Id="d9ca9375-6547-4aea-b5be-7744ae252d8f" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="14ad7ca4-949b-42f3-a340-7ab8d05bc945" name="Удалить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e8ec5abd-75d8-4fbf-a1c6-9abda8b0e58a" />
+        <extendedCases>
+          <extend Id="ddcd7001-3268-41a5-91d2-7f7a4397f1b8">
+            <useCaseMoniker Id="d009d1dc-8184-43f0-a674-e473e99f3741" LastKnownName="Просмотреть список скидок" />
+            <elementDefinition Id="6c305793-a529-4419-a7a4-6404a06c1b28" />
+          </extend>
+          <extend Id="c615da0b-5876-4ca6-9411-7b9d77630531">
+            <useCaseMoniker Id="c9df2a6f-16a2-402f-b710-95b3e457177b" LastKnownName="Поиск" />
+            <elementDefinition Id="144af863-bd1f-4346-b0dc-5eec0cd43119" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b27564d8-2580-455c-ab9d-932fdb66b756" name="Добавить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e222cf1c-1f58-4f2c-bab1-3da3fa0ebaea" />
+        <extendedCases>
+          <extend Id="cf6d5c31-908d-4966-a56e-7b833e5bca6d">
+            <useCaseMoniker Id="21d14d3d-1014-4bbb-9e53-087d5bdc9348" LastKnownName="Просмотреть список услуг" />
+            <elementDefinition Id="93adf5d6-21f0-4959-a3d0-12d10abf1bc9" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4e2432f3-5189-4499-ac85-4436e23c3028" name="Удалить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="88b8502d-2e9d-4a0d-a727-a01907fdf76a" />
+        <extendedCases>
+          <extend Id="b6823a14-ae2b-4c4d-9801-8b475b74b01e">
+            <useCaseMoniker Id="21d14d3d-1014-4bbb-9e53-087d5bdc9348" LastKnownName="Просмотреть список услуг" />
+            <elementDefinition Id="fdc2b7df-b8a6-4f9c-ae1b-4e170f1faaee" />
+          </extend>
+          <extend Id="b9f7cd5d-4354-43fd-95dd-81004c0b9dca">
+            <useCaseMoniker Id="65ede3c1-f20a-4c93-8dee-8613e6939cbe" LastKnownName="Поиск" />
+            <elementDefinition Id="32803bb3-ebdd-4bb7-b613-6be4ac2389d4" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="edb26f78-722b-450e-a5c4-4df1ccdc4c87" name="Редактировать" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5e2d59f5-716d-48d7-bc36-7de05b60e9a0" />
+        <extendedCases>
+          <extend Id="ddaa4545-8435-4f65-92e8-4eb956743d44">
+            <useCaseMoniker Id="21d14d3d-1014-4bbb-9e53-087d5bdc9348" LastKnownName="Просмотреть список услуг" />
+            <elementDefinition Id="5cc2192f-ec3d-46fc-81e7-282f81712e9a" />
+          </extend>
+          <extend Id="2f0059b6-5a21-4b5b-89fb-d146e5297081">
+            <useCaseMoniker Id="65ede3c1-f20a-4c93-8dee-8613e6939cbe" LastKnownName="Поиск" />
+            <elementDefinition Id="a2bf41e0-31a7-4d53-a36a-62c0dc5c3c44" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="65ede3c1-f20a-4c93-8dee-8613e6939cbe" name="Поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d08d8489-2a6f-40eb-80a5-309fc692b667" />
+        <extendedCases>
+          <extend Id="2c91df99-6c1b-4ee3-892f-44645d4465ef">
+            <useCaseMoniker Id="21d14d3d-1014-4bbb-9e53-087d5bdc9348" LastKnownName="Просмотреть список услуг" />
+            <elementDefinition Id="1fca18f9-ffa0-406a-a918-453fc34f15e4" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2a766f2b-5484-491c-9584-312abc6825c7" name="Редактировать" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="594fd513-b3e5-4819-bcc3-43f25971b3c8" />
+        <extendedCases>
+          <extend Id="7896395a-ee06-424f-8258-4893b561aaf4">
+            <useCaseMoniker Id="cb3161c2-8a25-4f28-822f-102e83f6ec90" LastKnownName="Просмотреть список направлений" />
+            <elementDefinition Id="c3137996-49c0-44be-85c5-206a946edd7d" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ed920d98-5808-4bb0-9586-313365058206" name="Удалить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f3c5639e-8b19-4dfd-bf86-fee99e059239" />
+        <extendedCases>
+          <extend Id="6eb88a5e-4eab-400b-a3d8-fa8387701e63">
+            <useCaseMoniker Id="cb3161c2-8a25-4f28-822f-102e83f6ec90" LastKnownName="Просмотреть список направлений" />
+            <elementDefinition Id="e404f984-8d6d-4eac-ac88-76c512dbcf3b" />
+          </extend>
+          <extend Id="cfcf5b32-a9e8-43ec-a552-607e1335cac0">
+            <useCaseMoniker Id="2a766f2b-5484-491c-9584-312abc6825c7" LastKnownName="Редактировать" />
+            <elementDefinition Id="8174ebf3-d8a0-4bcf-92a3-aa8227c02b47" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="094e18a6-81c0-4603-a95a-5640a90aad59" name="Добавить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="52e734c0-387c-4025-bbee-dcc5d92abae0" />
+        <extendedCases>
+          <extend Id="12269d71-95c3-451d-941b-131c1680a161">
+            <useCaseMoniker Id="cb3161c2-8a25-4f28-822f-102e83f6ec90" LastKnownName="Просмотреть список направлений" />
+            <elementDefinition Id="63920605-6e4b-43c6-ad8a-57e3c2fc0873" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2000f306-9013-4178-9462-d1ef23d599cc" name="Поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="889eec7a-184b-40e4-942e-b4f216ded2c3" />
+        <extendedCases>
+          <extend Id="438af51e-4a26-497b-9361-e394e0e64f39">
+            <useCaseMoniker Id="cb3161c2-8a25-4f28-822f-102e83f6ec90" LastKnownName="Просмотреть список направлений" />
+            <elementDefinition Id="16212c52-d52f-4726-bcca-bf16dcafc4fb" />
+          </extend>
+          <extend Id="bc2ea833-0a3b-43af-a93b-c751bd7989d5">
+            <useCaseMoniker Id="2a766f2b-5484-491c-9584-312abc6825c7" LastKnownName="Редактировать" />
+            <elementDefinition Id="272ec5ea-061d-47a7-af3c-6d3e2d19b6a9" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a3c11a3f-fb33-4a66-b9d5-ccf53e2505c3" name="Удалить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e61d783c-963e-4d2e-a9a5-f5d1e02f9fee" />
+        <extendedCases>
+          <extend Id="03411439-5134-4c95-8534-9b1c287002b1">
+            <useCaseMoniker Id="1a4a8a7e-730c-424a-be53-e8ef8265a147" LastKnownName="Просмотреть список клиентов" />
+            <elementDefinition Id="218eeffa-9fd0-4fd7-92d2-e141d1cee5df" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1ffad561-a545-4023-855b-e224dff55271" name="Редактировать" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f1ed36fa-8bce-4439-8ed1-68ac00904479" />
+        <extendedCases>
+          <extend Id="1c9c989c-1746-4916-9ded-5e449eb8565d">
+            <useCaseMoniker Id="1a4a8a7e-730c-424a-be53-e8ef8265a147" LastKnownName="Просмотреть список клиентов" />
+            <elementDefinition Id="19bb13e8-d28c-4f5d-a776-087ead7fb663" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ab54866b-3856-4c58-abfa-eb0c0c7e4785" name="Добавить" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="99f08fe9-bec0-45d1-aa1d-7215d67120de" />
+        <extendedCases>
+          <extend Id="4c7450ed-d472-4f0f-bde2-888575091a46">
+            <useCaseMoniker Id="1a4a8a7e-730c-424a-be53-e8ef8265a147" LastKnownName="Просмотреть список клиентов" />
+            <elementDefinition Id="02c5397d-ba8d-4543-b97d-3ba999a55d4c" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7e96d383-b6c6-470d-8169-028031ab1a37" name="Поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5fadd9b3-9349-495e-9e2c-baaa98b8e63b" />
+        <extendedCases>
+          <extend Id="0dc4deef-0a30-4fbd-bf80-d9d678e39ef5">
+            <useCaseMoniker Id="1a4a8a7e-730c-424a-be53-e8ef8265a147" LastKnownName="Просмотреть список клиентов" />
+            <elementDefinition Id="e7d2d7e8-89da-43e9-9b4c-bbf845b49f45" />
+          </extend>
+          <extend Id="75f8d860-11ab-437a-82d7-173a126aa12a">
+            <useCaseMoniker Id="1ffad561-a545-4023-855b-e224dff55271" LastKnownName="Редактировать" />
+            <elementDefinition Id="32f8097d-4bb3-4cc7-9c08-d617f0c9608a" />
+          </extend>
+          <extend Id="02e11ee3-7e3a-4cdf-9928-c0d38a8c310a">
+            <useCaseMoniker Id="a3c11a3f-fb33-4a66-b9d5-ccf53e2505c3" LastKnownName="Удалить" />
+            <elementDefinition Id="0ba35015-82a5-4c51-9cc1-f0912e2128ea" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="5e85feaa-e28f-41c3-9f2e-98ee6ffb85b1" name="База данных" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f55a473e-966c-4e34-86ab-9ec03fd3ee9e" />
+        <targetEnds>
+          <association Id="71a9e173-d535-4a23-b499-101c317fe86e" isDerived="false" sourceEndRoleName="База данных" targetEndRoleName="Администратор" isLeaf="false" isAbstract="false">
+            <actorMoniker Id="9289faef-9131-4ff4-aeda-1c937c809967" LastKnownName="Администратор" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="00b8e83c-fe9b-4d97-a5c6-92e3d631af50" name="База данных" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="94608d06-cd05-484d-a168-3831460c1ff7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8d2776c6-8913-47c9-96d4-9884ed978945" name="Администратор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8120b21f-edf2-4af7-9233-58fb5a2c03e7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0288302e-ea07-4b46-ab84-1ac57bc0dd1c" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="55e8dfdf-1977-49b7-bd32-dadfaacd748a" name="SportCenter">
+    <elementDefinition Id="e2b4ae60-8941-4747-bbfc-b8230f6a9b4d" />
+  </package>
+</useCaseModelRoot>

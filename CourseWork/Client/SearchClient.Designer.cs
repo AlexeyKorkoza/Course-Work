@@ -287,6 +287,7 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.datagridViewClients);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SearchClient";
             this.Text = "Поиск клиента";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewClients)).EndInit();

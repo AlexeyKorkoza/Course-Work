@@ -160,6 +160,7 @@
             this.Controls.Add(this.DirectionAdd);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Add);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EditDirection";
             this.Text = "Редактирования направления";
             this.DirectionAdd.ResumeLayout(false);

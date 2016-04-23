@@ -125,3 +125,7 @@ C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discou
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.AddDiscounts.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.EditDiscounts.resources
 C:\Users\lesha\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.SearchDiscounts.resources
+C:\Users\Alexey\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.AddDiscounts.resources
+C:\Users\Alexey\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.EditDiscounts.resources
+C:\Users\Alexey\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.SearchDiscounts.resources
+C:\Users\Alexey\Desktop\Course-Work-master\CourseWork\obj\Debug\CourseWork.Discounts.ViewDiscounts.resources

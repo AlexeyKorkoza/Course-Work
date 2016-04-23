@@ -172,8 +172,9 @@
             this.Controls.Add(this.DeleteService);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.datagridViewServices);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ViewService";
-            this.Text = "Редактирование услуги";
+            this.Text = "Просмотр услуг";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewServices)).EndInit();
             this.ResumeLayout(false);
 

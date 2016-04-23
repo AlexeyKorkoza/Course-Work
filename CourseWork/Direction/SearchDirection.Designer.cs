@@ -171,6 +171,7 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.DeleteDirection);
             this.Controls.Add(this.datagridViewDirections);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SearchDirection";
             this.Text = "Поиск направления";
             ((System.ComponentModel.ISupportInitialize)(this.datagridViewDirections)).EndInit();

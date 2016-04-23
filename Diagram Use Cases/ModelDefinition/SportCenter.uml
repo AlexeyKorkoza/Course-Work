@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="e2b4ae60-8941-4747-bbfc-b8230f6a9b4d"
+  name="SportCenter" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="f536c685-8105-47ba-a343-dc2e112105d9"
+        name="Администратор"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="fce36bec-9bf1-40df-9417-3f32bae0a7b6"
+            isDerived="false"
+            sourceEndRoleName="Администратор"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c63f68c0-b83a-4435-a9da-c1f758bc4bc3"
+              LastKnownName="Работа с клиентами"
+              LastKnownLocation="SportCenter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9a689d1d-213f-476d-a3cc-395cbb64fc5f"
+                  name="Администратор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6e8cdec0-61dd-4b54-8c80-148e59f70e6f"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7c78970d-8410-4689-bc6a-db9ac119f4bf"
+            isDerived="false"
+            sourceEndRoleName="Администратор"
+            targetEndRoleName="UseCase2"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="1a33bce6-354d-48de-95c1-80361d8d51c2"
+              LastKnownName="Работа с направлениями"
+              LastKnownLocation="SportCenter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6d5c4904-e6a7-48ee-ab54-bf1d696f43c9"
+                  name="Администратор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="633e16da-9b4f-4ca0-a5c4-e4a675b25647"
+                  name="UseCase2"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="871c0e54-f976-45f0-a3f3-6e7a01419ae2"
+            isDerived="false"
+            sourceEndRoleName="Администратор"
+            targetEndRoleName="UseCase21"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="05b58045-d063-4a90-b431-d4a89130238f"
+              LastKnownName="Работа с услугами"
+              LastKnownLocation="SportCenter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="074e10b3-ecb0-422a-b346-afcdfb2e37fc"
+                  name="Администратор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1a0f27fa-45f2-4470-a815-d4c6aa912a30"
+                  name="UseCase21"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7208bf4c-035e-493d-8bfd-ec736f5d9dea"
+            isDerived="false"
+            sourceEndRoleName="Администратор"
+            targetEndRoleName="UseCase22"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d399c145-6440-4588-b84e-053e233543f2"
+              LastKnownName="Работа со скидками"
+              LastKnownLocation="SportCenter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="10196946-f964-4f2b-af8c-3e80cf90b79f"
+                  name="Администратор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5b439277-7ad3-4b54-ba57-eb40938d4ece"
+                  name="UseCase22"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c63f68c0-b83a-4435-a9da-c1f758bc4bc3"
+        name="Работа с клиентами"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="18fdbd9e-2528-4e28-b7b8-55743a4dfc8a">
+            <useCaseMoniker
+              Id="6748f56a-f90e-4c45-936f-5a48e5181520"
+              LastKnownName="Просмотреть список клиентов"
+              LastKnownLocation="SportCenter.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1a33bce6-354d-48de-95c1-80361d8d51c2"
+        name="Работа с направлениями"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="3838725b-646c-41a1-9b63-76ebb3f98f10">
+            <useCaseMoniker
+              Id="7c3d556a-e1e9-43f8-890f-4f9f35397dac"
+              LastKnownName="Просмотреть список направлений"
+              LastKnownLocation="SportCenter.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="05b58045-d063-4a90-b431-d4a89130238f"
+        name="Работа с услугами"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="952a793c-1637-429d-bf8b-b77ddd9bb047">
+            <useCaseMoniker
+              Id="f16b97a5-5b60-4f0a-9bf8-ba0e7080d79d"
+              LastKnownName="Просмотреть список услуг"
+              LastKnownLocation="SportCenter.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d399c145-6440-4588-b84e-053e233543f2"
+        name="Работа со скидками"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="097e015b-9f6d-4b3e-a6c2-b382b536315e">
+            <useCaseMoniker
+              Id="2c000e77-a172-4a87-89bd-e700bb6b1a8f"
+              LastKnownName="Просмотреть список скидок"
+              LastKnownLocation="SportCenter.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2c000e77-a172-4a87-89bd-e700bb6b1a8f"
+        name="Просмотреть список скидок"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f16b97a5-5b60-4f0a-9bf8-ba0e7080d79d"
+        name="Просмотреть список услуг"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7c3d556a-e1e9-43f8-890f-4f9f35397dac"
+        name="Просмотреть список направлений"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6748f56a-f90e-4c45-936f-5a48e5181520"
+        name="Просмотреть список клиентов"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="17aedd53-3cbb-4ce5-a881-eb99feb956b7"
+        name="Поиск"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="49e04e94-41ac-4532-8d40-07898cc18ce3">
+            <useCaseMoniker
+              Id="2c000e77-a172-4a87-89bd-e700bb6b1a8f"
+              LastKnownName="Просмотреть список скидок"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="082ba772-d9ef-4fe1-a37e-9780701f10be"
+        name="Добавить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="7aecad94-d752-438a-b615-f1b42338e547">
+            <useCaseMoniker
+              Id="2c000e77-a172-4a87-89bd-e700bb6b1a8f"
+              LastKnownName="Просмотреть список скидок"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="d940830c-47b9-4381-bcbf-0d425f52cc19"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a34acd5c-2fa7-40af-8462-46126afda782"
+        name="Редактировать"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="5abcc9eb-c40a-468b-9727-dddb522ce76b">
+            <useCaseMoniker
+              Id="2c000e77-a172-4a87-89bd-e700bb6b1a8f"
+              LastKnownName="Просмотреть список скидок"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="d9ca9375-6547-4aea-b5be-7744ae252d8f">
+            <useCaseMoniker
+              Id="17aedd53-3cbb-4ce5-a881-eb99feb956b7"
+              LastKnownName="Поиск"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e8ec5abd-75d8-4fbf-a1c6-9abda8b0e58a"
+        name="Удалить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="6c305793-a529-4419-a7a4-6404a06c1b28">
+            <useCaseMoniker
+              Id="2c000e77-a172-4a87-89bd-e700bb6b1a8f"
+              LastKnownName="Просмотреть список скидок"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="144af863-bd1f-4346-b0dc-5eec0cd43119">
+            <useCaseMoniker
+              Id="17aedd53-3cbb-4ce5-a881-eb99feb956b7"
+              LastKnownName="Поиск"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e222cf1c-1f58-4f2c-bab1-3da3fa0ebaea"
+        name="Добавить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="93adf5d6-21f0-4959-a3d0-12d10abf1bc9">
+            <useCaseMoniker
+              Id="f16b97a5-5b60-4f0a-9bf8-ba0e7080d79d"
+              LastKnownName="Просмотреть список услуг"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="88b8502d-2e9d-4a0d-a727-a01907fdf76a"
+        name="Удалить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="fdc2b7df-b8a6-4f9c-ae1b-4e170f1faaee">
+            <useCaseMoniker
+              Id="f16b97a5-5b60-4f0a-9bf8-ba0e7080d79d"
+              LastKnownName="Просмотреть список услуг"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="32803bb3-ebdd-4bb7-b613-6be4ac2389d4">
+            <useCaseMoniker
+              Id="d08d8489-2a6f-40eb-80a5-309fc692b667"
+              LastKnownName="Поиск"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5e2d59f5-716d-48d7-bc36-7de05b60e9a0"
+        name="Редактировать"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="5cc2192f-ec3d-46fc-81e7-282f81712e9a">
+            <useCaseMoniker
+              Id="f16b97a5-5b60-4f0a-9bf8-ba0e7080d79d"
+              LastKnownName="Просмотреть список услуг"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="a2bf41e0-31a7-4d53-a36a-62c0dc5c3c44">
+            <useCaseMoniker
+              Id="d08d8489-2a6f-40eb-80a5-309fc692b667"
+              LastKnownName="Поиск"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d08d8489-2a6f-40eb-80a5-309fc692b667"
+        name="Поиск"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="1fca18f9-ffa0-406a-a918-453fc34f15e4">
+            <useCaseMoniker
+              Id="f16b97a5-5b60-4f0a-9bf8-ba0e7080d79d"
+              LastKnownName="Просмотреть список услуг"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="594fd513-b3e5-4819-bcc3-43f25971b3c8"
+        name="Редактировать"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="c3137996-49c0-44be-85c5-206a946edd7d">
+            <useCaseMoniker
+              Id="7c3d556a-e1e9-43f8-890f-4f9f35397dac"
+              LastKnownName="Просмотреть список направлений"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f3c5639e-8b19-4dfd-bf86-fee99e059239"
+        name="Удалить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="e404f984-8d6d-4eac-ac88-76c512dbcf3b">
+            <useCaseMoniker
+              Id="7c3d556a-e1e9-43f8-890f-4f9f35397dac"
+              LastKnownName="Просмотреть список направлений"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="8174ebf3-d8a0-4bcf-92a3-aa8227c02b47">
+            <useCaseMoniker
+              Id="594fd513-b3e5-4819-bcc3-43f25971b3c8"
+              LastKnownName="Редактировать"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="52e734c0-387c-4025-bbee-dcc5d92abae0"
+        name="Добавить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="63920605-6e4b-43c6-ad8a-57e3c2fc0873">
+            <useCaseMoniker
+              Id="7c3d556a-e1e9-43f8-890f-4f9f35397dac"
+              LastKnownName="Просмотреть список направлений"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="889eec7a-184b-40e4-942e-b4f216ded2c3"
+        name="Поиск"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="16212c52-d52f-4726-bcca-bf16dcafc4fb">
+            <useCaseMoniker
+              Id="7c3d556a-e1e9-43f8-890f-4f9f35397dac"
+              LastKnownName="Просмотреть список направлений"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="272ec5ea-061d-47a7-af3c-6d3e2d19b6a9">
+            <useCaseMoniker
+              Id="594fd513-b3e5-4819-bcc3-43f25971b3c8"
+              LastKnownName="Редактировать"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e61d783c-963e-4d2e-a9a5-f5d1e02f9fee"
+        name="Удалить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="218eeffa-9fd0-4fd7-92d2-e141d1cee5df">
+            <useCaseMoniker
+              Id="6748f56a-f90e-4c45-936f-5a48e5181520"
+              LastKnownName="Просмотреть список клиентов"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f1ed36fa-8bce-4439-8ed1-68ac00904479"
+        name="Редактировать"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="19bb13e8-d28c-4f5d-a776-087ead7fb663">
+            <useCaseMoniker
+              Id="6748f56a-f90e-4c45-936f-5a48e5181520"
+              LastKnownName="Просмотреть список клиентов"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="99f08fe9-bec0-45d1-aa1d-7215d67120de"
+        name="Добавить"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="02c5397d-ba8d-4543-b97d-3ba999a55d4c">
+            <useCaseMoniker
+              Id="6748f56a-f90e-4c45-936f-5a48e5181520"
+              LastKnownName="Просмотреть список клиентов"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="5fadd9b3-9349-495e-9e2c-baaa98b8e63b"
+        name="Поиск"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="e7d2d7e8-89da-43e9-9b4c-bbf845b49f45">
+            <useCaseMoniker
+              Id="6748f56a-f90e-4c45-936f-5a48e5181520"
+              LastKnownName="Просмотреть список клиентов"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="32f8097d-4bb3-4cc7-9c08-d617f0c9608a">
+            <useCaseMoniker
+              Id="f1ed36fa-8bce-4439-8ed1-68ac00904479"
+              LastKnownName="Редактировать"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+          <extend
+            Id="0ba35015-82a5-4c51-9cc1-f0912e2128ea">
+            <useCaseMoniker
+              Id="e61d783c-963e-4d2e-a9a5-f5d1e02f9fee"
+              LastKnownName="Удалить"
+              LastKnownLocation="SportCenter.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a91df911-7a52-409c-8f4f-5c9de1984072"
+        name="UseCase813"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="f55a473e-966c-4e34-86ab-9ec03fd3ee9e"
+        name="База данных"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="0288302e-ea07-4b46-ab84-1ac57bc0dd1c"
+            isDerived="false"
+            sourceEndRoleName="База данных"
+            targetEndRoleName="Администратор"
+            isLeaf="false"
+            isAbstract="false">
+            <actorMoniker
+              Id="f536c685-8105-47ba-a343-dc2e112105d9"
+              LastKnownName="Администратор"
+              LastKnownLocation="SportCenter.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="94608d06-cd05-484d-a168-3831460c1ff7"
+                  name="База данных"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8120b21f-edf2-4af7-9233-58fb5a2c03e7"
+                  name="Администратор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
