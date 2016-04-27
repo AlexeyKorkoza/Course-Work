@@ -38,7 +38,6 @@
             this.Услуга = new System.Windows.Forms.Label();
             this.Close = new System.Windows.Forms.Button();
             this.Add = new System.Windows.Forms.Button();
-            this.Refresh = new System.Windows.Forms.Button();
             this.DirectionAdd.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,9 +122,9 @@
             // 
             // Close
             // 
-            this.Close.Location = new System.Drawing.Point(283, 225);
+            this.Close.Location = new System.Drawing.Point(242, 225);
             this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(75, 34);
+            this.Close.Size = new System.Drawing.Size(110, 34);
             this.Close.TabIndex = 18;
             this.Close.Text = "Выйти";
             this.Close.UseVisualStyleBackColor = true;
@@ -135,28 +134,17 @@
             // 
             this.Add.Location = new System.Drawing.Point(25, 225);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(97, 34);
+            this.Add.Size = new System.Drawing.Size(142, 34);
             this.Add.TabIndex = 17;
             this.Add.Text = "Редактировать";
             this.Add.UseVisualStyleBackColor = true;
             this.Add.Click += new System.EventHandler(this.Add_Click);
-            // 
-            // Refresh
-            // 
-            this.Refresh.Location = new System.Drawing.Point(155, 225);
-            this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(96, 34);
-            this.Refresh.TabIndex = 20;
-            this.Refresh.Text = "Обновить";
-            this.Refresh.UseVisualStyleBackColor = true;
-            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
             // 
             // EditDirection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 261);
-            this.Controls.Add(this.Refresh);
             this.Controls.Add(this.DirectionAdd);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Add);
@@ -181,6 +169,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox ChangeDirectionName;
         private System.Windows.Forms.ComboBox DirectionName;
-        private System.Windows.Forms.Button Refresh;
     }
 }

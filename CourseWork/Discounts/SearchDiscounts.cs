@@ -132,5 +132,10 @@ namespace CourseWork.Discounts
             if ((e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8)
                 e.Handled = true;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = String.Empty;
+        }
     }
 }

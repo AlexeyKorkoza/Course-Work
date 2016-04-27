@@ -126,5 +126,10 @@ namespace CourseWork.Direction
             datagridViewDirections.Rows.Clear();
             DeleteDirection.Enabled = false;
         }
+
+        private void Functions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SearchStr.Text = String.Empty;
+        }
     }
 }

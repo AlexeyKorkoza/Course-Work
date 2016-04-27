@@ -64,11 +64,6 @@ namespace CourseWork.Direction
             }
         }
 
-        private void Refresh_Click(object sender, EventArgs e)
-        {
-            View();
-        }
-
         private void Add_Click(object sender, EventArgs e)
         {
             try

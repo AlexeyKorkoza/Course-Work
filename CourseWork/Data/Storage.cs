@@ -51,7 +51,7 @@ namespace CourseWork.Data
             ConnectDbClient();
             using (var session = _storeClient.OpenSession())
             {
-                return session.Load<Models.Client>(id);
+                return session.Load<Models.Client>("clients/" + id);
             }
         }
         public void UpdateClientId(Models.Client clients)

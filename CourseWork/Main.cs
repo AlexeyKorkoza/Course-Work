@@ -140,7 +140,7 @@ namespace CourseWork
                             if (datagridViewClients.CurrentRow != null)
                             {
                                 var index = datagridViewClients.CurrentRow.Index;
-                                var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
+                                var id = datagridViewClients.Rows[index].Cells[0].Value.ToString();
                                 _storage.DeleteClient(id);
                             }
                             MessageBox.Show(@"Данные успешно удалены!");
@@ -164,7 +164,7 @@ namespace CourseWork
         {
             if (datagridViewClients.CurrentRow == null) return;
             var index = datagridViewClients.CurrentRow.Index;
-            var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
+            var id = datagridViewClients.Rows[index].Cells[0].Value.ToString();
             var editClient = new EditClient(id);
             editClient.Show();
         }

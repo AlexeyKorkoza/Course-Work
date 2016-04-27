@@ -10,10 +10,11 @@ namespace CourseWork.Direction
     {
         private readonly List<TextBox> _textboxlist;
         IStorage _storage = new Storage();
+
         public AddDirection()
         {
             InitializeComponent();
-            _textboxlist = new List<TextBox> { NameService, Duration, Cost };
+            _textboxlist = new List<TextBox> {NameService, Duration, Cost};
         }
 
         private void Add_Click(object sender, EventArgs e)
@@ -44,21 +45,21 @@ namespace CourseWork.Direction
                     }
                 }
                 var direction = new Data.Models.Direction()
+                {
+                    Id = "directions/",
+                    NameOfDirection = DirectionName.Text,
+                    Description = Description.Text,
+                    Services = new List<Data.Models.Service>()
                     {
-                        Id = "directions/",
-                        NameOfDirection = DirectionName.Text,
-                        Description = Description.Text,
-                        Services = new List<Data.Models.Service>()
+                        new Data.Models.Service()
                         {
-                            new Data.Models.Service()
-                            {
-                                Id = 1.ToString(),
-                                NameService = NameService.Text,
-                                Duration = Convert.ToInt32(Duration.Text),
-                                Cost = Convert.ToInt32(Cost.Text),
-                            }
-                        },
-                    };
+                            Id = 1.ToString(),
+                            NameService = NameService.Text,
+                            Duration = Convert.ToInt32(Duration.Text),
+                            Cost = Convert.ToInt32(Cost.Text),
+                        }
+                    },
+                };
                 _storage.AddDirection(direction);
                 MessageBox.Show(@"Данные добавлены");
             }

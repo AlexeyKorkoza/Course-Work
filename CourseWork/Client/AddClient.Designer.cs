@@ -425,7 +425,6 @@
             this.Size.Name = "Size";
             this.Size.Size = new System.Drawing.Size(280, 20);
             this.Size.TabIndex = 31;
-            this.Size.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label13
             // 

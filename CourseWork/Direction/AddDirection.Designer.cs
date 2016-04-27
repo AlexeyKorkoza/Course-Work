@@ -35,22 +35,22 @@
             this.Description = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.Услуга = new System.Windows.Forms.Label();
-            this.AddService = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Cost = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Duration = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.NameService = new System.Windows.Forms.TextBox();
+            this.Duration = new System.Windows.Forms.TextBox();
+            this.Cost = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DirectionAdd.SuspendLayout();
-            this.AddService.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Close
             // 
-            this.Close.Location = new System.Drawing.Point(389, 207);
+            this.Close.Location = new System.Drawing.Point(200, 198);
             this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(75, 34);
+            this.Close.Size = new System.Drawing.Size(119, 34);
             this.Close.TabIndex = 13;
             this.Close.Text = "Выйти";
             this.Close.UseVisualStyleBackColor = true;
@@ -58,9 +58,9 @@
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(270, 207);
+            this.Add.Location = new System.Drawing.Point(41, 198);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(75, 34);
+            this.Add.Size = new System.Drawing.Size(116, 34);
             this.Add.TabIndex = 12;
             this.Add.Text = "Добавить";
             this.Add.UseVisualStyleBackColor = true;
@@ -112,87 +112,87 @@
             this.Услуга.TabIndex = 17;
             this.Услуга.Text = "Описание";
             // 
-            // AddService
+            // label1
             // 
-            this.AddService.Controls.Add(this.label4);
-            this.AddService.Controls.Add(this.Cost);
-            this.AddService.Controls.Add(this.label3);
-            this.AddService.Controls.Add(this.label2);
-            this.AddService.Controls.Add(this.Duration);
-            this.AddService.Controls.Add(this.NameService);
-            this.AddService.Location = new System.Drawing.Point(362, 12);
-            this.AddService.Name = "AddService";
-            this.AddService.Size = new System.Drawing.Size(399, 180);
-            this.AddService.TabIndex = 16;
-            this.AddService.TabStop = false;
-            this.AddService.Text = "Информация о услуге";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 118);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Цена";
-            // 
-            // Cost
-            // 
-            this.Cost.Location = new System.Drawing.Point(9, 134);
-            this.Cost.Name = "Cost";
-            this.Cost.Size = new System.Drawing.Size(372, 20);
-            this.Cost.TabIndex = 6;
-            this.Cost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cost_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Продолжительность";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Услуга";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Location = new System.Drawing.Point(6, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Название услуги";
+            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Продолжительность";
             // 
-            // Duration
+            // label3
             // 
-            this.Duration.Location = new System.Drawing.Point(9, 83);
-            this.Duration.Name = "Duration";
-            this.Duration.Size = new System.Drawing.Size(372, 20);
-            this.Duration.TabIndex = 2;
-            this.Duration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Duration_KeyPress);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 118);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Цена";
             // 
             // NameService
             // 
-            this.NameService.Location = new System.Drawing.Point(9, 29);
+            this.NameService.Location = new System.Drawing.Point(6, 32);
             this.NameService.Name = "NameService";
-            this.NameService.Size = new System.Drawing.Size(372, 20);
-            this.NameService.TabIndex = 1;
+            this.NameService.Size = new System.Drawing.Size(254, 20);
+            this.NameService.TabIndex = 19;
+            // 
+            // Duration
+            // 
+            this.Duration.Location = new System.Drawing.Point(6, 83);
+            this.Duration.Name = "Duration";
+            this.Duration.Size = new System.Drawing.Size(254, 20);
+            this.Duration.TabIndex = 20;
+            this.Duration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Duration_KeyPress);
+            // 
+            // Cost
+            // 
+            this.Cost.Location = new System.Drawing.Point(6, 134);
+            this.Cost.Name = "Cost";
+            this.Cost.Size = new System.Drawing.Size(254, 20);
+            this.Cost.TabIndex = 21;
+            this.Cost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Cost_KeyPress);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.Cost);
+            this.groupBox1.Controls.Add(this.NameService);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.Duration);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(370, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(290, 179);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Информация о услуге";
             // 
             // AddDirection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 257);
-            this.Controls.Add(this.AddService);
+            this.ClientSize = new System.Drawing.Size(690, 257);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DirectionAdd);
             this.Controls.Add(this.Close);
             this.Controls.Add(this.Add);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddDirection";
-            this.Text = "Добавление направления";
+            this.Text = "Добавление направление";
             this.DirectionAdd.ResumeLayout(false);
             this.DirectionAdd.PerformLayout();
-            this.AddService.ResumeLayout(false);
-            this.AddService.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -206,12 +206,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label Услуга;
         private System.Windows.Forms.TextBox DirectionName;
-        private System.Windows.Forms.GroupBox AddService;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox NameService;
         private System.Windows.Forms.TextBox Duration;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Cost;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

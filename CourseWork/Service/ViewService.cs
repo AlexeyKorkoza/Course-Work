@@ -95,21 +95,18 @@ namespace CourseWork.Service
                     var count = 0;
                     for(var i = 0; i < _services.Count;i++)
                     {
-                        for (var k = 0; k < _services[i].Services.Count; k++)
-                        {
-                            datagridViewServices.Rows.Add();
-                            datagridViewServices.Rows[count].Cells[0].Value = Convert.ToInt32(_services[i].Services[k].Id);
-                            datagridViewServices.Rows[count].Cells[1].Value = _services[i].NameOfDirection;
-                            datagridViewServices.Rows[count].Cells[2].Value = _services[i].Services[k].NameService;
-                            datagridViewServices.Rows[count].Cells[3].Value = _services[i].Services[k].Duration;
-                            datagridViewServices.Rows[count].Cells[4].Value = _services[i].Services[k].Cost;
-                            count++;
+                       for (var k = 0; k < _services[i].Services.Count; k++)
+                            {
+                                datagridViewServices.Rows.Add();
+                                datagridViewServices.Rows[count].Cells[0].Value = Convert.ToInt32(_services[i].Services[k].Id);
+                                datagridViewServices.Rows[count].Cells[1].Value = _services[i].NameOfDirection;
+                                datagridViewServices.Rows[count].Cells[2].Value = _services[i].Services[k].NameService;
+                                datagridViewServices.Rows[count].Cells[3].Value = _services[i].Services[k].Duration;
+                                datagridViewServices.Rows[count].Cells[4].Value = _services[i].Services[k].Cost;
+                                count++;
+                               
                         }
                     }
-                }
-                else
-                {
-                    MessageBox.Show(@"Список услуг пуст");
                 }
             }
             catch (Exception exception)
@@ -148,7 +145,7 @@ namespace CourseWork.Service
                         for (var k = 0; k < _list.Count; k++)
                         {
                             if (t.NameOfDirection != _list[k].NameOfDirection) continue;
-                            var value = _random.Next(1, 500);
+                            var value = _random.Next(1, 512);
                             for (var i = 0; i < t.Services.Count; i++)
                             {
                                 if (value != Convert.ToInt32(t.Services[i].Id)) continue;

@@ -11,6 +11,7 @@ namespace CourseWork.Direction
         private List<Data.Models.Direction> _list = new List<Data.Models.Direction>();
         private OpenFileDialog _open;
         readonly IStorage _storage = new Storage();
+        private Random _rnd = new Random();
         public ViewDirection()
         {
             InitializeComponent();
@@ -76,10 +77,14 @@ namespace CourseWork.Direction
                             if (datagridViewDirections.CurrentRow != null)
                             {
                                 var index = datagridViewDirections.CurrentRow.Index;
-                                var id = (string)datagridViewDirections.Rows[index].Cells[0].Value;
+                                var id = datagridViewDirections.Rows[index].Cells[0].Value.ToString();
                                 _storage.DeleteDirection(id);
+                                MessageBox.Show(@"Данные успешно удалены!");
                             }
-                            MessageBox.Show(@"Данные успешно удалены!");
+                            else
+                            {
+                                MessageBox.Show(@"Выберите строку для удаления!");
+                            }
                             break;
                         }
                     case DialogResult.Cancel:
@@ -90,9 +95,9 @@ namespace CourseWork.Direction
                         throw new ArgumentOutOfRangeException();
                 }
             }
-            catch
+            catch(Exception exception)
             {
-                MessageBox.Show(@"Выберите строку для удаления");
+                MessageBox.Show(exception.Message);
             }
         }
 
@@ -122,15 +127,23 @@ namespace CourseWork.Direction
                 _list = file.LoadingDirections(_open.FileName);
                 foreach (var t in _list)
                 {
+                    var value = _rnd.Next(1, 512);
+                    for (var k = 0; k < t.Services.Count; k++)
+                    {
+                        if (value != Convert.ToInt32(t.Services[k].Id)) continue;
+                        value = 0;
+                        k--;
+                    }
                     var direction = new Data.Models.Direction
                     {
+                        Id = "directions/",
                         NameOfDirection = t.NameOfDirection,
                         Description = t.Description,
                         Services = new List<Data.Models.Service>()
                         {
                             new Data.Models.Service()
                             {
-                                Id = "directions/",
+                                Id = value.ToString(),
                                 NameService = t.Services[0].NameService,
                                 Cost = t.Services[0].Cost,
                                 Duration = t.Services[0].Duration

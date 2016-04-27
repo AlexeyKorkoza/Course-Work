@@ -34,15 +34,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.NameService = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Duration = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.CostService = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Discount = new System.Windows.Forms.GroupBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.DescriptionDiscount = new System.Windows.Forms.RichTextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.Size = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Code = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -68,6 +63,9 @@
             this.Услуга = new System.Windows.Forms.Label();
             this.Cancel = new System.Windows.Forms.Button();
             this.Update = new System.Windows.Forms.Button();
+            this.Size = new System.Windows.Forms.TextBox();
+            this.CostService = new System.Windows.Forms.TextBox();
+            this.Duration = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.Discount.SuspendLayout();
             this.Client.SuspendLayout();
@@ -88,13 +86,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Duration);
+            this.groupBox1.Controls.Add(this.CostService);
             this.groupBox1.Controls.Add(this.Visit);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.NameService);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.Duration);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.CostService);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Location = new System.Drawing.Point(378, 165);
             this.groupBox1.Name = "groupBox1";
@@ -130,6 +128,7 @@
             this.NameService.Name = "NameService";
             this.NameService.Size = new System.Drawing.Size(280, 21);
             this.NameService.TabIndex = 26;
+            this.NameService.SelectedIndexChanged += new System.EventHandler(this.NameService_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -140,14 +139,6 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Название услуги";
             // 
-            // Duration
-            // 
-            this.Duration.FormattingEnabled = true;
-            this.Duration.Location = new System.Drawing.Point(28, 82);
-            this.Duration.Name = "Duration";
-            this.Duration.Size = new System.Drawing.Size(280, 21);
-            this.Duration.TabIndex = 24;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -157,18 +148,10 @@
             this.label11.TabIndex = 23;
             this.label11.Text = "Продолжительность";
             // 
-            // CostService
-            // 
-            this.CostService.FormattingEnabled = true;
-            this.CostService.Location = new System.Drawing.Point(28, 129);
-            this.CostService.Name = "CostService";
-            this.CostService.Size = new System.Drawing.Size(280, 21);
-            this.CostService.TabIndex = 22;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(25, 106);
+            this.label12.Location = new System.Drawing.Point(25, 114);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(33, 13);
             this.label12.TabIndex = 21;
@@ -176,56 +159,28 @@
             // 
             // Discount
             // 
-            this.Discount.Controls.Add(this.monthCalendar1);
-            this.Discount.Controls.Add(this.DescriptionDiscount);
-            this.Discount.Controls.Add(this.label14);
             this.Discount.Controls.Add(this.Size);
             this.Discount.Controls.Add(this.label13);
             this.Discount.Controls.Add(this.Code);
             this.Discount.Controls.Add(this.label8);
             this.Discount.Location = new System.Drawing.Point(39, 377);
             this.Discount.Name = "Discount";
-            this.Discount.Size = new System.Drawing.Size(672, 116);
+            this.Discount.Size = new System.Drawing.Size(672, 74);
             this.Discount.TabIndex = 22;
             this.Discount.TabStop = false;
             this.Discount.Text = "Информация о скидке";
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(66, 0);
+            this.monthCalendar1.Location = new System.Drawing.Point(163, 207);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 17;
             this.monthCalendar1.Visible = false;
             // 
-            // DescriptionDiscount
-            // 
-            this.DescriptionDiscount.Location = new System.Drawing.Point(322, 32);
-            this.DescriptionDiscount.Name = "DescriptionDiscount";
-            this.DescriptionDiscount.Size = new System.Drawing.Size(280, 70);
-            this.DescriptionDiscount.TabIndex = 32;
-            this.DescriptionDiscount.Text = "";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(319, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Описание";
-            // 
-            // Size
-            // 
-            this.Size.FormattingEnabled = true;
-            this.Size.Location = new System.Drawing.Point(11, 81);
-            this.Size.Name = "Size";
-            this.Size.Size = new System.Drawing.Size(280, 21);
-            this.Size.TabIndex = 30;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(8, 65);
+            this.label13.Location = new System.Drawing.Point(364, 16);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 29;
@@ -238,6 +193,7 @@
             this.Code.Name = "Code";
             this.Code.Size = new System.Drawing.Size(280, 21);
             this.Code.TabIndex = 28;
+            this.Code.SelectedIndexChanged += new System.EventHandler(this.Code_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -261,6 +217,7 @@
             // 
             // Client
             // 
+            this.Client.Controls.Add(this.monthCalendar1);
             this.Client.Controls.Add(this.Payment);
             this.Client.Controls.Add(this.Decor);
             this.Client.Controls.Add(this.NameOfClient);
@@ -425,6 +382,7 @@
             this.DirectionName.Name = "DirectionName";
             this.DirectionName.Size = new System.Drawing.Size(280, 21);
             this.DirectionName.TabIndex = 20;
+            this.DirectionName.SelectedIndexChanged += new System.EventHandler(this.DirectionName_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -446,7 +404,7 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(421, 499);
+            this.Cancel.Location = new System.Drawing.Point(406, 457);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(93, 39);
             this.Cancel.TabIndex = 24;
@@ -456,7 +414,7 @@
             // 
             // Update
             // 
-            this.Update.Location = new System.Drawing.Point(315, 499);
+            this.Update.Location = new System.Drawing.Point(286, 457);
             this.Update.Name = "Update";
             this.Update.Size = new System.Drawing.Size(89, 39);
             this.Update.TabIndex = 25;
@@ -464,11 +422,35 @@
             this.Update.UseVisualStyleBackColor = true;
             this.Update.Click += new System.EventHandler(this.Update_Click);
             // 
+            // Size
+            // 
+            this.Size.Enabled = false;
+            this.Size.Location = new System.Drawing.Point(367, 33);
+            this.Size.Name = "Size";
+            this.Size.Size = new System.Drawing.Size(280, 20);
+            this.Size.TabIndex = 33;
+            // 
+            // CostService
+            // 
+            this.CostService.Enabled = false;
+            this.CostService.Location = new System.Drawing.Point(28, 130);
+            this.CostService.Name = "CostService";
+            this.CostService.Size = new System.Drawing.Size(280, 20);
+            this.CostService.TabIndex = 29;
+            // 
+            // Duration
+            // 
+            this.Duration.Enabled = false;
+            this.Duration.Location = new System.Drawing.Point(28, 87);
+            this.Duration.Name = "Duration";
+            this.Duration.Size = new System.Drawing.Size(280, 20);
+            this.Duration.TabIndex = 30;
+            // 
             // EditClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 550);
+            this.ClientSize = new System.Drawing.Size(731, 508);
             this.Controls.Add(this.Update);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.groupBox1);
@@ -499,14 +481,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox NameService;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox Duration;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox CostService;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox Discount;
-        private System.Windows.Forms.RichTextBox DescriptionDiscount;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox Size;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox Code;
         private System.Windows.Forms.Label label8;
@@ -533,5 +510,8 @@
         private System.Windows.Forms.Label Услуга;
         private System.Windows.Forms.Button Cancel;
         private System.Windows.Forms.Button Update;
+        private System.Windows.Forms.TextBox Size;
+        private System.Windows.Forms.TextBox Duration;
+        private System.Windows.Forms.TextBox CostService;
     }
 }

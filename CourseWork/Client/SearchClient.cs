@@ -25,6 +25,7 @@ namespace CourseWork.Client
             try
             {
                 var clients = _storage.GetAllClients();
+                datagridViewClients.Rows.Clear();
                 if (Functions.Text == (string)Functions.Items[0])
                 {
                     const string pattern = "[0-9]{1,}";
@@ -218,6 +219,7 @@ namespace CourseWork.Client
 
         private void Functions_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SearchStr.Text = String.Empty;
             if (Functions.Text == (string)Functions.Items[3])
             {
                 SearchStr.Text = DateTime.Now.ToString("MM/dd/yyyy");
@@ -288,6 +290,11 @@ namespace CourseWork.Client
             var id = (string)datagridViewClients.Rows[index].Cells[0].Value;
             var editClient = new EditClient(id);
             editClient.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datagridViewClients.Rows.Clear();
         }
     }
 }

@@ -128,6 +128,7 @@
             this.Functions.Name = "Functions";
             this.Functions.Size = new System.Drawing.Size(206, 21);
             this.Functions.TabIndex = 17;
+            this.Functions.SelectedIndexChanged += new System.EventHandler(this.Functions_SelectedIndexChanged);
             // 
             // label1
             // 

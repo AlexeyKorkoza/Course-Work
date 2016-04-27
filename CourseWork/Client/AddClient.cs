@@ -35,13 +35,14 @@ namespace CourseWork.Client
                     NameService,
                     Payment,
                     Decor,
-                    Visit 
+                    Visit
                 };
                 _richTextBoxs = new List<RichTextBox> { DirectionDescription };
                 foreach (var t in _listcombobox)
                 {
                     t.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
+                Code.DropDownStyle = ComboBoxStyle.DropDownList;
                 var direction = _storage.GetDirections();
                 if (direction.Count > 0)
                 {
@@ -133,10 +134,12 @@ namespace CourseWork.Client
                     sum = cost - size*cost/100;
                     MessageBox.Show(@"С учетом скидки цена услуга будет равна:" + sum);
                 }
-                else
+                var code = 0;
+                var sizeDiscount = 0;
+                if(Size.Text.Length != 0 && Code.Text.Length != 0)
                 {
-                    Size.Text = 0.ToString();
-                    Code.Text = 0.ToString();
+                    code = Convert.ToInt32(Code.Text);
+                    sizeDiscount = Convert.ToInt32(Size.Text);
                 }
                 if (CostService.Text != sum.ToString() && sum != 0)
                 {
@@ -176,8 +179,8 @@ namespace CourseWork.Client
                         {
                             new Discount()
                             {
-                                Code = Convert.ToInt32(Code.Text),
-                                Size = Convert.ToInt32(Size.Text)
+                                Code = code,
+                                Size = sizeDiscount
                             }
                         }
                    };
@@ -236,6 +239,8 @@ namespace CourseWork.Client
 
         private void NameService_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CostService.Text = string.Empty;
+            Duration.Text = string.Empty;
             foreach (var t in _directionByName.Services)
             {
                 if (NameService.Text != t.NameService) continue;
@@ -254,17 +259,5 @@ namespace CourseWork.Client
                 break;
             }
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            //if (Size.Text.Length != 0 && CostService.Text.Length != 0)
-            //{
-            //    var cost = Convert.ToInt32(CostService.Text);
-            //    var size = Convert.ToInt32(Size.Text);
-            //    var sum = cost - size * cost / 100;
-            //    CostService.Text = string.Empty + sum;
-            //}
-        }
-
     }
 }
